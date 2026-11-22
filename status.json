@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T10:35:02.046678+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:35am AEDT",
+  "updated_at": "2026-11-23T10:36:08.362691+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:36am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -447,8 +447,8 @@
       "step": "Complete",
       "pct": 100,
       "pass_label": "",
-      "updated_at": "2026-11-23T10:27:52+11:00",
-      "updated_label": "Mon 23 Nov 2026, 10:27am AEDT",
+      "updated_at": "2026-11-23T10:35:36+11:00",
+      "updated_label": "Mon 23 Nov 2026, 10:35am AEDT",
       "now": {
         "what": "Complete",
         "since": "",
@@ -575,7 +575,7 @@
         {
           "g": "G1",
           "name": "family sweep",
-          "ok": false
+          "ok": true
         },
         {
           "g": "G2",
@@ -600,7 +600,7 @@
         {
           "g": "G6",
           "name": "chaining check",
-          "ok": false
+          "ok": true
         }
       ],
       "activity": "static scan"
@@ -690,6 +690,18 @@
     ],
     "events": [
       {
+        "at": "2026-11-23T10:35:36+11:00",
+        "hunt": "Alchemix v3",
+        "what": "invariant run finished",
+        "t": "10:35am"
+      },
+      {
+        "at": "2026-11-23T10:35:36+11:00",
+        "hunt": "Alchemix v3",
+        "what": "deep invariant run finished",
+        "t": "10:35am"
+      },
+      {
         "at": "2026-11-23T10:27:52+11:00",
         "hunt": "Alchemix v3",
         "what": "invariant run finished",
@@ -724,25 +736,13 @@
         "hunt": "Scout",
         "what": "queue re-ranked",
         "t": "10:10am"
-      },
-      {
-        "at": "2026-11-23T09:36:45+11:00",
-        "hunt": "StakedHypeEscrow",
-        "what": "fuzz run finished",
-        "t": "9:36am"
-      },
-      {
-        "at": "2026-11-23T09:36:45+11:00",
-        "hunt": "StakedHypeEscrow",
-        "what": "fuzz lane finished",
-        "t": "9:36am"
       }
     ],
     "box": {
-      "load": 2.2,
-      "load5": 2.4,
+      "load": 2.0,
+      "load5": 2.3,
       "cores": 8,
-      "heavy_jobs": 3,
+      "heavy_jobs": 1,
       "heavy_cap": 2
     }
   },

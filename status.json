@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T08:36:08.606623+11:00",
-  "updated_label": "Mon 23 Nov 2026, 8:36am AEDT",
+  "updated_at": "2026-11-23T08:40:01.145106+11:00",
+  "updated_label": "Mon 23 Nov 2026, 8:40am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T08:34:39+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:34am AEDT"
+      "updated_at": "2026-11-23T08:39:59+11:00",
+      "updated_label": "Mon 23 Nov 2026, 8:39am AEDT"
     },
     {
       "id": "metric",
@@ -332,13 +332,13 @@
       "platform": "Guardian Defender",
       "status": "HUNTING",
       "kind": "running",
-      "stage": "Proof gate",
-      "step": "Medusa",
-      "pct": 82,
+      "stage": "Coverage",
+      "step": "Gambit mutation running",
+      "pct": 88,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T08:26:35+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:26am AEDT"
+      "updated_at": "2026-11-23T08:37:06+11:00",
+      "updated_label": "Mon 23 Nov 2026, 8:37am AEDT"
     }
   ],
   "stats": [

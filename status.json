@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T07:50:02.000594+11:00",
+  "updated_at": "2026-11-23T07:50:23.350162+11:00",
   "updated_label": "Mon 23 Nov 2026, 7:50am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
@@ -295,7 +295,7 @@
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:50:01+11:00",
+      "updated_at": "2026-11-23T07:50:10+11:00",
       "updated_label": "Mon 23 Nov 2026, 7:50am AEDT"
     },
     {
@@ -323,8 +323,8 @@
       "pct": 20,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:43:55+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:43am AEDT"
+      "updated_at": "2026-11-23T07:50:15+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:50am AEDT"
     },
     {
       "id": "stakedhype",

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T06:45:01.388852+11:00",
-  "updated_label": "Mon 23 Nov 2026, 6:45am AEDT",
+  "updated_at": "2026-11-23T06:48:02.889839+11:00",
+  "updated_label": "Mon 23 Nov 2026, 6:48am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": false,
@@ -9,7 +9,7 @@
     "last_sweep_label": "Mon 23 Nov 2026 06:30 AEDT",
     "new_count": 1,
     "platforms_scanned": 20,
-    "next_to_start": "Alchemix v3"
+    "next_to_start": "Aero (MetaDEX)"
   },
   "platforms": [
     "Sherlock",
@@ -277,12 +277,12 @@
       "kind": "running",
       "stage": "Proof / mutation",
       "step": "Pass 3 · Gambit mutation running",
-      "pct": 70,
+      "pct": 82,
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T06:44:10+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:44am AEDT"
+      "updated_at": "2026-11-23T06:46:50+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:46am AEDT"
     },
     {
       "id": "metric",
@@ -295,8 +295,8 @@
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T06:43:15+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:43am AEDT"
+      "updated_at": "2026-11-23T06:47:49+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:47am AEDT"
     },
     {
       "id": "beanstalk",
@@ -309,8 +309,8 @@
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T06:43:16+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:43am AEDT"
+      "updated_at": "2026-11-23T06:47:49+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:47am AEDT"
     },
     {
       "id": "alchemix",
@@ -323,8 +323,8 @@
       "pct": 20,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T06:44:43+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:44am AEDT"
+      "updated_at": "2026-11-23T06:47:46+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:47am AEDT"
     },
     {
       "id": "stakedhype",
@@ -337,8 +337,8 @@
       "pct": 70,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T06:41:33+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:41am AEDT"
+      "updated_at": "2026-11-23T06:47:19+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:47am AEDT"
     }
   ],
   "stats": [
@@ -354,7 +354,7 @@
     },
     {
       "label": "QUEUED NEXT",
-      "value": "Alchemix v3",
+      "value": "Aero (MetaDEX)",
       "kind": "queued"
     },
     {

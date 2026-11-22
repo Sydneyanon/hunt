@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-11-23T06:58:31.146417+11:00",
-  "updated_label": "Mon 23 Nov 2026, 6:58am AEDT",
+  "updated_at": "2026-11-23T07:00:01.941556+11:00",
+  "updated_label": "Mon 23 Nov 2026, 7:00am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
-    "on_duty": false,
+    "on_duty": true,
     "hours": "07:00–23:00 AEDT",
     "last_sweep_at": "2026-11-23T06:30:00+11:00",
     "last_sweep_label": "Mon 23 Nov 2026 06:30 AEDT",
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T06:57:10+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:57am AEDT"
+      "updated_at": "2026-11-23T06:59:53+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:59am AEDT"
     },
     {
       "id": "metric",
@@ -291,12 +291,12 @@
       "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
       "kind": "running",
       "stage": "Follow-up testing",
-      "step": "Halmos",
+      "step": "Gambit mutation running",
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T06:56:15+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:56am AEDT"
+      "updated_at": "2026-11-23T07:00:00+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:00am AEDT"
     },
     {
       "id": "beanstalk",
@@ -365,8 +365,8 @@
   ],
   "chips": [
     {
-      "txt": "SCOUT OVERNIGHT PAUSE · RESUMES 07:00",
-      "kind": "queued"
+      "txt": "SCOUT ON DUTY",
+      "kind": "ok"
     },
     {
       "txt": "4 HUNTS RUNNING",

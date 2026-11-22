@@ -1,6 +1,7 @@
 {
-  "updated_at": "2026-11-23T10:41:14.044350+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:41am AEDT",
+  "build": "ef22f22b4c",
+  "updated_at": "2026-11-23T10:45:01.375691+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:45am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -59,8 +60,8 @@
       "plat": 5,
       "da": 0.05,
       "dr": 0.82,
-      "tag": "STALLED",
-      "kind": "stalled"
+      "tag": "HUNTING",
+      "kind": "running"
     },
     {
       "name": "Alchemix v3",
@@ -93,6 +94,14 @@
       "dr": 0.68,
       "tag": "SKIPPED",
       "kind": "skipped"
+    },
+    {
+      "name": "BitGo",
+      "plat": 2,
+      "da": 0.38,
+      "dr": 0.36,
+      "tag": "HUNTING",
+      "kind": "running"
     }
   ],
   "contests": [
@@ -166,8 +175,8 @@
       "platform": "Guardian Defender",
       "chain": "Solidity · lst",
       "pays": "Critical only · $100k seasonal split",
-      "status": "STALLED",
-      "kind": "stalled",
+      "status": "HUNTING",
+      "kind": "running",
       "end": "2026-12-16T09:59:59+11:00",
       "end_txt": "Wed 16 Dec, 9:59am AEDT",
       "open": null,
@@ -253,7 +262,7 @@
         "pool": "Nov–Dec season pot $100k shared with RAAC; contest cap unknown; critical-only",
         "code": "~432 nSLOC, Solidity 0.8.28, HyperEVM; public GitHub @0f24501",
         "entry": "Open; KYC + Defender account to submit/payout; no fee",
-        "status": "STALLED",
+        "status": "HUNTING",
         "url": "https://defender.guardianaudits.com/contests/01a0fc3b-0a53-72f6-9e8c-a55d073cc8a9"
       },
       {
@@ -497,17 +506,17 @@
       "id": "stakedhype",
       "name": "StakedHypeEscrow",
       "platform": "Guardian Defender",
-      "status": "STALLED",
-      "kind": "stalled",
+      "status": "HUNTING",
+      "kind": "running",
       "stage": "Coverage",
       "step": "Gambit mutation running",
-      "pct": null,
+      "pct": 88,
       "pass_label": "",
       "updated_at": "2026-11-23T09:36:45+11:00",
       "updated_label": "Mon 23 Nov 2026, 9:36am AEDT",
       "now": {
-        "what": "Idle · last stage finished 9:36am (fuzzing) · next: G4 coverage",
-        "since": "",
+        "what": "Coverage run (Foundry)",
+        "since": "2026-11-23T10:44:43.530000+11:00",
         "detail": ""
       },
       "gates": [
@@ -547,7 +556,7 @@
           "ok": true
         }
       ],
-      "activity": "no recent activity"
+      "activity": "mutation testing"
     },
     {
       "id": "bitgo",
@@ -559,11 +568,11 @@
       "step": "Invariant / fuzz campaigns",
       "pct": 82,
       "pass_label": "",
-      "updated_at": "2026-11-23T10:41:11.669439+11:00",
-      "updated_label": "Mon 23 Nov 2026, 10:41am AEDT",
+      "updated_at": "2026-11-23T10:44:56.071527+11:00",
+      "updated_label": "Mon 23 Nov 2026, 10:44am AEDT",
       "now": {
-        "what": "Invariant fuzzing (Foundry)",
-        "since": "2026-11-23T10:39:49.160000+11:00",
+        "what": "Local fork test (Anvil)",
+        "since": "2026-11-23T10:30:49.680000+11:00",
         "detail": ""
       },
       "gates": [
@@ -614,7 +623,7 @@
     },
     {
       "label": "HUNTS RUNNING",
-      "value": "1",
+      "value": "2",
       "kind": "running"
     },
     {
@@ -634,7 +643,7 @@
       "kind": "ok"
     },
     {
-      "txt": "1 HUNT RUNNING",
+      "txt": "2 HUNTS RUNNING",
       "kind": "running"
     },
     {
@@ -647,6 +656,10 @@
     }
   ],
   "now_running": [
+    {
+      "name": "StakedHypeEscrow",
+      "activity": "mutation testing"
+    },
     {
       "name": "BitGo",
       "activity": "max-depth fuzz"
@@ -667,16 +680,16 @@
       },
       {
         "name": "StakedHypeEscrow",
-        "kind": "stalled",
-        "what": "Idle · last stage finished 9:36am (fuzzing) · next: G4 coverage",
-        "since": "",
+        "kind": "running",
+        "what": "Coverage run (Foundry)",
+        "since": "2026-11-23T10:44:43.530000+11:00",
         "detail": ""
       },
       {
         "name": "BitGo",
         "kind": "running",
-        "what": "Invariant fuzzing (Foundry)",
-        "since": "2026-11-23T10:39:49.160000+11:00",
+        "what": "Local fork test (Anvil)",
+        "since": "2026-11-23T10:30:49.680000+11:00",
         "detail": ""
       },
       {
@@ -689,6 +702,12 @@
       }
     ],
     "events": [
+      {
+        "at": "2026-11-23T10:43:29+11:00",
+        "hunt": "BitGo",
+        "what": "invariant run finished",
+        "t": "10:43am"
+      },
       {
         "at": "2026-11-23T10:39:40+11:00",
         "hunt": "BitGo",
@@ -730,19 +749,13 @@
         "hunt": "BitGo",
         "what": "bug-family scan finished",
         "t": "10:17am"
-      },
-      {
-        "at": "2026-11-23T10:14:50+11:00",
-        "hunt": "BitGo",
-        "what": "hunt started",
-        "t": "10:14am"
       }
     ],
     "box": {
-      "load": 1.4,
+      "load": 1.8,
       "load5": 1.9,
       "cores": 8,
-      "heavy_jobs": 1,
+      "heavy_jobs": 2,
       "heavy_cap": 2
     }
   },

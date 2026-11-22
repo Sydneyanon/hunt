@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T07:00:01.941556+11:00",
-  "updated_label": "Mon 23 Nov 2026, 7:00am AEDT",
+  "updated_at": "2026-11-23T07:03:34.804818+11:00",
+  "updated_label": "Mon 23 Nov 2026, 7:03am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T06:59:53+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:59am AEDT"
+      "updated_at": "2026-11-23T07:02:25+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:02am AEDT"
     },
     {
       "id": "metric",
@@ -309,8 +309,8 @@
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T06:47:49+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:47am AEDT"
+      "updated_at": "2026-11-23T07:02:38+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:02am AEDT"
     },
     {
       "id": "alchemix",

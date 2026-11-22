@@ -1,0 +1,398 @@
+{
+  "updated_at": "2026-11-23T06:36:36.965739+11:00",
+  "updated_label": "Mon 23 Nov 2026, 6:36am AEDT",
+  "timezone": "Australia/Sydney",
+  "scout": {
+    "on_duty": false,
+    "hours": "07:00–23:00 AEDT",
+    "last_sweep_at": "2026-11-23T06:30:00+11:00",
+    "last_sweep_label": "Mon 23 Nov 2026 06:30 AEDT",
+    "new_count": 1,
+    "platforms_scanned": 20,
+    "next_to_start": "Alchemix v3"
+  },
+  "platforms": [
+    "Sherlock",
+    "Immunefi",
+    "Cantina",
+    "Code4rena",
+    "CodeHawks",
+    "Guardian",
+    "HackenProof",
+    "X"
+  ],
+  "blips": [
+    {
+      "name": "Onlend",
+      "plat": 0,
+      "da": 0.34,
+      "dr": 0.5,
+      "tag": "AWAITING ACCEPTANCE",
+      "kind": "waiting"
+    },
+    {
+      "name": "RAAC Core",
+      "plat": 5,
+      "da": -0.32,
+      "dr": 0.5,
+      "tag": "PASS 3 RUNNING",
+      "kind": "running"
+    },
+    {
+      "name": "Metric",
+      "plat": 1,
+      "da": -0.28,
+      "dr": 0.62,
+      "tag": "JUDGED · 0 SURVIVORS · MORE TESTING",
+      "kind": "running"
+    },
+    {
+      "name": "Beanstalk",
+      "plat": 0,
+      "da": -0.2,
+      "dr": 0.72,
+      "tag": "JUDGED · 0 SURVIVORS · MORE TESTING",
+      "kind": "running"
+    },
+    {
+      "name": "StakedHypeEscrow",
+      "plat": 5,
+      "da": 0.05,
+      "dr": 0.82,
+      "tag": "HUNTING",
+      "kind": "running"
+    },
+    {
+      "name": "Alchemix v3",
+      "plat": 1,
+      "da": 0.4,
+      "dr": 0.78,
+      "tag": "QUEUED · SCOUT DONE",
+      "kind": "queued"
+    },
+    {
+      "name": "SpecSiege EBSI",
+      "plat": 2,
+      "da": 0.15,
+      "dr": 0.55,
+      "tag": "FLAGGED · NEEDS TSK",
+      "kind": "flagged"
+    },
+    {
+      "name": "Base Everest",
+      "plat": 1,
+      "da": 0.22,
+      "dr": 0.42,
+      "tag": "SKIPPED",
+      "kind": "skipped"
+    },
+    {
+      "name": "Templar Precept",
+      "plat": 5,
+      "da": 0.3,
+      "dr": 0.68,
+      "tag": "SKIPPED",
+      "kind": "skipped"
+    }
+  ],
+  "contests": [
+    {
+      "id": "onlend",
+      "name": "Onlend",
+      "platform": "Sherlock",
+      "chain": "Solidity · lending",
+      "pays": "$34.2k–$41.8k pool (listing $50k)",
+      "status": "AWAITING ACCEPTANCE",
+      "kind": "waiting",
+      "end": "2026-12-08T01:00:00+11:00",
+      "end_txt": "Tue 8 Dec, 1:00am AEDT",
+      "open": "2026-11-24T01:00:00+11:00",
+      "open_txt": "Tue 24 Nov, 1:00am AEDT",
+      "standing": false,
+      "url": "https://audit-engine.sherlock.xyz/engagements",
+      "nsloc": null
+    },
+    {
+      "id": "raac",
+      "name": "RAAC Core",
+      "platform": "Guardian Defender",
+      "chain": "Solidity · lending",
+      "pays": "Critical only · $100k seasonal split",
+      "status": "PASS 3 RUNNING",
+      "kind": "running",
+      "end": "2026-12-10T02:00:00+11:00",
+      "end_txt": "Thu 10 Dec, 2:00am AEDT",
+      "open": null,
+      "open_txt": "",
+      "standing": false,
+      "url": "https://defender.guardianaudits.com/contests/01a1a379-b7c1-72d9-8075-5318b386f2e4",
+      "nsloc": 6452
+    },
+    {
+      "id": "metric",
+      "name": "Metric",
+      "platform": "Immunefi",
+      "chain": "Solidity · amm",
+      "pays": "C $50k–$500k · H $10k–$50k · M $2.5k–$10k",
+      "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
+      "kind": "running",
+      "end": null,
+      "end_txt": "",
+      "open": null,
+      "open_txt": "",
+      "standing": true,
+      "url": "https://immunefi.com/bug-bounty/metric/information/",
+      "nsloc": 9000
+    },
+    {
+      "id": "beanstalk",
+      "name": "Beanstalk",
+      "platform": "Sherlock BB #148",
+      "chain": "Solidity · stablecoin",
+      "pays": "C $5k–$50k · H $1k–$10k · M $500–$2.5k",
+      "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
+      "kind": "running",
+      "end": null,
+      "end_txt": "",
+      "open": null,
+      "open_txt": "",
+      "standing": true,
+      "url": "https://audits.sherlock.xyz/bug-bounties/148",
+      "nsloc": 23800
+    },
+    {
+      "id": "stakedhype",
+      "name": "StakedHypeEscrow",
+      "platform": "Guardian Defender",
+      "chain": "Solidity · lst",
+      "pays": "Critical only · $100k seasonal split",
+      "status": "HUNTING",
+      "kind": "running",
+      "end": "2026-12-16T09:59:59+11:00",
+      "end_txt": "Wed 16 Dec, 9:59am AEDT",
+      "open": null,
+      "open_txt": "",
+      "standing": false,
+      "url": "https://defender.guardianaudits.com/contests/01a0fc3b-0a53-72f6-9e8c-a55d073cc8a9",
+      "nsloc": 432
+    },
+    {
+      "id": "alchemix",
+      "name": "Alchemix v3",
+      "platform": "Immunefi",
+      "chain": "Solidity · lending",
+      "pays": "C $20k–$150k · H $5k–$20k · M up to $3k",
+      "status": "QUEUED · SCOUT DONE",
+      "kind": "queued",
+      "end": null,
+      "end_txt": "",
+      "open": null,
+      "open_txt": "",
+      "standing": true,
+      "url": "https://bugbounty.fyi/programs/alchemix",
+      "nsloc": 7109
+    },
+    {
+      "id": "specsiege",
+      "name": "SpecSiege EBSI",
+      "platform": "SpecSiege",
+      "chain": "Solidity · registry",
+      "pays": "€5k pool (~$5.5k) · apply, up to 50 picked",
+      "status": "FLAGGED · NEEDS TSK",
+      "kind": "flagged",
+      "end": "2026-12-01T23:59:59+11:00",
+      "end_txt": "Tue 1 Dec AEDT",
+      "open": null,
+      "open_txt": "",
+      "standing": false,
+      "url": "https://specsiege.codespect.net/",
+      "nsloc": null
+    },
+    {
+      "id": "everest",
+      "name": "Base Everest",
+      "platform": "Immunefi",
+      "chain": "Solidity + Go · bridge",
+      "pays": "$250k only if a Critical",
+      "status": "SKIPPED",
+      "kind": "skipped",
+      "end": "2026-12-01T23:00:00+11:00",
+      "end_txt": "Tue 1 Dec, 11:00pm AEDT",
+      "open": null,
+      "open_txt": "",
+      "standing": false,
+      "url": "https://immunefi.com/audit-competition/audit-comp-base-everest/information/",
+      "nsloc": 135000
+    },
+    {
+      "id": "templar",
+      "name": "Templar Precept",
+      "platform": "Guardian Defender",
+      "chain": "Rust · lending",
+      "pays": "Critical only · $100k seasonal split",
+      "status": "SKIPPED",
+      "kind": "skipped",
+      "end": "2026-11-26T03:30:00+11:00",
+      "end_txt": "Thu 26 Nov, 3:30am AEDT",
+      "open": null,
+      "open_txt": "",
+      "standing": false,
+      "url": "https://defender.guardianaudits.com/contests/01a163f6-7e22-76cf-af81-4b85feb9000e",
+      "nsloc": null
+    }
+  ],
+  "sweep": {
+    "at": "2026-11-23T06:30:00+11:00",
+    "at_label": "Mon 23 Nov 2026 06:30 AEDT",
+    "new_count": 1,
+    "rows": [
+      {
+        "find": "StakedHypeEscrow Bounty Contest (Valantis stHYPE)",
+        "plat": "Guardian Defender",
+        "dates": "16 Nov 10:00 → 16 Dec 09:59",
+        "pool": "Nov–Dec season pot $100k shared with RAAC; contest cap unknown; critical-only",
+        "code": "src/StakedHypeEscrow.sol, ~432 nSLOC, Solidity 0.8.28, HyperEVM; public GitHub @0f24501",
+        "entry": "Open; KYC + Defender account to submit/payout; no fee",
+        "status": "HUNTING",
+        "url": "https://defender.guardianaudits.com/contests/01a0fc3b-0a53-72f6-9e8c-a55d073cc8a9"
+      },
+      {
+        "find": "SpecSiege EBSI Licence Registry",
+        "plat": "SpecSiege",
+        "dates": "Registration now open",
+        "pool": "€5k pool (~$5.5k)",
+        "code": "After acceptance",
+        "entry": "Application required",
+        "status": "FLAGGED · NEEDS TSK",
+        "url": "https://specsiege.codespect.net"
+      }
+    ]
+  },
+  "hunts": [
+    {
+      "id": "raac",
+      "name": "RAAC Core",
+      "platform": "Guardian Defender",
+      "status": "PASS 3 RUNNING",
+      "kind": "running",
+      "stage": "Proof / mutation",
+      "step": "Pass 3 · Gambit mutation running",
+      "pct": 82,
+      "survivors": null,
+      "survivors_prior": 0,
+      "pass_label": "Pass 3",
+      "updated_at": "2026-11-23T06:34:52+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:34am AEDT"
+    },
+    {
+      "id": "metric",
+      "name": "Metric",
+      "platform": "Immunefi",
+      "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
+      "kind": "running",
+      "stage": "Follow-up testing",
+      "step": "Gambit mutation running",
+      "pct": 88,
+      "survivors": 0,
+      "pass_label": "",
+      "updated_at": "2026-11-23T06:35:00+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:35am AEDT"
+    },
+    {
+      "id": "beanstalk",
+      "name": "Beanstalk",
+      "platform": "Sherlock",
+      "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
+      "kind": "running",
+      "stage": "Follow-up testing",
+      "step": "Gambit mutation running",
+      "pct": 88,
+      "survivors": 0,
+      "pass_label": "",
+      "updated_at": "2026-11-23T06:35:31+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:35am AEDT"
+    },
+    {
+      "id": "alchemix",
+      "name": "Alchemix v3",
+      "platform": "Immunefi",
+      "status": "QUEUED · SCOUT DONE",
+      "kind": "queued",
+      "stage": "Scout",
+      "step": "Scout complete",
+      "pct": 20,
+      "survivors": null,
+      "pass_label": "",
+      "updated_at": "2026-11-23T06:05:26+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:05am AEDT"
+    },
+    {
+      "id": "stakedhype",
+      "name": "StakedHypeEscrow",
+      "platform": "Guardian Defender",
+      "status": "HUNTING",
+      "kind": "running",
+      "stage": "Static scan",
+      "step": "Halmos (setup, failed)",
+      "pct": 42,
+      "survivors": null,
+      "pass_label": "",
+      "updated_at": "2026-11-23T06:30:21+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:30am AEDT"
+    }
+  ],
+  "stats": [
+    {
+      "label": "PLATFORMS SCANNED",
+      "value": "~20 + X",
+      "kind": "queued"
+    },
+    {
+      "label": "HUNTS RUNNING",
+      "value": "4",
+      "kind": "running"
+    },
+    {
+      "label": "QUEUED NEXT",
+      "value": "Alchemix v3",
+      "kind": "queued"
+    },
+    {
+      "label": "SURVIVORS TO TSK",
+      "value": "0",
+      "kind": "waiting"
+    }
+  ],
+  "chips": [
+    {
+      "txt": "SCOUT OVERNIGHT PAUSE · RESUMES 07:00",
+      "kind": "queued"
+    },
+    {
+      "txt": "4 HUNTS RUNNING",
+      "kind": "running"
+    },
+    {
+      "txt": "AUTO-HUNT ON",
+      "kind": "running"
+    },
+    {
+      "txt": "STATUS ONLY · NO FINDINGS",
+      "kind": "waiting"
+    }
+  ],
+  "rules": [
+    {
+      "k": "STATUS ONLY",
+      "v": "No bug details on this board"
+    },
+    {
+      "k": "READ-ONLY & LOCAL",
+      "v": "No live-network transactions"
+    },
+    {
+      "k": "TSK SUBMITS",
+      "v": "Nothing goes out without approval, under TSK's name"
+    }
+  ]
+}

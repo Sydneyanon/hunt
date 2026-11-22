@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="refresh" content="120" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>BOUNTY HUNT // CONTROL ROOM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #03050b;
+      --panel: #0a1020;
+      --edge: rgba(90,200,255,0.16);
+      --cy: #22d3ee;
+      --am: #ffb020;
+      --mg: #ff3d81;
+      --lm: #5cff9d;
+      --vi: #a78bfa;
+      --tx: #d8ecff;
+      --dim: #7f93ad;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0; background: var(--bg); color: var(--tx);
+      font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+      height: 100%;
+    }
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(24,52,110,0.38), transparent 60%),
+        var(--bg);
+    }
+    .wrap {
+      max-width: 1920px;
+      margin: 0 auto;
+      padding: clamp(12px, 1.6vw, 28px);
+    }
+    header {
+      display: flex; flex-wrap: wrap; align-items: flex-start;
+      justify-content: space-between; gap: 12px; margin-bottom: 14px;
+    }
+    .title {
+      color: var(--cy); font-weight: 600; letter-spacing: 0.16em;
+      font-size: clamp(22px, 2.6vw, 42px);
+      text-shadow: 0 0 18px rgba(34,211,238,0.45);
+      animation: glow 2.4s ease-in-out infinite;
+    }
+    @keyframes glow {
+      0%,100% { text-shadow: 0 0 8px rgba(34,211,238,0.35); }
+      50% { text-shadow: 0 0 22px rgba(34,211,238,0.8); }
+    }
+    .sub { color: var(--dim); font-size: clamp(13px, 1.15vw, 18px); margin-top: 4px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+    .chip {
+      border: 1px solid rgba(34,211,238,0.45);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: clamp(11px, 1vw, 15px);
+      letter-spacing: 0.08em;
+      background: rgba(34,211,238,0.08);
+      color: var(--cy);
+      white-space: nowrap;
+    }
+    .chip.ok { color: var(--lm); border-color: rgba(92,255,157,0.5); background: rgba(92,255,157,0.08); }
+    .chip.running { color: var(--am); border-color: rgba(255,176,32,0.5); background: rgba(255,176,32,0.08); }
+    .chip.queued { color: var(--vi); border-color: rgba(167,139,250,0.5); background: rgba(167,139,250,0.08); }
+    .chip.waiting { color: var(--cy); }
+    .chip.flagged { color: var(--mg); border-color: rgba(255,61,129,0.5); background: rgba(255,61,129,0.08); }
+    .chip.done { color: var(--lm); border-color: rgba(92,255,157,0.5); background: rgba(92,255,157,0.08); }
+    .chip.skipped, .chip.seen { color: var(--dim); border-color: rgba(127,147,173,0.4); background: rgba(127,147,173,0.06); }
+    .blink { animation: blink 1.2s infinite; }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    .mid {
+      display: grid;
+      grid-template-columns: minmax(320px, 42%) 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .mid { grid-template-columns: 1fr; } }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--edge);
+      border-radius: 14px;
+      padding: 14px 16px;
+      min-width: 0;
+    }
+    .radar-wrap { padding: 0; overflow: hidden; }
+    canvas { display: block; width: 100%; height: auto; }
+
+    .h2 {
+      color: var(--cy); letter-spacing: 0.16em;
+      font-size: clamp(12px, 1.05vw, 16px);
+      margin: 0 0 10px;
+    }
+    .hunt {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 6px 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--edge);
+    }
+    .hunt:last-child { border-bottom: 0; }
+    .hunt .nm { font-size: clamp(16px, 1.5vw, 24px); color: var(--tx); }
+    .hunt .meta { color: var(--dim); font-size: clamp(12px, 1.05vw, 16px); }
+    .hunt .pct { font-size: clamp(22px, 2vw, 32px); color: var(--am); text-align: right; }
+    .bar { height: 8px; border-radius: 4px; background: rgba(34,211,238,0.12); overflow: hidden; grid-column: 1 / -1; }
+    .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--am), var(--cy)); width: 0; transition: width .6s ease; }
+    .surv { font-size: clamp(12px, 1.05vw, 16px); color: var(--lm); text-align: right; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+    }
+    @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+    .stat .v {
+      font-size: clamp(22px, 2.2vw, 36px);
+      line-height: 1.1;
+      text-shadow: 0 0 12px rgba(34,211,238,0.4);
+    }
+    .stat .l { color: var(--dim); font-size: clamp(10px, 0.9vw, 13px); letter-spacing: 0.1em; margin-top: 4px; }
+
+    .board { margin-top: 8px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .card { border-color: rgba(90,200,255,0.22); }
+    .card.skipped, .card.seen { opacity: 0.72; }
+    .card .top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+    .card .nm { font-size: clamp(18px, 1.7vw, 26px); }
+    .card .plat { color: var(--dim); font-size: clamp(12px, 1.05vw, 16px); }
+    .card .pays { margin: 8px 0; font-size: clamp(13px, 1.15vw, 18px); }
+    .cd-lab { color: var(--dim); letter-spacing: 0.1em; font-size: clamp(10px, 0.9vw, 13px); }
+    .cd { display: flex; gap: 8px; margin: 6px 0 8px; }
+    .cd .box {
+      text-align: center; min-width: 3.2ch;
+      font-size: clamp(24px, 2.4vw, 40px);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--edge);
+      border-radius: 8px;
+      padding: 2px 8px;
+    }
+    .cd .u { color: var(--dim); font-size: 11px; letter-spacing: 0.08em; }
+    .end { color: var(--dim); font-size: clamp(11px, 1vw, 14px); }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+    a { color: var(--cy); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    table { width: 100%; border-collapse: collapse; font-size: clamp(12px, 1.05vw, 16px); }
+    th { text-align: left; color: var(--dim); font-weight: 400; letter-spacing: 0.1em; padding: 8px 10px; border-bottom: 1px solid var(--edge); }
+    td { padding: 10px; vertical-align: top; }
+    tr + tr td { border-top: 1px solid rgba(90,200,255,0.08); }
+    .table-wrap { overflow-x: auto; padding: 0; }
+
+    .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 14px; }
+    .rule { border-left: 3px solid var(--cy); }
+    .rule .k { letter-spacing: 0.14em; font-size: clamp(11px, 1vw, 14px); }
+    .rule .v { margin-top: 4px; font-size: clamp(13px, 1.1vw, 16px); }
+    footer {
+      text-align: center; color: var(--dim);
+      font-size: clamp(11px, 0.95vw, 14px);
+      letter-spacing: 0.08em; margin-top: 14px;
+    }
+    .kind-running { color: var(--am); }
+    .kind-waiting { color: var(--cy); }
+    .kind-queued { color: var(--vi); }
+    .kind-flagged { color: var(--mg); }
+    .kind-done, .kind-ok { color: var(--lm); }
+    .kind-skipped, .kind-seen { color: var(--tx); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="title">BOUNTY HUNT // CONTROL ROOM</div>
+        <div class="sub" id="clock">—</div>
+      </div>
+      <div class="chips" id="chips"></div>
+    </header>
+
+    <div class="mid">
+      <div class="panel radar-wrap">
+        <canvas id="radar" role="img" aria-label="Scout radar over bounty platforms"></canvas>
+      </div>
+      <div class="panel">
+        <div class="h2">HUNT PROGRESS</div>
+        <div id="hunts"></div>
+      </div>
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="board">
+      <div class="h2">CONTEST BOARD · LIVE COUNTDOWNS (AEDT)</div>
+      <div class="cards" id="cards"></div>
+    </div>
+
+    <div class="h2" id="sweep-h" style="margin-top:18px">SCOUT'S LATEST SWEEP</div>
+    <div class="panel table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Find</th><th>Platform</th><th>Dates</th><th>Pool</th><th>Code</th><th>Entry</th><th>Pipeline</th>
+          </tr>
+        </thead>
+        <tbody id="sweep"></tbody>
+      </table>
+    </div>
+
+    <div class="rules" id="rules"></div>
+    <footer id="foot">STATUS ONLY · AUTO-REFRESH ~60s · SYDNEY TIME</footer>
+  </div>
+  <script>
+  (function () {
+    var BG = "#03050b", CY = "#22d3ee", AM = "#ffb020", MG = "#ff3d81",
+        LM = "#5cff9d", VI = "#a78bfa", TX = "#d8ecff", DIM = "#7f93ad";
+    var KINDCOL = { running: AM, waiting: CY, queued: VI, flagged: MG, done: LM, ok: LM, skipped: DIM, seen: DIM };
+    var data = { platforms: ["Sherlock","Immunefi","Cantina","Code4rena","CodeHawks","Guardian","HackenProof","X"], blips: [], contests: [], hunts: [], sweep: { rows: [] }, chips: [], stats: [], rules: [], scout: {} };
+    var clockFmt = new Intl.DateTimeFormat("en-AU", {
+      timeZone: "Australia/Sydney", weekday: "short", day: "numeric", month: "short",
+      hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false
+    });
+
+    function pad(n) { return n < 10 ? "0" + n : String(n); }
+    function split(ms) {
+      var s = Math.max(0, Math.floor(ms / 1000));
+      return [pad(Math.floor(s / 86400)), pad(Math.floor((s % 86400) / 3600)), pad(Math.floor((s % 3600) / 60)), pad(s % 60)];
+    }
+    function rgba(hex, a) {
+      var n = parseInt(hex.slice(1), 16);
+      return "rgba(" + ((n >> 16) & 255) + "," + ((n >> 8) & 255) + "," + (n & 255) + "," + a + ")";
+    }
+    function esc(s) {
+      return String(s == null ? "" : s)
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+    function chip(txt, kind, blink) {
+      return '<span class="chip ' + esc(kind || "") + (blink ? " blink" : "") + '">' + esc(txt) + "</span>";
+    }
+    function colOf(kind) { return KINDCOL[kind] || CY; }
+
+    function renderStatic() {
+      var chips = (data.chips || []).map(function (c) {
+        return chip(c.txt, c.kind, c.kind === "running" || c.kind === "ok");
+      }).join("");
+      document.getElementById("chips").innerHTML = chips;
+
+      var hunts = data.hunts || [];
+      document.getElementById("hunts").innerHTML = hunts.map(function (h) {
+        var surv = (h.survivors == null) ? "—" : String(h.survivors);
+        var prior = (h.survivors_prior != null && h.kind === "running")
+          ? " · prior pass " + h.survivors_prior : "";
+        return '<div class="hunt">' +
+          '<div><div class="nm kind-' + esc(h.kind) + '">' + esc(h.name) + "</div>" +
+          '<div class="meta">' + esc(h.platform) + " · " + esc(h.stage) + " · " + esc(h.step) + "</div></div>" +
+          '<div><div class="pct">' + esc(h.pct) + "%</div>" +
+          '<div class="surv">survivors ' + esc(surv) + esc(prior) + "</div></div>" +
+          '<div class="bar"><i style="width:' + Math.max(0, Math.min(100, h.pct || 0)) + '%"></i></div>' +
+        "</div>";
+      }).join("") || '<div class="meta">No hunts yet.</div>';
+
+      document.getElementById("stats").innerHTML = (data.stats || []).map(function (s) {
+        return '<div class="panel stat"><div class="v kind-' + esc(s.kind || "waiting") + '">' +
+          esc(s.value) + '</div><div class="l">' + esc(s.label) + "</div></div>";
+      }).join("");
+
+      var sw = data.sweep || {};
+      document.getElementById("sweep-h").textContent =
+        "SCOUT'S LATEST SWEEP · " + (sw.at_label || "—") +
+        (sw.new_count ? " · " + sw.new_count + " new" : "");
+      document.getElementById("sweep").innerHTML = (sw.rows || []).map(function (r) {
+        var name = r.url
+          ? '<a href="' + esc(r.url) + '" target="_blank" rel="noreferrer">' + esc(r.find) + "</a>"
+          : esc(r.find);
+        var k = "queued";
+        var st = (r.status || "").toLowerCase();
+        if (st.indexOf("flag") >= 0 || st.indexOf("need") >= 0) k = "flagged";
+        else if (st.indexOf("hunt") >= 0) k = "running";
+        else if (st.indexOf("queue") >= 0) k = "queued";
+        else if (st.indexOf("skip") >= 0) k = "skipped";
+        return "<tr><td>" + name + "</td><td>" + esc(r.plat) + "</td><td>" + esc(r.dates) +
+          "</td><td>" + esc(r.pool) + "</td><td>" + esc(r.code) + "</td><td>" + esc(r.entry) +
+          "</td><td>" + chip(r.status, k, k === "running" || k === "flagged") + "</td></tr>";
+      }).join("");
+
+      document.getElementById("rules").innerHTML = (data.rules || []).map(function (r, i) {
+        var cols = [CY, LM, AM];
+        return '<div class="panel rule" style="border-left-color:' + cols[i % 3] + '"><div class="k" style="color:' +
+          cols[i % 3] + '">' + esc(r.k) + '</div><div class="v">' + esc(r.v) + "</div></div>";
+      }).join("");
+    }
+
+    function renderClock() {
+      var now = Date.now();
+      var updated = data.updated_label || "";
+      document.getElementById("clock").textContent =
+        clockFmt.format(new Date(now)) + " AEDT · updated " + (updated || "—");
+      var onDuty = data.scout && typeof data.scout.on_duty === "boolean"
+        ? data.scout.on_duty
+        : (function () {
+            try {
+              var hr = Number(new Intl.DateTimeFormat("en-AU", { timeZone: "Australia/Sydney", hour: "2-digit", hour12: false }).format(new Date(now))) % 24;
+              return hr >= 7 && hr <= 23;
+            } catch (e) { return true; }
+          })();
+
+      document.getElementById("cards").innerHTML = (data.contests || []).map(function (ct) {
+        var end = ct.end ? Date.parse(ct.end) : NaN;
+        var open = ct.open ? Date.parse(ct.open) : NaN;
+        var closed = !isNaN(end) && now >= end;
+        var before = !isNaN(open) && now < open;
+        var target = before ? open : end;
+        var parts = isNaN(target) ? null : split(target - now);
+        var lab = ct.standing ? "STANDING BOUNTY" : (closed ? "CLOSED" : (before ? "OPENS IN" : "ENDS IN"));
+        var cd = "";
+        if (parts && !closed && !ct.standing) {
+          cd = '<div class="cd">' + ["D","H","M","S"].map(function (u, i) {
+            return '<div><div class="box kind-' + esc(ct.kind) + '" style="color:' + colOf(ct.kind) + ';text-shadow:0 0 10px ' +
+              rgba(colOf(ct.kind), 0.55) + '">' + parts[i] + '</div><div class="u">' + u + "</div></div>";
+          }).join("") + "</div>";
+        }
+        var when = "";
+        if (ct.standing) when = "No close date";
+        else if (before && ct.open_txt) when = "Opens " + ct.open_txt + (ct.end_txt ? " · ends " + ct.end_txt : "");
+        else if (ct.end_txt) when = "Ends " + ct.end_txt;
+        var link = ct.url ? '<a href="' + esc(ct.url) + '" target="_blank" rel="noreferrer">open ↗</a>' : "";
+        return '<div class="panel card ' + esc(ct.kind) + '" style="border-color:' + rgba(colOf(ct.kind), 0.45) + '">' +
+          '<div class="top"><div><div class="nm kind-' + esc(ct.kind) + '" style="color:' + colOf(ct.kind) + '">' +
+          esc(ct.name) + '</div><div class="plat">' + esc(ct.platform) + (ct.chain ? " · " + esc(ct.chain) : "") +
+          "</div></div></div>" +
+          '<div class="pays">' + esc(ct.pays) + "</div>" +
+          '<div class="cd-lab">' + lab + "</div>" + cd +
+          '<div class="end">' + esc(when) + "</div>" +
+          '<div class="row">' + chip(ct.status, ct.kind, ct.kind === "running" || ct.kind === "waiting" || ct.kind === "flagged") + link + "</div>" +
+        "</div>";
+      }).join("");
+
+      document.getElementById("foot").textContent =
+        "STATUS ONLY · AUTO-REFRESH ~60s · LAST DATA " + (data.updated_label || "—") +
+        " · SYDNEY TIME (AEDT/AEST)";
+    }
+
+    /* ----- radar ----- */
+    var cv = document.getElementById("radar");
+    var ctx = cv.getContext("2d");
+    var t0 = performance.now();
+    function platPos(cx, cy, R, k, rf, da) {
+      var a = -Math.PI / 2 + (k * Math.PI) / 4 + (da || 0);
+      return { x: cx + Math.cos(a) * R * rf, y: cy + Math.sin(a) * R * rf };
+    }
+    function draw(ta) {
+      var wrap = cv.parentElement;
+      var W = Math.max(300, wrap.clientWidth);
+      var H = Math.round(Math.max(280, Math.min(W * 0.72, window.innerHeight * 0.48)));
+      var dpr = Math.min(2, window.devicePixelRatio || 1);
+      if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) {
+        cv.width = Math.round(W * dpr);
+        cv.height = Math.round(H * dpr);
+        cv.style.height = H + "px";
+      }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.fillStyle = BG;
+      ctx.fillRect(0, 0, W, H);
+      var cx = W * 0.5, cy = H * 0.46;
+      var R = Math.min(W * 0.36, H * 0.36);
+      var sw = (ta * 1.35) % (Math.PI * 2);
+      var rg = ctx.createRadialGradient(cx, cy, 0, cx, cy, R);
+      rg.addColorStop(0, "rgba(34,211,238,0.10)");
+      rg.addColorStop(1, "rgba(34,211,238,0.02)");
+      ctx.fillStyle = rg;
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = "rgba(34,211,238,0.28)"; ctx.lineWidth = 1;
+      [1, 0.66, 0.33].forEach(function (k) { ctx.beginPath(); ctx.arc(cx, cy, R * k, 0, Math.PI * 2); ctx.stroke(); });
+      ctx.strokeStyle = "rgba(34,211,238,0.12)";
+      ctx.beginPath();
+      for (var k = 0; k < 4; k++) {
+        var a = (k * Math.PI) / 4;
+        ctx.moveTo(cx - Math.cos(a) * R, cy - Math.sin(a) * R);
+        ctx.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R);
+      }
+      ctx.stroke();
+      ctx.strokeStyle = "rgba(34,211,238,0.35)";
+      ctx.beginPath();
+      for (var t = 0; t < 72; t++) {
+        var a2 = (t * Math.PI) / 36;
+        var l = t % 6 === 0 ? 8 : 4;
+        ctx.moveTo(cx + Math.cos(a2) * R, cy + Math.sin(a2) * R);
+        ctx.lineTo(cx + Math.cos(a2) * (R + l), cy + Math.sin(a2) * (R + l));
+      }
+      ctx.stroke();
+      for (var j = 0; j < 26; j++) {
+        ctx.fillStyle = "rgba(34,211,238," + (0.28 * (1 - j / 26)) + ")";
+        ctx.beginPath(); ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, R, sw - (j + 1) * 0.045, sw - j * 0.045);
+        ctx.closePath(); ctx.fill();
+      }
+      ctx.strokeStyle = "rgba(170,250,255,0.95)"; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(sw) * R, cy + Math.sin(sw) * R); ctx.stroke();
+      ctx.lineWidth = 1;
+
+      function glowAt(p) {
+        var ang = Math.atan2(p.y - cy, p.x - cx);
+        var d = (sw - ang) % (Math.PI * 2);
+        if (d < 0) d += Math.PI * 2;
+        return Math.exp(-d * 1.4);
+      }
+      var plats = data.platforms || [];
+      var s = W / 900;
+      plats.forEach(function (name, i) {
+        var p = platPos(cx, cy, R, i, 0.84, 0);
+        var g = glowAt(p);
+        ctx.fillStyle = rgba(VI, 0.35 + 0.65 * g);
+        ctx.shadowColor = VI; ctx.shadowBlur = 14 * g;
+        ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(3.5, 6 * s) + 2 * g, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.strokeStyle = rgba(VI, 0.5);
+        ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(6, 10 * s) + 3 * g, 0, Math.PI * 2); ctx.stroke();
+        ctx.font = Math.max(11, Math.round(13 * s)) + "px IBM Plex Mono, monospace";
+        ctx.textAlign = "center"; ctx.fillStyle = "rgba(216,236,255," + (0.45 + 0.55 * g) + ")";
+        ctx.fillText(String(name).toUpperCase(), p.x, p.y + Math.max(14, 20 * s));
+      });
+      (data.blips || []).forEach(function (b, bi) {
+        var p = platPos(cx, cy, R, b.plat, b.dr || 0.6, b.da || 0);
+        var g = glowAt(p);
+        var col = colOf(b.kind);
+        var pulse = b.kind === "running" || b.kind === "waiting";
+        ctx.fillStyle = rgba(col, 0.55 + 0.45 * g);
+        ctx.shadowColor = col; ctx.shadowBlur = pulse ? 16 : 8 * g;
+        ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(3, 4.5 * s) + 2 * g, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
+        if (pulse) {
+          var ph = (ta * 0.9 + bi * 0.4) % 1;
+          ctx.strokeStyle = rgba(col, 0.7 * (1 - ph));
+          ctx.beginPath(); ctx.arc(p.x, p.y, 4 + ph * 22 * Math.max(0.7, s), 0, Math.PI * 2); ctx.stroke();
+        }
+        var left = p.x < cx;
+        ctx.textAlign = left ? "right" : "left";
+        var ox = left ? -9 : 9;
+        ctx.font = Math.max(12, Math.round(14 * s)) + "px IBM Plex Mono, monospace";
+        ctx.fillStyle = "rgba(230,244,255," + (0.6 + 0.4 * g) + ")";
+        ctx.fillText(b.name, p.x + ox, p.y - 6);
+        ctx.font = Math.max(10, Math.round(11 * s)) + "px IBM Plex Mono, monospace";
+        ctx.fillStyle = rgba(col, 0.65 + 0.35 * g);
+        ctx.fillText(b.tag, p.x + ox, p.y + 8);
+      });
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(ta * 0.8);
+      var hs = Math.max(8, 13 * s);
+      ctx.strokeStyle = CY; ctx.lineWidth = 1.5; ctx.beginPath();
+      for (var h = 0; h < 6; h++) {
+        var ah = (h * Math.PI) / 3;
+        if (h === 0) ctx.moveTo(Math.cos(ah) * hs, Math.sin(ah) * hs);
+        else ctx.lineTo(Math.cos(ah) * hs, Math.sin(ah) * hs);
+      }
+      ctx.closePath(); ctx.stroke(); ctx.restore();
+      ctx.fillStyle = "#bdf6ff"; ctx.shadowColor = CY; ctx.shadowBlur = 12;
+      ctx.beginPath(); ctx.arc(cx, cy, Math.max(2.5, 4 * s), 0, Math.PI * 2); ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.textAlign = "center";
+      ctx.font = Math.max(13, Math.round(16 * s)) + "px IBM Plex Mono, monospace";
+      ctx.fillStyle = TX;
+      ctx.fillText("SCOUT", cx, cy + R + Math.max(20, 28 * s));
+      ctx.font = Math.max(10, Math.round(12 * s)) + "px IBM Plex Mono, monospace";
+      ctx.fillStyle = DIM;
+      var hours = (data.scout && data.scout.hours) || "07:00–23:00 AEDT";
+      ctx.fillText("HOURLY SWEEP · " + hours, cx, cy + R + Math.max(34, 46 * s));
+    }
+    function frame(now) {
+      draw((now - t0) / 1000);
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+    setInterval(renderClock, 250);
+
+    function apply(json) {
+      data = json;
+      renderStatic();
+      renderClock();
+    }
+    function load() {
+      fetch("status.json?t=" + Date.now(), { cache: "no-store" })
+        .then(function (r) { if (!r.ok) throw new Error("status " + r.status); return r.json(); })
+        .then(apply)
+        .catch(function () { /* keep last good frame */ });
+    }
+    load();
+    setInterval(load, 60000);
+  })();
+  </script>
+</body>
+</html>

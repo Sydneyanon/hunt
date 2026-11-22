@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T10:36:08.362691+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:36am AEDT",
+  "updated_at": "2026-11-23T10:40:02.070670+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:40am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -555,15 +555,15 @@
       "platform": "Cantina",
       "status": "HUNTING",
       "kind": "running",
-      "stage": "Static scan",
-      "step": "Slither",
-      "pct": 42,
+      "stage": "Proof gate",
+      "step": "Invariant / fuzz campaigns",
+      "pct": 82,
       "pass_label": "",
-      "updated_at": "2026-11-23T10:34:57.473845+11:00",
-      "updated_label": "Mon 23 Nov 2026, 10:34am AEDT",
+      "updated_at": "2026-11-23T10:39:40.221926+11:00",
+      "updated_label": "Mon 23 Nov 2026, 10:39am AEDT",
       "now": {
         "what": "Invariant fuzzing (Foundry)",
-        "since": "2026-11-23T10:28:39.010000+11:00",
+        "since": "2026-11-23T10:39:49.160000+11:00",
         "detail": ""
       },
       "gates": [
@@ -603,7 +603,7 @@
           "ok": true
         }
       ],
-      "activity": "static scan"
+      "activity": "max-depth fuzz"
     }
   ],
   "stats": [
@@ -649,7 +649,7 @@
   "now_running": [
     {
       "name": "BitGo",
-      "activity": "static scan"
+      "activity": "max-depth fuzz"
     },
     {
       "name": "Scout",
@@ -676,7 +676,7 @@
         "name": "BitGo",
         "kind": "running",
         "what": "Invariant fuzzing (Foundry)",
-        "since": "2026-11-23T10:28:39.010000+11:00",
+        "since": "2026-11-23T10:39:49.160000+11:00",
         "detail": ""
       },
       {
@@ -689,6 +689,12 @@
       }
     ],
     "events": [
+      {
+        "at": "2026-11-23T10:39:40+11:00",
+        "hunt": "BitGo",
+        "what": "invariant run finished",
+        "t": "10:39am"
+      },
       {
         "at": "2026-11-23T10:35:36+11:00",
         "hunt": "Alchemix v3",
@@ -730,17 +736,11 @@
         "hunt": "BitGo",
         "what": "hunt started",
         "t": "10:14am"
-      },
-      {
-        "at": "2026-11-23T10:10:10.244894+11:00",
-        "hunt": "Scout",
-        "what": "queue re-ranked",
-        "t": "10:10am"
       }
     ],
     "box": {
-      "load": 2.0,
-      "load5": 2.3,
+      "load": 1.7,
+      "load5": 2.0,
       "cores": 8,
       "heavy_jobs": 1,
       "heavy_cap": 2

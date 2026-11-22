@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T06:36:36.965739+11:00",
-  "updated_label": "Mon 23 Nov 2026, 6:36am AEDT",
+  "updated_at": "2026-11-23T06:37:47.236015+11:00",
+  "updated_label": "Mon 23 Nov 2026, 6:37am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": false,
@@ -277,12 +277,12 @@
       "kind": "running",
       "stage": "Proof / mutation",
       "step": "Pass 3 · Gambit mutation running",
-      "pct": 82,
+      "pct": 70,
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T06:34:52+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:34am AEDT"
+      "updated_at": "2026-11-23T06:37:15+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:37am AEDT"
     },
     {
       "id": "metric",
@@ -332,13 +332,13 @@
       "platform": "Guardian Defender",
       "status": "HUNTING",
       "kind": "running",
-      "stage": "Static scan",
-      "step": "Halmos (setup, failed)",
-      "pct": 42,
+      "stage": "Proof gate",
+      "step": "Medusa",
+      "pct": 82,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T06:30:21+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:30am AEDT"
+      "updated_at": "2026-11-23T06:37:18+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:37am AEDT"
     }
   ],
   "stats": [

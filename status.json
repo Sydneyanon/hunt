@@ -1,7 +1,7 @@
 {
-  "build": "ef22f22b4c",
-  "updated_at": "2026-11-23T10:45:01.375691+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:45am AEDT",
+  "build": "d5464b412e",
+  "updated_at": "2026-11-23T10:46:19.494804+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:46am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -60,8 +60,8 @@
       "plat": 5,
       "da": 0.05,
       "dr": 0.82,
-      "tag": "HUNTING",
-      "kind": "running"
+      "tag": "STALLED",
+      "kind": "stalled"
     },
     {
       "name": "Alchemix v3",
@@ -175,8 +175,8 @@
       "platform": "Guardian Defender",
       "chain": "Solidity · lst",
       "pays": "Critical only · $100k seasonal split",
-      "status": "HUNTING",
-      "kind": "running",
+      "status": "STALLED",
+      "kind": "stalled",
       "end": "2026-12-16T09:59:59+11:00",
       "end_txt": "Wed 16 Dec, 9:59am AEDT",
       "open": null,
@@ -262,7 +262,7 @@
         "pool": "Nov–Dec season pot $100k shared with RAAC; contest cap unknown; critical-only",
         "code": "~432 nSLOC, Solidity 0.8.28, HyperEVM; public GitHub @0f24501",
         "entry": "Open; KYC + Defender account to submit/payout; no fee",
-        "status": "HUNTING",
+        "status": "STALLED",
         "url": "https://defender.guardianaudits.com/contests/01a0fc3b-0a53-72f6-9e8c-a55d073cc8a9"
       },
       {
@@ -506,17 +506,17 @@
       "id": "stakedhype",
       "name": "StakedHypeEscrow",
       "platform": "Guardian Defender",
-      "status": "HUNTING",
-      "kind": "running",
+      "status": "STALLED",
+      "kind": "stalled",
       "stage": "Coverage",
       "step": "Gambit mutation running",
-      "pct": 88,
+      "pct": null,
       "pass_label": "",
       "updated_at": "2026-11-23T09:36:45+11:00",
       "updated_label": "Mon 23 Nov 2026, 9:36am AEDT",
       "now": {
-        "what": "Coverage run (Foundry)",
-        "since": "2026-11-23T10:44:43.530000+11:00",
+        "what": "Idle · last stage finished 9:36am (fuzzing) · next: G4 coverage",
+        "since": "",
         "detail": ""
       },
       "gates": [
@@ -556,7 +556,7 @@
           "ok": true
         }
       ],
-      "activity": "mutation testing"
+      "activity": "no recent activity"
     },
     {
       "id": "bitgo",
@@ -623,7 +623,7 @@
     },
     {
       "label": "HUNTS RUNNING",
-      "value": "2",
+      "value": "1",
       "kind": "running"
     },
     {
@@ -643,7 +643,7 @@
       "kind": "ok"
     },
     {
-      "txt": "2 HUNTS RUNNING",
+      "txt": "1 HUNT RUNNING",
       "kind": "running"
     },
     {
@@ -656,10 +656,6 @@
     }
   ],
   "now_running": [
-    {
-      "name": "StakedHypeEscrow",
-      "activity": "mutation testing"
-    },
     {
       "name": "BitGo",
       "activity": "max-depth fuzz"
@@ -680,9 +676,9 @@
       },
       {
         "name": "StakedHypeEscrow",
-        "kind": "running",
-        "what": "Coverage run (Foundry)",
-        "since": "2026-11-23T10:44:43.530000+11:00",
+        "kind": "stalled",
+        "what": "Idle · last stage finished 9:36am (fuzzing) · next: G4 coverage",
+        "since": "",
         "detail": ""
       },
       {
@@ -715,24 +711,6 @@
         "t": "10:39am"
       },
       {
-        "at": "2026-11-23T10:35:36+11:00",
-        "hunt": "Alchemix v3",
-        "what": "invariant run finished",
-        "t": "10:35am"
-      },
-      {
-        "at": "2026-11-23T10:35:36+11:00",
-        "hunt": "Alchemix v3",
-        "what": "deep invariant run finished",
-        "t": "10:35am"
-      },
-      {
-        "at": "2026-11-23T10:27:52+11:00",
-        "hunt": "Alchemix v3",
-        "what": "invariant run finished",
-        "t": "10:27am"
-      },
-      {
         "at": "2026-11-23T10:17:39+11:00",
         "hunt": "BitGo",
         "what": "static scan finished",
@@ -749,13 +727,31 @@
         "hunt": "BitGo",
         "what": "bug-family scan finished",
         "t": "10:17am"
+      },
+      {
+        "at": "2026-11-23T10:14:50+11:00",
+        "hunt": "BitGo",
+        "what": "hunt started",
+        "t": "10:14am"
+      },
+      {
+        "at": "2026-11-23T10:10:10.244894+11:00",
+        "hunt": "Scout",
+        "what": "queue re-ranked",
+        "t": "10:10am"
+      },
+      {
+        "at": "2026-11-23T09:36:45+11:00",
+        "hunt": "StakedHypeEscrow",
+        "what": "fuzz run finished",
+        "t": "9:36am"
       }
     ],
     "box": {
-      "load": 1.8,
-      "load5": 1.9,
+      "load": 0.9,
+      "load5": 1.6,
       "cores": 8,
-      "heavy_jobs": 2,
+      "heavy_jobs": 1,
       "heavy_cap": 2
     }
   },

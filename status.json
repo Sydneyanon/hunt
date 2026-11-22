@@ -1,7 +1,7 @@
 {
   "build": "d5464b412e",
-  "updated_at": "2026-11-23T10:46:25.419024+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:46am AEDT",
+  "updated_at": "2026-11-23T10:50:01.545114+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:50am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -564,12 +564,12 @@
       "platform": "Cantina",
       "status": "HUNTING",
       "kind": "running",
-      "stage": "Proof gate",
-      "step": "Invariant / fuzz campaigns",
-      "pct": 82,
+      "stage": "Mutation testing",
+      "step": "Gambit mutation running",
+      "pct": 70,
       "pass_label": "",
-      "updated_at": "2026-11-23T10:44:56.071527+11:00",
-      "updated_label": "Mon 23 Nov 2026, 10:44am AEDT",
+      "updated_at": "2026-11-23T10:48:44.764837+11:00",
+      "updated_label": "Mon 23 Nov 2026, 10:48am AEDT",
       "now": {
         "what": "Local fork test (Anvil)",
         "since": "2026-11-23T10:30:49.680000+11:00",
@@ -612,7 +612,7 @@
           "ok": true
         }
       ],
-      "activity": "max-depth fuzz"
+      "activity": "mutation testing"
     }
   ],
   "stats": [
@@ -658,7 +658,7 @@
   "now_running": [
     {
       "name": "BitGo",
-      "activity": "max-depth fuzz"
+      "activity": "mutation testing"
     },
     {
       "name": "Scout",
@@ -748,8 +748,8 @@
       }
     ],
     "box": {
-      "load": 0.8,
-      "load5": 1.6,
+      "load": 0.5,
+      "load5": 1.0,
       "cores": 8,
       "heavy_jobs": 1,
       "heavy_cap": 2

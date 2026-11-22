@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T10:05:38.219048+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:05am AEDT",
+  "updated_at": "2026-11-23T10:10:01.816637+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:10am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -402,6 +402,61 @@
       "activity": "hourly sweep · ~20 platforms + X"
     }
   ],
+  "scout_search": {
+    "platforms": [
+      "Immunefi",
+      "Sherlock",
+      "Cantina",
+      "Code4rena",
+      "CodeHawks",
+      "Guardian",
+      "HackenProof",
+      "CertiK Hunt",
+      "HackerOne",
+      "Mantis",
+      "SpecSiege",
+      "bugbounty.fyi",
+      "X"
+    ],
+    "last_sweep_at": "2026-11-23T10:04:00+11:00",
+    "last_sweep_label": "Mon 23 Nov, 10:04am AEDT",
+    "window": [
+      7,
+      23
+    ],
+    "newest": [
+      {
+        "name": "StakedHypeEscrow",
+        "platform": "Guardian"
+      },
+      {
+        "name": "Immutable",
+        "platform": "Immunefi"
+      },
+      {
+        "name": "AAVE",
+        "platform": "Immunefi"
+      },
+      {
+        "name": "BENQI",
+        "platform": "Immunefi"
+      },
+      {
+        "name": "Sei",
+        "platform": "Immunefi"
+      }
+    ],
+    "next_in_line": [
+      {
+        "track": "First-win",
+        "name": "BitGo"
+      },
+      {
+        "track": "Critical",
+        "name": "Cap"
+      }
+    ]
+  },
   "alert": {
     "active": true,
     "count": 1,

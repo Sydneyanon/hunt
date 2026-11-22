@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T10:20:51.461569+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:20am AEDT",
+  "updated_at": "2026-11-23T10:25:01.569144+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:25am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -59,8 +59,8 @@
       "plat": 5,
       "da": 0.05,
       "dr": 0.82,
-      "tag": "HUNTING",
-      "kind": "running"
+      "tag": "STALLED",
+      "kind": "stalled"
     },
     {
       "name": "Alchemix v3",
@@ -166,8 +166,8 @@
       "platform": "Guardian Defender",
       "chain": "Solidity · lst",
       "pays": "Critical only · $100k seasonal split",
-      "status": "HUNTING",
-      "kind": "running",
+      "status": "STALLED",
+      "kind": "stalled",
       "end": "2026-12-16T09:59:59+11:00",
       "end_txt": "Wed 16 Dec, 9:59am AEDT",
       "open": null,
@@ -253,7 +253,7 @@
         "pool": "Nov–Dec season pot $100k shared with RAAC; contest cap unknown; critical-only",
         "code": "src/StakedHypeEscrow.sol, ~432 nSLOC, Solidity 0.8.28, HyperEVM; public GitHub @0f24501",
         "entry": "Open; KYC + Defender account to submit/payout; no fee",
-        "status": "HUNTING",
+        "status": "STALLED",
         "url": "https://defender.guardianaudits.com/contests/01a0fc3b-0a53-72f6-9e8c-a55d073cc8a9"
       },
       {
@@ -281,6 +281,48 @@
       "pass_label": "Pass 3",
       "updated_at": "2026-11-23T08:42:33+11:00",
       "updated_label": "Mon 23 Nov 2026, 8:42am AEDT",
+      "now": {
+        "what": "Complete",
+        "since": "",
+        "detail": ""
+      },
+      "gates": [
+        {
+          "g": "G0",
+          "name": "quick-win",
+          "ok": false
+        },
+        {
+          "g": "G1",
+          "name": "family sweep",
+          "ok": true
+        },
+        {
+          "g": "G2",
+          "name": "mutation score",
+          "ok": true
+        },
+        {
+          "g": "G3",
+          "name": "fork run",
+          "ok": false
+        },
+        {
+          "g": "G4",
+          "name": "coverage",
+          "ok": false
+        },
+        {
+          "g": "G5",
+          "name": "independent judge",
+          "ok": false
+        },
+        {
+          "g": "G6",
+          "name": "chaining check",
+          "ok": false
+        }
+      ],
       "activity": "finished"
     },
     {
@@ -295,6 +337,48 @@
       "pass_label": "",
       "updated_at": "2026-11-23T08:22:47+11:00",
       "updated_label": "Mon 23 Nov 2026, 8:22am AEDT",
+      "now": {
+        "what": "Idle · last stage finished 8:22am (mutation) · next: G4 coverage",
+        "since": "",
+        "detail": ""
+      },
+      "gates": [
+        {
+          "g": "G0",
+          "name": "quick-win",
+          "ok": true
+        },
+        {
+          "g": "G1",
+          "name": "family sweep",
+          "ok": true
+        },
+        {
+          "g": "G2",
+          "name": "mutation score",
+          "ok": true
+        },
+        {
+          "g": "G3",
+          "name": "fork run",
+          "ok": true
+        },
+        {
+          "g": "G4",
+          "name": "coverage",
+          "ok": false
+        },
+        {
+          "g": "G5",
+          "name": "independent judge",
+          "ok": false
+        },
+        {
+          "g": "G6",
+          "name": "chaining check",
+          "ok": false
+        }
+      ],
       "activity": "no recent activity"
     },
     {
@@ -309,6 +393,48 @@
       "pass_label": "",
       "updated_at": "2026-11-23T07:39:08+11:00",
       "updated_label": "Mon 23 Nov 2026, 7:39am AEDT",
+      "now": {
+        "what": "Complete",
+        "since": "",
+        "detail": ""
+      },
+      "gates": [
+        {
+          "g": "G0",
+          "name": "quick-win",
+          "ok": false
+        },
+        {
+          "g": "G1",
+          "name": "family sweep",
+          "ok": false
+        },
+        {
+          "g": "G2",
+          "name": "mutation score",
+          "ok": false
+        },
+        {
+          "g": "G3",
+          "name": "fork run",
+          "ok": false
+        },
+        {
+          "g": "G4",
+          "name": "coverage",
+          "ok": false
+        },
+        {
+          "g": "G5",
+          "name": "independent judge",
+          "ok": false
+        },
+        {
+          "g": "G6",
+          "name": "chaining check",
+          "ok": false
+        }
+      ],
       "activity": "finished"
     },
     {
@@ -323,21 +449,105 @@
       "pass_label": "",
       "updated_at": "2026-11-23T08:46:32+11:00",
       "updated_label": "Mon 23 Nov 2026, 8:46am AEDT",
+      "now": {
+        "what": "Complete",
+        "since": "",
+        "detail": ""
+      },
+      "gates": [
+        {
+          "g": "G0",
+          "name": "quick-win",
+          "ok": false
+        },
+        {
+          "g": "G1",
+          "name": "family sweep",
+          "ok": false
+        },
+        {
+          "g": "G2",
+          "name": "mutation score",
+          "ok": false
+        },
+        {
+          "g": "G3",
+          "name": "fork run",
+          "ok": false
+        },
+        {
+          "g": "G4",
+          "name": "coverage",
+          "ok": false
+        },
+        {
+          "g": "G5",
+          "name": "independent judge",
+          "ok": false
+        },
+        {
+          "g": "G6",
+          "name": "chaining check",
+          "ok": true
+        }
+      ],
       "activity": "finished"
     },
     {
       "id": "stakedhype",
       "name": "StakedHypeEscrow",
       "platform": "Guardian Defender",
-      "status": "HUNTING",
-      "kind": "running",
+      "status": "STALLED",
+      "kind": "stalled",
       "stage": "Coverage",
       "step": "Gambit mutation running",
-      "pct": 88,
+      "pct": null,
       "pass_label": "",
       "updated_at": "2026-11-23T09:36:45+11:00",
       "updated_label": "Mon 23 Nov 2026, 9:36am AEDT",
-      "activity": "mutation testing"
+      "now": {
+        "what": "Idle · last stage finished 9:36am (fuzzing) · next: G3 fork run",
+        "since": "",
+        "detail": ""
+      },
+      "gates": [
+        {
+          "g": "G0",
+          "name": "quick-win",
+          "ok": true
+        },
+        {
+          "g": "G1",
+          "name": "family sweep",
+          "ok": true
+        },
+        {
+          "g": "G2",
+          "name": "mutation score",
+          "ok": true
+        },
+        {
+          "g": "G3",
+          "name": "fork run",
+          "ok": false
+        },
+        {
+          "g": "G4",
+          "name": "coverage",
+          "ok": false
+        },
+        {
+          "g": "G5",
+          "name": "independent judge",
+          "ok": false
+        },
+        {
+          "g": "G6",
+          "name": "chaining check",
+          "ok": false
+        }
+      ],
+      "activity": "no recent activity"
     },
     {
       "id": "bitgo",
@@ -349,8 +559,50 @@
       "step": "Slither",
       "pct": 42,
       "pass_label": "",
-      "updated_at": "2026-11-23T10:19:14.486449+11:00",
-      "updated_label": "Mon 23 Nov 2026, 10:19am AEDT",
+      "updated_at": "2026-11-23T10:22:27.964697+11:00",
+      "updated_label": "Mon 23 Nov 2026, 10:22am AEDT",
+      "now": {
+        "what": "Idle · last stage finished 10:17am (static scan) · next: G0 quick-win",
+        "since": "",
+        "detail": ""
+      },
+      "gates": [
+        {
+          "g": "G0",
+          "name": "quick-win",
+          "ok": false
+        },
+        {
+          "g": "G1",
+          "name": "family sweep",
+          "ok": false
+        },
+        {
+          "g": "G2",
+          "name": "mutation score",
+          "ok": false
+        },
+        {
+          "g": "G3",
+          "name": "fork run",
+          "ok": false
+        },
+        {
+          "g": "G4",
+          "name": "coverage",
+          "ok": false
+        },
+        {
+          "g": "G5",
+          "name": "independent judge",
+          "ok": false
+        },
+        {
+          "g": "G6",
+          "name": "chaining check",
+          "ok": false
+        }
+      ],
       "activity": "static scan"
     }
   ],
@@ -362,7 +614,7 @@
     },
     {
       "label": "HUNTS RUNNING",
-      "value": "2",
+      "value": "1",
       "kind": "running"
     },
     {
@@ -382,7 +634,7 @@
       "kind": "ok"
     },
     {
-      "txt": "2 HUNTS RUNNING",
+      "txt": "1 HUNT RUNNING",
       "kind": "running"
     },
     {
@@ -396,10 +648,6 @@
   ],
   "now_running": [
     {
-      "name": "StakedHypeEscrow",
-      "activity": "mutation testing"
-    },
-    {
       "name": "BitGo",
       "activity": "static scan"
     },
@@ -408,6 +656,96 @@
       "activity": "hourly sweep · ~20 platforms + X"
     }
   ],
+  "live": {
+    "cards": [
+      {
+        "name": "Metric",
+        "kind": "stalled",
+        "what": "Idle · last stage finished 8:22am (mutation) · next: G4 coverage",
+        "since": "",
+        "detail": ""
+      },
+      {
+        "name": "StakedHypeEscrow",
+        "kind": "stalled",
+        "what": "Idle · last stage finished 9:36am (fuzzing) · next: G3 fork run",
+        "since": "",
+        "detail": ""
+      },
+      {
+        "name": "BitGo",
+        "kind": "running",
+        "what": "Idle · last stage finished 10:17am (static scan) · next: G0 quick-win",
+        "since": "",
+        "detail": ""
+      },
+      {
+        "name": "Scout",
+        "kind": "scout",
+        "what": "Waiting for next sweep",
+        "since": "",
+        "detail": "",
+        "next_at": ""
+      }
+    ],
+    "events": [
+      {
+        "at": "2026-11-23T10:17:39+11:00",
+        "hunt": "BitGo",
+        "what": "static scan finished",
+        "t": "10:17am"
+      },
+      {
+        "at": "2026-11-23T10:17:26+11:00",
+        "hunt": "BitGo",
+        "what": "pattern scan finished",
+        "t": "10:17am"
+      },
+      {
+        "at": "2026-11-23T10:17:26+11:00",
+        "hunt": "BitGo",
+        "what": "bug-family scan finished",
+        "t": "10:17am"
+      },
+      {
+        "at": "2026-11-23T10:14:50+11:00",
+        "hunt": "BitGo",
+        "what": "hunt started",
+        "t": "10:14am"
+      },
+      {
+        "at": "2026-11-23T10:10:10.244894+11:00",
+        "hunt": "Scout",
+        "what": "queue re-ranked",
+        "t": "10:10am"
+      },
+      {
+        "at": "2026-11-23T09:36:45+11:00",
+        "hunt": "StakedHypeEscrow",
+        "what": "fuzz run finished",
+        "t": "9:36am"
+      },
+      {
+        "at": "2026-11-23T09:36:45+11:00",
+        "hunt": "StakedHypeEscrow",
+        "what": "fuzz lane finished",
+        "t": "9:36am"
+      },
+      {
+        "at": "2026-11-23T09:08:06.656035+11:00",
+        "hunt": "Scout",
+        "what": "scout sweep done",
+        "t": "9:08am"
+      }
+    ],
+    "box": {
+      "load": 1.7,
+      "load5": 2.1,
+      "cores": 8,
+      "heavy_jobs": 1,
+      "heavy_cap": 2
+    }
+  },
   "scout_search": {
     "platforms": [
       "Immunefi",

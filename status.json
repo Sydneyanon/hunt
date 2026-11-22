@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T06:55:01.533903+11:00",
-  "updated_label": "Mon 23 Nov 2026, 6:55am AEDT",
+  "updated_at": "2026-11-23T06:58:31.146417+11:00",
+  "updated_label": "Mon 23 Nov 2026, 6:58am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": false,
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T06:53:22+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:53am AEDT"
+      "updated_at": "2026-11-23T06:57:10+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:57am AEDT"
     },
     {
       "id": "metric",
@@ -295,8 +295,8 @@
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T06:50:38+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:50am AEDT"
+      "updated_at": "2026-11-23T06:56:15+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:56am AEDT"
     },
     {
       "id": "beanstalk",
@@ -337,8 +337,8 @@
       "pct": 70,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T06:54:17+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:54am AEDT"
+      "updated_at": "2026-11-23T06:56:07+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:56am AEDT"
     }
   ],
   "stats": [

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T06:48:02.889839+11:00",
-  "updated_label": "Mon 23 Nov 2026, 6:48am AEDT",
+  "updated_at": "2026-11-23T06:50:12.462810+11:00",
+  "updated_label": "Mon 23 Nov 2026, 6:50am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": false,
@@ -276,13 +276,13 @@
       "status": "PASS 3 RUNNING",
       "kind": "running",
       "stage": "Proof / mutation",
-      "step": "Pass 3 · Gambit mutation running",
+      "step": "Pass 3 · Invariant / fuzz campaigns",
       "pct": 82,
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T06:46:50+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:46am AEDT"
+      "updated_at": "2026-11-23T06:49:24+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:49am AEDT"
     },
     {
       "id": "metric",
@@ -323,8 +323,8 @@
       "pct": 20,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T06:47:46+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:47am AEDT"
+      "updated_at": "2026-11-23T06:48:19+11:00",
+      "updated_label": "Mon 23 Nov 2026, 6:48am AEDT"
     },
     {
       "id": "stakedhype",

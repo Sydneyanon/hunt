@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T10:31:02.740984+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:31am AEDT",
+  "updated_at": "2026-11-23T10:35:02.046678+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:35am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -290,7 +290,7 @@
         {
           "g": "G0",
           "name": "quick-win",
-          "ok": false
+          "ok": true
         },
         {
           "g": "G1",
@@ -559,8 +559,8 @@
       "step": "Slither",
       "pct": 42,
       "pass_label": "",
-      "updated_at": "2026-11-23T10:30:50.351848+11:00",
-      "updated_label": "Mon 23 Nov 2026, 10:30am AEDT",
+      "updated_at": "2026-11-23T10:34:57.473845+11:00",
+      "updated_label": "Mon 23 Nov 2026, 10:34am AEDT",
       "now": {
         "what": "Invariant fuzzing (Foundry)",
         "since": "2026-11-23T10:28:39.010000+11:00",
@@ -739,10 +739,10 @@
       }
     ],
     "box": {
-      "load": 2.7,
-      "load5": 2.6,
+      "load": 2.2,
+      "load5": 2.4,
       "cores": 8,
-      "heavy_jobs": 2,
+      "heavy_jobs": 3,
       "heavy_cap": 2
     }
   },

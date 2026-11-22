@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T07:35:16.055378+11:00",
-  "updated_label": "Mon 23 Nov 2026, 7:35am AEDT",
+  "updated_at": "2026-11-23T07:40:01.727234+11:00",
+  "updated_label": "Mon 23 Nov 2026, 7:40am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T07:33:14+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:33am AEDT"
+      "updated_at": "2026-11-23T07:38:53+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:38am AEDT"
     },
     {
       "id": "metric",
@@ -291,12 +291,12 @@
       "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
       "kind": "running",
       "stage": "Follow-up testing",
-      "step": "Proof gate",
+      "step": "Gambit mutation running",
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:29:26+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:29am AEDT"
+      "updated_at": "2026-11-23T07:38:00+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:38am AEDT"
     },
     {
       "id": "beanstalk",
@@ -309,8 +309,8 @@
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:34:39+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:34am AEDT"
+      "updated_at": "2026-11-23T07:39:08+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:39am AEDT"
     },
     {
       "id": "alchemix",
@@ -323,8 +323,8 @@
       "pct": 20,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:06:00+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:06am AEDT"
+      "updated_at": "2026-11-23T07:36:32+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:36am AEDT"
     },
     {
       "id": "stakedhype",

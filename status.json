@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T10:15:01.321950+11:00",
+  "updated_at": "2026-11-23T10:15:35.585667+11:00",
   "updated_label": "Mon 23 Nov 2026, 10:15am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
@@ -281,7 +281,7 @@
       "pass_label": "Pass 3",
       "updated_at": "2026-11-23T08:42:33+11:00",
       "updated_label": "Mon 23 Nov 2026, 8:42am AEDT",
-      "activity": "pass 3 · deep pass"
+      "activity": "finished"
     },
     {
       "id": "metric",
@@ -295,7 +295,7 @@
       "pass_label": "",
       "updated_at": "2026-11-23T08:22:47+11:00",
       "updated_label": "Mon 23 Nov 2026, 8:22am AEDT",
-      "activity": "mutation testing"
+      "activity": "no recent activity"
     },
     {
       "id": "beanstalk",
@@ -309,7 +309,7 @@
       "pass_label": "",
       "updated_at": "2026-11-23T07:39:08+11:00",
       "updated_label": "Mon 23 Nov 2026, 7:39am AEDT",
-      "activity": "deep pass"
+      "activity": "finished"
     },
     {
       "id": "alchemix",
@@ -323,7 +323,7 @@
       "pass_label": "",
       "updated_at": "2026-11-23T08:46:32+11:00",
       "updated_label": "Mon 23 Nov 2026, 8:46am AEDT",
-      "activity": "deep pass"
+      "activity": "finished"
     },
     {
       "id": "stakedhype",

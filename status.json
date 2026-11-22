@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T09:50:01.784358+11:00",
-  "updated_label": "Mon 23 Nov 2026, 9:50am AEDT",
+  "updated_at": "2026-11-23T09:55:01.082309+11:00",
+  "updated_label": "Mon 23 Nov 2026, 9:55am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -348,7 +348,7 @@
     },
     {
       "label": "HUNTS RUNNING",
-      "value": "5",
+      "value": "4",
       "kind": "running"
     },
     {
@@ -368,7 +368,7 @@
       "kind": "ok"
     },
     {
-      "txt": "5 HUNTS RUNNING",
+      "txt": "4 HUNTS RUNNING",
       "kind": "running"
     },
     {
@@ -392,10 +392,6 @@
     {
       "name": "Beanstalk",
       "activity": "mutation testing"
-    },
-    {
-      "name": "Alchemix v3",
-      "activity": "max-depth fuzz"
     },
     {
       "name": "StakedHypeEscrow",

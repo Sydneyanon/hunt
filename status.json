@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T10:12:32.008593+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:12am AEDT",
+  "updated_at": "2026-11-23T10:15:01.321950+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:15am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -35,24 +35,24 @@
       "plat": 5,
       "da": -0.32,
       "dr": 0.5,
-      "tag": "PASS 3 RUNNING",
-      "kind": "running"
+      "tag": "COMPLETE · REPORT DRAFTED",
+      "kind": "done"
     },
     {
       "name": "Metric",
       "plat": 1,
       "da": -0.28,
       "dr": 0.62,
-      "tag": "JUDGED · MORE TESTING",
-      "kind": "running"
+      "tag": "STALLED",
+      "kind": "stalled"
     },
     {
       "name": "Beanstalk",
       "plat": 0,
       "da": -0.2,
       "dr": 0.72,
-      "tag": "JUDGED · MORE TESTING",
-      "kind": "running"
+      "tag": "COMPLETE · REPORT DRAFTED",
+      "kind": "done"
     },
     {
       "name": "StakedHypeEscrow",
@@ -67,8 +67,8 @@
       "plat": 1,
       "da": 0.4,
       "dr": 0.78,
-      "tag": "QUEUED · SCOUT DONE",
-      "kind": "queued"
+      "tag": "COMPLETE · REPORT DRAFTED",
+      "kind": "done"
     },
     {
       "name": "SpecSiege EBSI",
@@ -118,8 +118,8 @@
       "platform": "Guardian Defender",
       "chain": "Solidity · lending",
       "pays": "Critical only · $100k seasonal split",
-      "status": "PASS 3 RUNNING",
-      "kind": "running",
+      "status": "COMPLETE · REPORT DRAFTED",
+      "kind": "done",
       "end": "2026-12-10T02:00:00+11:00",
       "end_txt": "Thu 10 Dec, 2:00am AEDT",
       "open": null,
@@ -134,8 +134,8 @@
       "platform": "Immunefi",
       "chain": "Solidity · amm",
       "pays": "C $50k–$500k · H $10k–$50k · M $2.5k–$10k",
-      "status": "JUDGED · MORE TESTING",
-      "kind": "running",
+      "status": "STALLED",
+      "kind": "stalled",
       "end": null,
       "end_txt": "",
       "open": null,
@@ -150,8 +150,8 @@
       "platform": "Sherlock BB #148",
       "chain": "Solidity · stablecoin",
       "pays": "C $5k–$50k · H $1k–$10k · M $500–$2.5k",
-      "status": "JUDGED · MORE TESTING",
-      "kind": "running",
+      "status": "COMPLETE · REPORT DRAFTED",
+      "kind": "done",
       "end": null,
       "end_txt": "",
       "open": null,
@@ -182,8 +182,8 @@
       "platform": "Immunefi",
       "chain": "Solidity · lending",
       "pays": "C $20k–$150k · H $5k–$20k · M up to $3k",
-      "status": "QUEUED · SCOUT DONE",
-      "kind": "queued",
+      "status": "COMPLETE · REPORT DRAFTED",
+      "kind": "done",
       "end": null,
       "end_txt": "",
       "open": null,
@@ -273,25 +273,25 @@
       "id": "raac",
       "name": "RAAC Core",
       "platform": "Guardian Defender",
-      "status": "PASS 3 RUNNING",
-      "kind": "running",
-      "stage": "Proof / mutation",
-      "step": "Pass 3 · Gambit mutation running",
-      "pct": 70,
+      "status": "COMPLETE · REPORT DRAFTED",
+      "kind": "done",
+      "stage": "Complete",
+      "step": "Complete",
+      "pct": 100,
       "pass_label": "Pass 3",
       "updated_at": "2026-11-23T08:42:33+11:00",
       "updated_label": "Mon 23 Nov 2026, 8:42am AEDT",
-      "activity": "pass 3 · mutation testing"
+      "activity": "pass 3 · deep pass"
     },
     {
       "id": "metric",
       "name": "Metric",
       "platform": "Immunefi",
-      "status": "JUDGED · MORE TESTING",
-      "kind": "running",
+      "status": "STALLED",
+      "kind": "stalled",
       "stage": "Follow-up testing",
       "step": "Gambit mutation running",
-      "pct": 88,
+      "pct": null,
       "pass_label": "",
       "updated_at": "2026-11-23T08:22:47+11:00",
       "updated_label": "Mon 23 Nov 2026, 8:22am AEDT",
@@ -301,29 +301,29 @@
       "id": "beanstalk",
       "name": "Beanstalk",
       "platform": "Sherlock",
-      "status": "JUDGED · MORE TESTING",
-      "kind": "running",
-      "stage": "Follow-up testing",
-      "step": "Gambit mutation running",
-      "pct": 88,
+      "status": "COMPLETE · REPORT DRAFTED",
+      "kind": "done",
+      "stage": "Complete",
+      "step": "Complete",
+      "pct": 100,
       "pass_label": "",
       "updated_at": "2026-11-23T07:39:08+11:00",
       "updated_label": "Mon 23 Nov 2026, 7:39am AEDT",
-      "activity": "mutation testing"
+      "activity": "deep pass"
     },
     {
       "id": "alchemix",
       "name": "Alchemix v3",
       "platform": "Immunefi",
-      "status": "QUEUED · SCOUT DONE",
-      "kind": "queued",
-      "stage": "Proof gate",
-      "step": "Invariant / fuzz campaigns",
-      "pct": 25,
+      "status": "COMPLETE · REPORT DRAFTED",
+      "kind": "done",
+      "stage": "Complete",
+      "step": "Complete",
+      "pct": 100,
       "pass_label": "",
       "updated_at": "2026-11-23T08:46:32+11:00",
       "updated_label": "Mon 23 Nov 2026, 8:46am AEDT",
-      "activity": "max-depth fuzz"
+      "activity": "deep pass"
     },
     {
       "id": "stakedhype",
@@ -338,6 +338,20 @@
       "updated_at": "2026-11-23T09:36:45+11:00",
       "updated_label": "Mon 23 Nov 2026, 9:36am AEDT",
       "activity": "mutation testing"
+    },
+    {
+      "id": "bitgo",
+      "name": "BitGo",
+      "platform": "Cantina",
+      "status": "HUNTING",
+      "kind": "running",
+      "stage": "Starting",
+      "step": "Starting",
+      "pct": 5,
+      "pass_label": "",
+      "updated_at": "2026-11-23T10:14:50.803529+11:00",
+      "updated_label": "Mon 23 Nov 2026, 10:14am AEDT",
+      "activity": "deep pass"
     }
   ],
   "stats": [
@@ -348,7 +362,7 @@
     },
     {
       "label": "HUNTS RUNNING",
-      "value": "4",
+      "value": "2",
       "kind": "running"
     },
     {
@@ -368,7 +382,7 @@
       "kind": "ok"
     },
     {
-      "txt": "4 HUNTS RUNNING",
+      "txt": "2 HUNTS RUNNING",
       "kind": "running"
     },
     {
@@ -382,20 +396,12 @@
   ],
   "now_running": [
     {
-      "name": "RAAC Core",
-      "activity": "pass 3 · mutation testing"
-    },
-    {
-      "name": "Metric",
-      "activity": "mutation testing"
-    },
-    {
-      "name": "Beanstalk",
-      "activity": "mutation testing"
-    },
-    {
       "name": "StakedHypeEscrow",
       "activity": "mutation testing"
+    },
+    {
+      "name": "BitGo",
+      "activity": "deep pass"
     },
     {
       "name": "Scout",

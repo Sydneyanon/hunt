@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T07:15:05.037262+11:00",
-  "updated_label": "Mon 23 Nov 2026, 7:15am AEDT",
+  "updated_at": "2026-11-23T07:16:01.551434+11:00",
+  "updated_label": "Mon 23 Nov 2026, 7:16am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T07:12:42+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:12am AEDT"
+      "updated_at": "2026-11-23T07:15:58+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:15am AEDT"
     },
     {
       "id": "metric",

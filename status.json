@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T10:40:02.070670+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:40am AEDT",
+  "updated_at": "2026-11-23T10:41:14.044350+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:41am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -559,8 +559,8 @@
       "step": "Invariant / fuzz campaigns",
       "pct": 82,
       "pass_label": "",
-      "updated_at": "2026-11-23T10:39:40.221926+11:00",
-      "updated_label": "Mon 23 Nov 2026, 10:39am AEDT",
+      "updated_at": "2026-11-23T10:41:11.669439+11:00",
+      "updated_label": "Mon 23 Nov 2026, 10:41am AEDT",
       "now": {
         "what": "Invariant fuzzing (Foundry)",
         "since": "2026-11-23T10:39:49.160000+11:00",
@@ -570,7 +570,7 @@
         {
           "g": "G0",
           "name": "quick-win",
-          "ok": false
+          "ok": true
         },
         {
           "g": "G1",
@@ -739,8 +739,8 @@
       }
     ],
     "box": {
-      "load": 1.7,
-      "load5": 2.0,
+      "load": 1.4,
+      "load5": 1.9,
       "cores": 8,
       "heavy_jobs": 1,
       "heavy_cap": 2

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T07:16:01.551434+11:00",
-  "updated_label": "Mon 23 Nov 2026, 7:16am AEDT",
+  "updated_at": "2026-11-23T07:20:54.617922+11:00",
+  "updated_label": "Mon 23 Nov 2026, 7:20am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T07:15:58+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:15am AEDT"
+      "updated_at": "2026-11-23T07:19:38+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:19am AEDT"
     },
     {
       "id": "metric",
@@ -291,12 +291,12 @@
       "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
       "kind": "running",
       "stage": "Follow-up testing",
-      "step": "Coverage",
+      "step": "Halmos",
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:12:59+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:12am AEDT"
+      "updated_at": "2026-11-23T07:19:33+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:19am AEDT"
     },
     {
       "id": "beanstalk",
@@ -309,8 +309,8 @@
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:10:28+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:10am AEDT"
+      "updated_at": "2026-11-23T07:19:43+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:19am AEDT"
     },
     {
       "id": "alchemix",
@@ -332,13 +332,13 @@
       "platform": "Guardian Defender",
       "status": "HUNTING",
       "kind": "running",
-      "stage": "Mutation testing",
-      "step": "Gambit mutation running",
-      "pct": 70,
+      "stage": "Proof gate",
+      "step": "Proof gate",
+      "pct": 82,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T06:56:07+11:00",
-      "updated_label": "Mon 23 Nov 2026, 6:56am AEDT"
+      "updated_at": "2026-11-23T07:19:34+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:19am AEDT"
     }
   ],
   "stats": [

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T08:26:02.121500+11:00",
-  "updated_label": "Mon 23 Nov 2026, 8:26am AEDT",
+  "updated_at": "2026-11-23T08:28:57.401786+11:00",
+  "updated_label": "Mon 23 Nov 2026, 8:28am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T08:23:13+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:23am AEDT"
+      "updated_at": "2026-11-23T08:26:35+11:00",
+      "updated_label": "Mon 23 Nov 2026, 8:26am AEDT"
     },
     {
       "id": "metric",
@@ -323,8 +323,8 @@
       "pct": 25,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T08:20:35+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:20am AEDT"
+      "updated_at": "2026-11-23T08:28:56+11:00",
+      "updated_label": "Mon 23 Nov 2026, 8:28am AEDT"
     },
     {
       "id": "stakedhype",
@@ -333,12 +333,12 @@
       "status": "HUNTING",
       "kind": "running",
       "stage": "Proof gate",
-      "step": "Echidna",
+      "step": "Medusa",
       "pct": 82,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T08:23:02+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:23am AEDT"
+      "updated_at": "2026-11-23T08:26:35+11:00",
+      "updated_label": "Mon 23 Nov 2026, 8:26am AEDT"
     }
   ],
   "stats": [

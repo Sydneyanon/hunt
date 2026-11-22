@@ -1,6 +1,6 @@
 {
   "build": "d5464b412e",
-  "updated_at": "2026-11-23T10:46:19.494804+11:00",
+  "updated_at": "2026-11-23T10:46:25.419024+11:00",
   "updated_label": "Mon 23 Nov 2026, 10:46am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
@@ -748,7 +748,7 @@
       }
     ],
     "box": {
-      "load": 0.9,
+      "load": 0.8,
       "load5": 1.6,
       "cores": 8,
       "heavy_jobs": 1,

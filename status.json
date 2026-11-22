@@ -1,7 +1,7 @@
 {
   "build": "d5464b412e",
-  "updated_at": "2026-11-23T10:50:01.545114+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:50am AEDT",
+  "updated_at": "2026-11-23T10:51:25.428654+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:51am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -515,7 +515,7 @@
       "updated_at": "2026-11-23T09:36:45+11:00",
       "updated_label": "Mon 23 Nov 2026, 9:36am AEDT",
       "now": {
-        "what": "Idle · last stage finished 9:36am (fuzzing) · next: G4 coverage",
+        "what": "Idle · last stage finished 9:36am (fuzzing)",
         "since": "",
         "detail": ""
       },
@@ -543,7 +543,7 @@
         {
           "g": "G4",
           "name": "coverage",
-          "ok": false
+          "ok": true
         },
         {
           "g": "G5",
@@ -677,7 +677,7 @@
       {
         "name": "StakedHypeEscrow",
         "kind": "stalled",
-        "what": "Idle · last stage finished 9:36am (fuzzing) · next: G4 coverage",
+        "what": "Idle · last stage finished 9:36am (fuzzing)",
         "since": "",
         "detail": ""
       },
@@ -748,7 +748,7 @@
       }
     ],
     "box": {
-      "load": 0.5,
+      "load": 0.7,
       "load5": 1.0,
       "cores": 8,
       "heavy_jobs": 1,

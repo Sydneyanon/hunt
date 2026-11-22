@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T07:45:43.038612+11:00",
-  "updated_label": "Mon 23 Nov 2026, 7:45am AEDT",
+  "updated_at": "2026-11-23T07:50:02.000594+11:00",
+  "updated_label": "Mon 23 Nov 2026, 7:50am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T07:43:34+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:43am AEDT"
+      "updated_at": "2026-11-23T07:47:30+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:47am AEDT"
     },
     {
       "id": "metric",
@@ -295,8 +295,8 @@
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:38:00+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:38am AEDT"
+      "updated_at": "2026-11-23T07:50:01+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:50am AEDT"
     },
     {
       "id": "beanstalk",
@@ -332,13 +332,13 @@
       "platform": "Guardian Defender",
       "status": "HUNTING",
       "kind": "running",
-      "stage": "Mutation testing",
-      "step": "Gambit mutation running",
-      "pct": 70,
+      "stage": "Proof gate",
+      "step": "Halmos",
+      "pct": 82,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:32:03+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:32am AEDT"
+      "updated_at": "2026-11-23T07:49:38+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:49am AEDT"
     }
   ],
   "stats": [

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T10:25:56.916015+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:25am AEDT",
+  "updated_at": "2026-11-23T10:28:17.676424+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:28am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -251,7 +251,7 @@
         "plat": "Guardian Defender",
         "dates": "16 Nov 10:00 → 16 Dec 09:59",
         "pool": "Nov–Dec season pot $100k shared with RAAC; contest cap unknown; critical-only",
-        "code": "src/StakedHypeEscrow.sol, ~432 nSLOC, Solidity 0.8.28, HyperEVM; public GitHub @0f24501",
+        "code": "~432 nSLOC, Solidity 0.8.28, HyperEVM; public GitHub @0f24501",
         "entry": "Open; KYC + Defender account to submit/payout; no fee",
         "status": "STALLED",
         "url": "https://defender.guardianaudits.com/contests/01a0fc3b-0a53-72f6-9e8c-a55d073cc8a9"
@@ -315,12 +315,12 @@
         {
           "g": "G5",
           "name": "independent judge",
-          "ok": false
+          "ok": true
         },
         {
           "g": "G6",
           "name": "chaining check",
-          "ok": false
+          "ok": true
         }
       ],
       "activity": "finished"
@@ -371,12 +371,12 @@
         {
           "g": "G5",
           "name": "independent judge",
-          "ok": false
+          "ok": true
         },
         {
           "g": "G6",
           "name": "chaining check",
-          "ok": false
+          "ok": true
         }
       ],
       "activity": "no recent activity"
@@ -447,8 +447,8 @@
       "step": "Complete",
       "pct": 100,
       "pass_label": "",
-      "updated_at": "2026-11-23T08:46:32+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:46am AEDT",
+      "updated_at": "2026-11-23T10:27:52+11:00",
+      "updated_label": "Mon 23 Nov 2026, 10:27am AEDT",
       "now": {
         "what": "Complete",
         "since": "",
@@ -539,12 +539,12 @@
         {
           "g": "G5",
           "name": "independent judge",
-          "ok": false
+          "ok": true
         },
         {
           "g": "G6",
           "name": "chaining check",
-          "ok": false
+          "ok": true
         }
       ],
       "activity": "no recent activity"
@@ -559,12 +559,12 @@
       "step": "Slither",
       "pct": 42,
       "pass_label": "",
-      "updated_at": "2026-11-23T10:25:05.770312+11:00",
-      "updated_label": "Mon 23 Nov 2026, 10:25am AEDT",
+      "updated_at": "2026-11-23T10:27:33.871669+11:00",
+      "updated_label": "Mon 23 Nov 2026, 10:27am AEDT",
       "now": {
-        "what": "Working",
-        "since": "2026-11-23T10:25:05.100000+11:00",
-        "detail": "next: G0 quick-win"
+        "what": "Idle · last stage finished 10:17am (static scan) · next: G0 quick-win",
+        "since": "",
+        "detail": ""
       },
       "gates": [
         {
@@ -675,9 +675,9 @@
       {
         "name": "BitGo",
         "kind": "running",
-        "what": "Working",
-        "since": "2026-11-23T10:25:05.100000+11:00",
-        "detail": "next: G0 quick-win"
+        "what": "Idle · last stage finished 10:17am (static scan) · next: G0 quick-win",
+        "since": "",
+        "detail": ""
       },
       {
         "name": "Scout",
@@ -689,6 +689,12 @@
       }
     ],
     "events": [
+      {
+        "at": "2026-11-23T10:27:52+11:00",
+        "hunt": "Alchemix v3",
+        "what": "invariant run finished",
+        "t": "10:27am"
+      },
       {
         "at": "2026-11-23T10:17:39+11:00",
         "hunt": "BitGo",
@@ -730,19 +736,13 @@
         "hunt": "StakedHypeEscrow",
         "what": "fuzz lane finished",
         "t": "9:36am"
-      },
-      {
-        "at": "2026-11-23T09:08:06.656035+11:00",
-        "hunt": "Scout",
-        "what": "scout sweep done",
-        "t": "9:08am"
       }
     ],
     "box": {
-      "load": 1.7,
-      "load5": 2.1,
+      "load": 2.3,
+      "load5": 2.2,
       "cores": 8,
-      "heavy_jobs": 1,
+      "heavy_jobs": 2,
       "heavy_cap": 2
     }
   },

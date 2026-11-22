@@ -175,6 +175,51 @@
     .kind-flagged { color: var(--mg); }
     .kind-done, .kind-ok { color: var(--lm); }
     .kind-skipped, .kind-seen { color: var(--tx); }
+
+    /* ----- finding alert (count + tier only) ----- */
+    .alert {
+      display: none; align-items: center; justify-content: center; flex-wrap: wrap;
+      gap: 10px 18px; margin: 0 0 14px; padding: 14px 18px; border-radius: 14px;
+      border: 2px solid var(--mg); background: rgba(255,61,129,0.10); text-align: center;
+      animation: alertpulse 1.6s ease-in-out infinite;
+    }
+    .alert.on { display: flex; }
+    .alert .big { color: var(--mg); letter-spacing: 0.16em; font-weight: 600; font-size: clamp(18px, 2.2vw, 36px); }
+    .alert .cnt { color: var(--tx); font-size: clamp(16px, 1.8vw, 28px); letter-spacing: 0.08em; }
+    .alert .siren { width: clamp(14px, 1.4vw, 22px); height: clamp(14px, 1.4vw, 22px); border-radius: 50%; background: var(--mg); box-shadow: 0 0 18px var(--mg); animation: blink 0.8s infinite; }
+    @keyframes alertpulse {
+      0%,100% { box-shadow: 0 0 10px rgba(255,61,129,0.35), inset 0 0 10px rgba(255,61,129,0.15); }
+      50% { box-shadow: 0 0 36px rgba(255,61,129,0.85), inset 0 0 22px rgba(255,61,129,0.3); }
+    }
+
+    /* ----- now running ----- */
+    .now { margin: 0 0 14px; padding: 12px 14px; }
+    .now .h2 { display: flex; align-items: center; gap: 10px; }
+    .live-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--am); box-shadow: 0 0 10px var(--am); animation: blink 1s infinite; }
+    .ticker { overflow: hidden; border-top: 1px solid var(--edge); border-bottom: 1px solid var(--edge); margin: 4px 0 12px; padding: 6px 0; }
+    .ticker .track { display: inline-flex; white-space: nowrap; animation: marquee 32s linear infinite; }
+    .ticker .item { padding: 0 28px; font-size: clamp(13px, 1.25vw, 20px); color: var(--tx); }
+    .ticker .item b { color: var(--am); font-weight: 600; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .runcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+    .runcard {
+      position: relative; overflow: hidden; border: 1px solid rgba(255,176,32,0.45); border-radius: 12px;
+      padding: 10px 12px; background: rgba(255,176,32,0.05); animation: cardpulse 2.4s ease-in-out infinite;
+    }
+    .runcard.scout { border-color: rgba(34,211,238,0.45); background: rgba(34,211,238,0.05); }
+    .runcard .rn { font-size: clamp(15px, 1.4vw, 22px); color: var(--tx); }
+    .runcard .ra { font-size: clamp(12px, 1.05vw, 16px); color: var(--am); margin-top: 3px; letter-spacing: 0.04em; }
+    .runcard.scout .ra { color: var(--cy); }
+    .runcard .scan { position: absolute; left: 0; bottom: 0; height: 3px; width: 35%; background: linear-gradient(90deg, transparent, var(--am), transparent); animation: scan 1.9s linear infinite; }
+    .runcard.scout .scan { background: linear-gradient(90deg, transparent, var(--cy), transparent); }
+    .eq { position: absolute; right: 12px; top: 12px; display: flex; gap: 3px; align-items: flex-end; height: 18px; }
+    .eq i { width: 4px; background: var(--am); border-radius: 1px; animation: eq 0.9s ease-in-out infinite; }
+    .runcard.scout .eq i { background: var(--cy); }
+    .eq i:nth-child(2) { animation-delay: .15s; } .eq i:nth-child(3) { animation-delay: .3s; } .eq i:nth-child(4) { animation-delay: .45s; }
+    @keyframes eq { 0%,100% { height: 4px; } 50% { height: 18px; } }
+    @keyframes scan { from { transform: translateX(-100%); } to { transform: translateX(300%); } }
+    @keyframes cardpulse { 0%,100% { box-shadow: 0 0 0 rgba(255,176,32,0); } 50% { box-shadow: 0 0 16px rgba(255,176,32,0.28); } }
+    @media (prefers-reduced-motion: reduce) { .ticker .track, .runcard, .alert { animation: none; } }
   </style>
 </head>
 <body>
@@ -186,6 +231,19 @@
       </div>
       <div class="chips" id="chips"></div>
     </header>
+
+    <div class="alert" id="alert" role="status" aria-live="polite">
+      <span class="siren"></span>
+      <span class="big">POTENTIAL FINDING UNDER REVIEW</span>
+      <span class="cnt" id="alert-cnt"></span>
+      <span class="siren"></span>
+    </div>
+
+    <div class="panel now" id="now">
+      <div class="h2"><span class="live-dot"></span>NOW RUNNING</div>
+      <div class="ticker"><div class="track" id="ticker"></div></div>
+      <div class="runcards" id="runcards"></div>
+    </div>
 
     <div class="mid">
       <div class="panel radar-wrap">
@@ -249,6 +307,28 @@
     function colOf(kind) { return KINDCOL[kind] || CY; }
 
     function renderStatic() {
+      var al = data.alert || {};
+      var alEl = document.getElementById("alert");
+      if (al.active && al.count > 0) {
+        alEl.className = "alert on";
+        document.getElementById("alert-cnt").textContent = al.label || (al.count + " under review");
+      } else {
+        alEl.className = "alert";
+        document.getElementById("alert-cnt").textContent = "";
+      }
+      var nr = data.now_running || [];
+      document.getElementById("now").style.display = nr.length ? "" : "none";
+      var items = nr.map(function (r) {
+        return '<span class="item">● <b>' + esc(r.name) + "</b> — " + esc(r.activity) + "</span>";
+      }).join("");
+      document.getElementById("ticker").innerHTML = items + items;
+      document.getElementById("runcards").innerHTML = nr.map(function (r, i) {
+        var sc = r.name === "Scout" ? " scout" : "";
+        return '<div class="runcard' + sc + '" style="animation-delay:' + (i * 0.3) + 's">' +
+          '<div class="eq"><i></i><i></i><i></i><i></i></div>' +
+          '<div class="rn">' + esc(r.name) + '</div><div class="ra">' + esc(r.activity) + "</div>" +
+          '<div class="scan" style="animation-delay:' + (i * 0.25) + 's"></div></div>';
+      }).join("");
       var chips = (data.chips || []).map(function (c) {
         return chip(c.txt, c.kind, c.kind === "running" || c.kind === "ok");
       }).join("");

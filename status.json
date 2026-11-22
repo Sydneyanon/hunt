@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T08:46:15.217312+11:00",
-  "updated_label": "Mon 23 Nov 2026, 8:46am AEDT",
+  "updated_at": "2026-11-23T08:48:38.980090+11:00",
+  "updated_label": "Mon 23 Nov 2026, 8:48am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -323,8 +323,8 @@
       "pct": 25,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T08:28:56+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:28am AEDT"
+      "updated_at": "2026-11-23T08:46:32+11:00",
+      "updated_label": "Mon 23 Nov 2026, 8:46am AEDT"
     },
     {
       "id": "stakedhype",
@@ -337,8 +337,8 @@
       "pct": 88,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T08:37:06+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:37am AEDT"
+      "updated_at": "2026-11-23T08:46:59+11:00",
+      "updated_label": "Mon 23 Nov 2026, 8:46am AEDT"
     }
   ],
   "stats": [
@@ -349,7 +349,7 @@
     },
     {
       "label": "HUNTS RUNNING",
-      "value": "4",
+      "value": "5",
       "kind": "running"
     },
     {
@@ -369,7 +369,7 @@
       "kind": "ok"
     },
     {
-      "txt": "4 HUNTS RUNNING",
+      "txt": "5 HUNTS RUNNING",
       "kind": "running"
     },
     {
@@ -377,10 +377,47 @@
       "kind": "running"
     },
     {
-      "txt": "STATUS ONLY · NO FINDINGS",
+      "txt": "STATUS ONLY · NO DETAILS",
       "kind": "waiting"
     }
   ],
+  "now_running": [
+    {
+      "name": "RAAC Core",
+      "activity": "pass 3 · mutation testing"
+    },
+    {
+      "name": "Metric",
+      "activity": "mutation testing"
+    },
+    {
+      "name": "Beanstalk",
+      "activity": "mutation testing"
+    },
+    {
+      "name": "Alchemix v3",
+      "activity": "max-depth fuzz"
+    },
+    {
+      "name": "StakedHypeEscrow",
+      "activity": "mutation testing"
+    },
+    {
+      "name": "Scout",
+      "activity": "hourly sweep · ~20 platforms + X"
+    }
+  ],
+  "alert": {
+    "active": true,
+    "count": 1,
+    "items": [
+      {
+        "tier": "High",
+        "count": 1
+      }
+    ],
+    "label": "1 × High under review"
+  },
   "rules": [
     {
       "k": "STATUS ONLY",

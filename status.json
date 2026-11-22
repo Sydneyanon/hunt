@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T10:25:01.569144+11:00",
+  "updated_at": "2026-11-23T10:25:56.916015+11:00",
   "updated_label": "Mon 23 Nov 2026, 10:25am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
@@ -305,7 +305,7 @@
         {
           "g": "G3",
           "name": "fork run",
-          "ok": false
+          "ok": true
         },
         {
           "g": "G4",
@@ -506,7 +506,7 @@
       "updated_at": "2026-11-23T09:36:45+11:00",
       "updated_label": "Mon 23 Nov 2026, 9:36am AEDT",
       "now": {
-        "what": "Idle · last stage finished 9:36am (fuzzing) · next: G3 fork run",
+        "what": "Idle · last stage finished 9:36am (fuzzing) · next: G4 coverage",
         "since": "",
         "detail": ""
       },
@@ -529,7 +529,7 @@
         {
           "g": "G3",
           "name": "fork run",
-          "ok": false
+          "ok": true
         },
         {
           "g": "G4",
@@ -559,12 +559,12 @@
       "step": "Slither",
       "pct": 42,
       "pass_label": "",
-      "updated_at": "2026-11-23T10:22:27.964697+11:00",
-      "updated_label": "Mon 23 Nov 2026, 10:22am AEDT",
+      "updated_at": "2026-11-23T10:25:05.770312+11:00",
+      "updated_label": "Mon 23 Nov 2026, 10:25am AEDT",
       "now": {
-        "what": "Idle · last stage finished 10:17am (static scan) · next: G0 quick-win",
-        "since": "",
-        "detail": ""
+        "what": "Working",
+        "since": "2026-11-23T10:25:05.100000+11:00",
+        "detail": "next: G0 quick-win"
       },
       "gates": [
         {
@@ -668,16 +668,16 @@
       {
         "name": "StakedHypeEscrow",
         "kind": "stalled",
-        "what": "Idle · last stage finished 9:36am (fuzzing) · next: G3 fork run",
+        "what": "Idle · last stage finished 9:36am (fuzzing) · next: G4 coverage",
         "since": "",
         "detail": ""
       },
       {
         "name": "BitGo",
         "kind": "running",
-        "what": "Idle · last stage finished 10:17am (static scan) · next: G0 quick-win",
-        "since": "",
-        "detail": ""
+        "what": "Working",
+        "since": "2026-11-23T10:25:05.100000+11:00",
+        "detail": "next: G0 quick-win"
       },
       {
         "name": "Scout",

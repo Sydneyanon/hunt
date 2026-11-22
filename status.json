@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T07:55:26.962849+11:00",
-  "updated_label": "Mon 23 Nov 2026, 7:55am AEDT",
+  "updated_at": "2026-11-23T07:59:20.639082+11:00",
+  "updated_label": "Mon 23 Nov 2026, 7:59am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T07:54:50+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:54am AEDT"
+      "updated_at": "2026-11-23T07:59:03+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:59am AEDT"
     },
     {
       "id": "metric",
@@ -318,13 +318,13 @@
       "platform": "Immunefi",
       "status": "QUEUED · SCOUT DONE",
       "kind": "queued",
-      "stage": "Scout",
-      "step": "Scout complete",
-      "pct": 20,
+      "stage": "Proof gate",
+      "step": "Invariant / fuzz campaigns",
+      "pct": 25,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:51:26+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:51am AEDT"
+      "updated_at": "2026-11-23T07:59:14+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:59am AEDT"
     },
     {
       "id": "stakedhype",

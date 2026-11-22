@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T07:30:12.302752+11:00",
-  "updated_label": "Mon 23 Nov 2026, 7:30am AEDT",
+  "updated_at": "2026-11-23T07:35:01.218749+11:00",
+  "updated_label": "Mon 23 Nov 2026, 7:35am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -277,12 +277,12 @@
       "kind": "running",
       "stage": "Proof / mutation",
       "step": "Pass 3 · Gambit mutation running",
-      "pct": 82,
+      "pct": 70,
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T07:28:52+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:28am AEDT"
+      "updated_at": "2026-11-23T07:33:14+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:33am AEDT"
     },
     {
       "id": "metric",
@@ -309,8 +309,8 @@
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:29:51+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:29am AEDT"
+      "updated_at": "2026-11-23T07:34:39+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:34am AEDT"
     },
     {
       "id": "alchemix",
@@ -337,8 +337,8 @@
       "pct": 70,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:28:59+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:28am AEDT"
+      "updated_at": "2026-11-23T07:32:03+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:32am AEDT"
     }
   ],
   "stats": [

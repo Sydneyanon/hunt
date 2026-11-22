@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T09:45:01.568119+11:00",
-  "updated_label": "Mon 23 Nov 2026, 9:45am AEDT",
+  "updated_at": "2026-11-23T09:48:37.176617+11:00",
+  "updated_label": "Mon 23 Nov 2026, 9:48am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -43,7 +43,7 @@
       "plat": 1,
       "da": -0.28,
       "dr": 0.62,
-      "tag": "JUDGED · 0 SURVIVORS · MORE TESTING",
+      "tag": "JUDGED · MORE TESTING",
       "kind": "running"
     },
     {
@@ -51,7 +51,7 @@
       "plat": 0,
       "da": -0.2,
       "dr": 0.72,
-      "tag": "JUDGED · 0 SURVIVORS · MORE TESTING",
+      "tag": "JUDGED · MORE TESTING",
       "kind": "running"
     },
     {
@@ -134,7 +134,7 @@
       "platform": "Immunefi",
       "chain": "Solidity · amm",
       "pays": "C $50k–$500k · H $10k–$50k · M $2.5k–$10k",
-      "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
+      "status": "JUDGED · MORE TESTING",
       "kind": "running",
       "end": null,
       "end_txt": "",
@@ -150,7 +150,7 @@
       "platform": "Sherlock BB #148",
       "chain": "Solidity · stablecoin",
       "pays": "C $5k–$50k · H $1k–$10k · M $500–$2.5k",
-      "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
+      "status": "JUDGED · MORE TESTING",
       "kind": "running",
       "end": null,
       "end_txt": "",
@@ -278,39 +278,38 @@
       "stage": "Proof / mutation",
       "step": "Pass 3 · Gambit mutation running",
       "pct": 70,
-      "survivors": null,
-      "survivors_prior": 0,
       "pass_label": "Pass 3",
       "updated_at": "2026-11-23T08:42:33+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:42am AEDT"
+      "updated_label": "Mon 23 Nov 2026, 8:42am AEDT",
+      "activity": "pass 3 · mutation testing"
     },
     {
       "id": "metric",
       "name": "Metric",
       "platform": "Immunefi",
-      "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
+      "status": "JUDGED · MORE TESTING",
       "kind": "running",
       "stage": "Follow-up testing",
       "step": "Gambit mutation running",
       "pct": 88,
-      "survivors": 0,
       "pass_label": "",
       "updated_at": "2026-11-23T08:22:47+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:22am AEDT"
+      "updated_label": "Mon 23 Nov 2026, 8:22am AEDT",
+      "activity": "mutation testing"
     },
     {
       "id": "beanstalk",
       "name": "Beanstalk",
       "platform": "Sherlock",
-      "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
+      "status": "JUDGED · MORE TESTING",
       "kind": "running",
       "stage": "Follow-up testing",
       "step": "Gambit mutation running",
       "pct": 88,
-      "survivors": 0,
       "pass_label": "",
       "updated_at": "2026-11-23T07:39:08+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:39am AEDT"
+      "updated_label": "Mon 23 Nov 2026, 7:39am AEDT",
+      "activity": "mutation testing"
     },
     {
       "id": "alchemix",
@@ -321,10 +320,10 @@
       "stage": "Proof gate",
       "step": "Invariant / fuzz campaigns",
       "pct": 25,
-      "survivors": null,
       "pass_label": "",
       "updated_at": "2026-11-23T08:46:32+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:46am AEDT"
+      "updated_label": "Mon 23 Nov 2026, 8:46am AEDT",
+      "activity": "max-depth fuzz"
     },
     {
       "id": "stakedhype",
@@ -335,10 +334,10 @@
       "stage": "Coverage",
       "step": "Gambit mutation running",
       "pct": 88,
-      "survivors": null,
       "pass_label": "",
       "updated_at": "2026-11-23T09:36:45+11:00",
-      "updated_label": "Mon 23 Nov 2026, 9:36am AEDT"
+      "updated_label": "Mon 23 Nov 2026, 9:36am AEDT",
+      "activity": "mutation testing"
     }
   ],
   "stats": [

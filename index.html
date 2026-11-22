@@ -1,579 +1,289 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color:#03050b;">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta http-equiv="refresh" content="120" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>BOUNTY HUNT // CONTROL ROOM</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #03050b;
-      --panel: #0a1020;
-      --edge: rgba(90,200,255,0.16);
-      --cy: #22d3ee;
-      --am: #ffb020;
-      --mg: #ff3d81;
-      --lm: #5cff9d;
-      --vi: #a78bfa;
-      --tx: #d8ecff;
-      --dim: #7f93ad;
-    }
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0; padding: 0; background: var(--bg); color: var(--tx);
-      font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
-      height: 100%;
-    }
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(ellipse at 50% 30%, rgba(24,52,110,0.38), transparent 60%),
-        var(--bg);
-    }
-    .wrap {
-      max-width: 1920px;
-      margin: 0 auto;
-      padding: clamp(12px, 1.6vw, 28px);
-    }
-    header {
-      display: flex; flex-wrap: wrap; align-items: flex-start;
-      justify-content: space-between; gap: 12px; margin-bottom: 14px;
-    }
-    .title {
-      color: var(--cy); font-weight: 600; letter-spacing: 0.16em;
-      font-size: clamp(22px, 2.6vw, 42px);
-      text-shadow: 0 0 18px rgba(34,211,238,0.45);
-      animation: glow 2.4s ease-in-out infinite;
-    }
-    @keyframes glow {
-      0%,100% { text-shadow: 0 0 8px rgba(34,211,238,0.35); }
-      50% { text-shadow: 0 0 22px rgba(34,211,238,0.8); }
-    }
-    .sub { color: var(--dim); font-size: clamp(13px, 1.15vw, 18px); margin-top: 4px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
-    .chip {
-      border: 1px solid rgba(34,211,238,0.45);
-      border-radius: 999px;
-      padding: 6px 14px;
-      font-size: clamp(11px, 1vw, 15px);
-      letter-spacing: 0.08em;
-      background: rgba(34,211,238,0.08);
-      color: var(--cy);
-      white-space: nowrap;
-    }
-    .chip.ok { color: var(--lm); border-color: rgba(92,255,157,0.5); background: rgba(92,255,157,0.08); }
-    .chip.running { color: var(--am); border-color: rgba(255,176,32,0.5); background: rgba(255,176,32,0.08); }
-    .chip.queued { color: var(--vi); border-color: rgba(167,139,250,0.5); background: rgba(167,139,250,0.08); }
-    .chip.waiting { color: var(--cy); }
-    .chip.flagged { color: var(--mg); border-color: rgba(255,61,129,0.5); background: rgba(255,61,129,0.08); }
-    .chip.done { color: var(--lm); border-color: rgba(92,255,157,0.5); background: rgba(92,255,157,0.08); }
-    .chip.skipped, .chip.seen { color: var(--dim); border-color: rgba(127,147,173,0.4); background: rgba(127,147,173,0.06); }
-    .blink { animation: blink 1.2s infinite; }
-    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="600">
+<meta name="viewport" content="width=1920">
+<title>Bounty Hunt Control Room</title>
+<style type="text/css">
+html, body { margin:0; padding:0; background-color:#03050b; color:#d8ecff; }
+body { font-family:"DejaVu Sans Mono","Lucida Console",Consolas,"Courier New",monospace; font-size:22px; overflow-x:hidden; }
+#root { width:1880px; padding:20px; background-color:#03050b; }
+table { border-collapse:collapse; border-spacing:0; }
+.full { width:100%; }
+.fixed { table-layout:fixed; }
+.title { white-space:nowrap; color:#22d3ee; font-size:40px; font-weight:bold; letter-spacing:6px; text-shadow:0 0 14px #0e7490; }
+.sub { color:#9fb3cc; font-size:22px; margin-top:6px; }
+.chip { display:inline-block; margin:0 0 8px 10px; padding:6px 16px; border:2px solid #22d3ee; color:#22d3ee; background-color:#06202a; border-radius:30px; font-size:20px; letter-spacing:2px; white-space:nowrap; }
+.k-running { color:#ffb020; border-color:#ffb020; background-color:#2a1e05; }
+.k-ok, .k-done { color:#5cff9d; border-color:#5cff9d; background-color:#062a16; }
+.k-queued { color:#a78bfa; border-color:#a78bfa; background-color:#1a1430; }
+.k-waiting { color:#22d3ee; border-color:#22d3ee; background-color:#06202a; }
+.k-flagged { color:#ff3d81; border-color:#ff3d81; background-color:#2a0614; }
+.k-skipped, .k-seen { color:#9fb3cc; border-color:#55657a; background-color:#111824; }
+.t-running { color:#ffb020; } .t-ok, .t-done { color:#5cff9d; } .t-queued { color:#a78bfa; }
+.t-waiting { color:#22d3ee; } .t-flagged { color:#ff3d81; } .t-skipped, .t-seen { color:#9fb3cc; }
+.panel { background-color:#0a1020; border:2px solid #16304a; border-radius:14px; padding:10px 18px; margin-top:12px; }
+.h2 { color:#22d3ee; font-size:24px; letter-spacing:5px; margin:0 0 10px 0; }
+.dot { display:inline-block; width:16px; height:16px; border-radius:8px; background-color:#ffb020; margin-right:12px; vertical-align:middle;
+  -webkit-animation:blink 1s infinite; animation:blink 1s infinite; }
 
-    .mid {
-      display: grid;
-      grid-template-columns: minmax(320px, 42%) 1fr;
-      gap: 14px;
-    }
-    @media (max-width: 900px) { .mid { grid-template-columns: 1fr; } }
+/* alert */
+#alert { display:none; margin-top:12px; padding:12px 20px; border:3px solid #ff3d81; border-radius:14px; background-color:#2a0614; text-align:center;
+  -webkit-animation:pulse 1.6s ease-in-out infinite; animation:pulse 1.6s ease-in-out infinite; }
+#alert .big { color:#ff3d81; font-size:40px; font-weight:bold; letter-spacing:6px; }
+#alert .cnt { color:#ffffff; font-size:34px; letter-spacing:3px; margin-left:24px; }
+#alert .siren { display:inline-block; width:26px; height:26px; border-radius:13px; background-color:#ff3d81; margin:0 22px; vertical-align:middle;
+  -webkit-animation:blink 0.8s infinite; animation:blink 0.8s infinite; }
 
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--edge);
-      border-radius: 14px;
-      padding: 14px 16px;
-      min-width: 0;
-    }
-    .radar-wrap { padding: 0; overflow: hidden; }
-    canvas { display: block; width: 100%; height: auto; }
+/* ticker */
+.ticker { overflow:hidden; white-space:nowrap; border-top:2px solid #16304a; border-bottom:2px solid #16304a; padding:6px 0; margin-bottom:10px; }
+.track { display:inline-block; white-space:nowrap; -webkit-animation:marquee 40s linear infinite; animation:marquee 40s linear infinite; }
+.track span { display:inline-block; padding:0 40px; font-size:24px; }
+.track b { color:#ffb020; }
 
-    .h2 {
-      color: var(--cy); letter-spacing: 0.16em;
-      font-size: clamp(12px, 1.05vw, 16px);
-      margin: 0 0 10px;
-    }
-    .hunt {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 6px 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--edge);
-    }
-    .hunt:last-child { border-bottom: 0; }
-    .hunt .nm { font-size: clamp(16px, 1.5vw, 24px); color: var(--tx); }
-    .hunt .meta { color: var(--dim); font-size: clamp(12px, 1.05vw, 16px); }
-    .hunt .pct { font-size: clamp(22px, 2vw, 32px); color: var(--am); text-align: right; }
-    .bar { height: 8px; border-radius: 4px; background: rgba(34,211,238,0.12); overflow: hidden; grid-column: 1 / -1; }
-    .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--am), var(--cy)); width: 0; transition: width .6s ease; }
-    .surv { font-size: clamp(12px, 1.05vw, 16px); color: var(--lm); text-align: right; }
+/* run cards */
+.runcell { padding:0 6px; vertical-align:top; }
+.runcard { position:relative; overflow:hidden; height:84px; border:2px solid #ffb020; border-radius:12px; background-color:#1a1406; padding:12px 14px;
+  -webkit-animation:glow 2.4s ease-in-out infinite; animation:glow 2.4s ease-in-out infinite; }
+.runcard.scout { border-color:#22d3ee; background-color:#061a22; }
+.runcard .rn { font-size:25px; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.runcard .ra { font-size:19px; color:#ffb020; margin-top:6px; }
+.runcard.scout .ra { color:#22d3ee; }
+.runcard .scan { position:absolute; left:0; bottom:0; width:40%; height:5px; background-color:#ffb020;
+  -webkit-animation:scan 2s linear infinite; animation:scan 2s linear infinite; }
+.runcard.scout .scan { background-color:#22d3ee; }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin: 14px 0;
-    }
-    @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, 1fr); } }
-    .stat .v {
-      font-size: clamp(22px, 2.2vw, 36px);
-      line-height: 1.1;
-      text-shadow: 0 0 12px rgba(34,211,238,0.4);
-    }
-    .stat .l { color: var(--dim); font-size: clamp(10px, 0.9vw, 13px); letter-spacing: 0.1em; margin-top: 4px; }
+/* stats */
+.statcell { padding:0 6px; }
+.stat { background-color:#0a1020; border:2px solid #16304a; border-radius:14px; padding:8px 18px; }
+.stat .v { font-size:34px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.stat .l { color:#9fb3cc; font-size:18px; letter-spacing:3px; margin-top:4px; }
 
-    .board { margin-top: 8px; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 12px;
-    }
-    .card { border-color: rgba(90,200,255,0.22); }
-    .card.skipped, .card.seen { opacity: 0.72; }
-    .card .top { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
-    .card .nm { font-size: clamp(18px, 1.7vw, 26px); }
-    .card .plat { color: var(--dim); font-size: clamp(12px, 1.05vw, 16px); }
-    .card .pays { margin: 8px 0; font-size: clamp(13px, 1.15vw, 18px); }
-    .cd-lab { color: var(--dim); letter-spacing: 0.1em; font-size: clamp(10px, 0.9vw, 13px); }
-    .cd { display: flex; gap: 8px; margin: 6px 0 8px; }
-    .cd .box {
-      text-align: center; min-width: 3.2ch;
-      font-size: clamp(24px, 2.4vw, 40px);
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--edge);
-      border-radius: 8px;
-      padding: 2px 8px;
-    }
-    .cd .u { color: var(--dim); font-size: 11px; letter-spacing: 0.08em; }
-    .end { color: var(--dim); font-size: clamp(11px, 1vw, 14px); }
-    .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
-    a { color: var(--cy); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+/* tables */
+.grid th { text-align:left; color:#9fb3cc; font-weight:normal; font-size:18px; letter-spacing:3px; padding:6px 10px; border-bottom:2px solid #16304a; }
+.grid td { padding:9px 10px; font-size:22px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; border-bottom:1px solid #12233a; vertical-align:middle; }
+.grid td.nm { font-size:26px; color:#ffffff; }
+.grid .chip { margin:0; font-size:17px; padding:4px 12px; }
+.grid td.wrap { white-space:normal; }
+.big td { padding:13px 10px; font-size:23px; }
+.big td.nm { font-size:28px; }
+.tight td { padding:5px 10px; font-size:21px; }
+.tight td.nm { font-size:24px; }
+.bar { width:100%; height:16px; background-color:#0f2433; border-radius:8px; overflow:hidden; }
+.bar i { display:block; height:16px; background-color:#ffb020; border-radius:8px; }
+.pct { font-size:24px; color:#ffb020; }
+.cd { font-size:24px; letter-spacing:1px; }
+.pg { color:#9fb3cc; font-size:20px; letter-spacing:3px; float:right; }
+#foot { color:#9fb3cc; text-align:center; font-size:19px; letter-spacing:3px; margin-top:10px; }
 
-    table { width: 100%; border-collapse: collapse; font-size: clamp(12px, 1.05vw, 16px); }
-    th { text-align: left; color: var(--dim); font-weight: 400; letter-spacing: 0.1em; padding: 8px 10px; border-bottom: 1px solid var(--edge); }
-    td { padding: 10px; vertical-align: top; }
-    tr + tr td { border-top: 1px solid rgba(90,200,255,0.08); }
-    .table-wrap { overflow-x: auto; padding: 0; }
-
-    .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 14px; }
-    .rule { border-left: 3px solid var(--cy); }
-    .rule .k { letter-spacing: 0.14em; font-size: clamp(11px, 1vw, 14px); }
-    .rule .v { margin-top: 4px; font-size: clamp(13px, 1.1vw, 16px); }
-    footer {
-      text-align: center; color: var(--dim);
-      font-size: clamp(11px, 0.95vw, 14px);
-      letter-spacing: 0.08em; margin-top: 14px;
-    }
-    .kind-running { color: var(--am); }
-    .kind-waiting { color: var(--cy); }
-    .kind-queued { color: var(--vi); }
-    .kind-flagged { color: var(--mg); }
-    .kind-done, .kind-ok { color: var(--lm); }
-    .kind-skipped, .kind-seen { color: var(--tx); }
-
-    /* ----- finding alert (count + tier only) ----- */
-    .alert {
-      display: none; align-items: center; justify-content: center; flex-wrap: wrap;
-      gap: 10px 18px; margin: 0 0 14px; padding: 14px 18px; border-radius: 14px;
-      border: 2px solid var(--mg); background: rgba(255,61,129,0.10); text-align: center;
-      animation: alertpulse 1.6s ease-in-out infinite;
-    }
-    .alert.on { display: flex; }
-    .alert .big { color: var(--mg); letter-spacing: 0.16em; font-weight: 600; font-size: clamp(18px, 2.2vw, 36px); }
-    .alert .cnt { color: var(--tx); font-size: clamp(16px, 1.8vw, 28px); letter-spacing: 0.08em; }
-    .alert .siren { width: clamp(14px, 1.4vw, 22px); height: clamp(14px, 1.4vw, 22px); border-radius: 50%; background: var(--mg); box-shadow: 0 0 18px var(--mg); animation: blink 0.8s infinite; }
-    @keyframes alertpulse {
-      0%,100% { box-shadow: 0 0 10px rgba(255,61,129,0.35), inset 0 0 10px rgba(255,61,129,0.15); }
-      50% { box-shadow: 0 0 36px rgba(255,61,129,0.85), inset 0 0 22px rgba(255,61,129,0.3); }
-    }
-
-    /* ----- now running ----- */
-    .now { margin: 0 0 14px; padding: 12px 14px; }
-    .now .h2 { display: flex; align-items: center; gap: 10px; }
-    .live-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--am); box-shadow: 0 0 10px var(--am); animation: blink 1s infinite; }
-    .ticker { overflow: hidden; border-top: 1px solid var(--edge); border-bottom: 1px solid var(--edge); margin: 4px 0 12px; padding: 6px 0; }
-    .ticker .track { display: inline-flex; white-space: nowrap; animation: marquee 32s linear infinite; }
-    .ticker .item { padding: 0 28px; font-size: clamp(13px, 1.25vw, 20px); color: var(--tx); }
-    .ticker .item b { color: var(--am); font-weight: 600; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .runcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
-    .runcard {
-      position: relative; overflow: hidden; border: 1px solid rgba(255,176,32,0.45); border-radius: 12px;
-      padding: 10px 12px; background: rgba(255,176,32,0.05); animation: cardpulse 2.4s ease-in-out infinite;
-    }
-    .runcard.scout { border-color: rgba(34,211,238,0.45); background: rgba(34,211,238,0.05); }
-    .runcard .rn { font-size: clamp(15px, 1.4vw, 22px); color: var(--tx); }
-    .runcard .ra { font-size: clamp(12px, 1.05vw, 16px); color: var(--am); margin-top: 3px; letter-spacing: 0.04em; }
-    .runcard.scout .ra { color: var(--cy); }
-    .runcard .scan { position: absolute; left: 0; bottom: 0; height: 3px; width: 35%; background: linear-gradient(90deg, transparent, var(--am), transparent); animation: scan 1.9s linear infinite; }
-    .runcard.scout .scan { background: linear-gradient(90deg, transparent, var(--cy), transparent); }
-    .eq { position: absolute; right: 12px; top: 12px; display: flex; gap: 3px; align-items: flex-end; height: 18px; }
-    .eq i { width: 4px; background: var(--am); border-radius: 1px; animation: eq 0.9s ease-in-out infinite; }
-    .runcard.scout .eq i { background: var(--cy); }
-    .eq i:nth-child(2) { animation-delay: .15s; } .eq i:nth-child(3) { animation-delay: .3s; } .eq i:nth-child(4) { animation-delay: .45s; }
-    @keyframes eq { 0%,100% { height: 4px; } 50% { height: 18px; } }
-    @keyframes scan { from { transform: translateX(-100%); } to { transform: translateX(300%); } }
-    @keyframes cardpulse { 0%,100% { box-shadow: 0 0 0 rgba(255,176,32,0); } 50% { box-shadow: 0 0 16px rgba(255,176,32,0.28); } }
-    @media (prefers-reduced-motion: reduce) { .ticker .track, .runcard, .alert { animation: none; } }
-  </style>
+@-webkit-keyframes marquee { from { -webkit-transform:translate3d(0,0,0); } to { -webkit-transform:translate3d(-50%,0,0); } }
+@keyframes marquee { from { transform:translate3d(0,0,0); } to { transform:translate3d(-50%,0,0); } }
+@-webkit-keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.25; } }
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.25; } }
+@-webkit-keyframes pulse { 0%,100% { box-shadow:0 0 10px #ff3d81; background-color:#2a0614; } 50% { box-shadow:0 0 44px #ff3d81; background-color:#45091f; } }
+@keyframes pulse { 0%,100% { box-shadow:0 0 10px #ff3d81; background-color:#2a0614; } 50% { box-shadow:0 0 44px #ff3d81; background-color:#45091f; } }
+@-webkit-keyframes glow { 0%,100% { box-shadow:0 0 0 #000000; } 50% { box-shadow:0 0 18px #7a5308; } }
+@keyframes glow { 0%,100% { box-shadow:0 0 0 #000000; } 50% { box-shadow:0 0 18px #7a5308; } }
+@-webkit-keyframes scan { from { -webkit-transform:translate3d(-100%,0,0); } to { -webkit-transform:translate3d(260%,0,0); } }
+@keyframes scan { from { transform:translate3d(-100%,0,0); } to { transform:translate3d(260%,0,0); } }
+</style>
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <div>
-        <div class="title">BOUNTY HUNT // CONTROL ROOM</div>
-        <div class="sub" id="clock">—</div>
-      </div>
-      <div class="chips" id="chips"></div>
-    </header>
+<body style="background-color:#03050b;color:#d8ecff;">
+<div id="root">
+  <table class="full"><tr>
+    <td style="vertical-align:top;">
+      <div class="title">BOUNTY HUNT // CONTROL ROOM</div>
+      <div class="sub" id="clock">&nbsp;</div>
+    </td>
+    <td style="vertical-align:top;text-align:right;width:860px;" id="chips"></td>
+  </tr></table>
 
-    <div class="alert" id="alert" role="status" aria-live="polite">
-      <span class="siren"></span>
-      <span class="big">POTENTIAL FINDING UNDER REVIEW</span>
-      <span class="cnt" id="alert-cnt"></span>
-      <span class="siren"></span>
-    </div>
-
-    <div class="panel now" id="now">
-      <div class="h2"><span class="live-dot"></span>NOW RUNNING</div>
-      <div class="ticker"><div class="track" id="ticker"></div></div>
-      <div class="runcards" id="runcards"></div>
-    </div>
-
-    <div class="mid">
-      <div class="panel radar-wrap">
-        <canvas id="radar" role="img" aria-label="Scout radar over bounty platforms"></canvas>
-      </div>
-      <div class="panel">
-        <div class="h2">HUNT PROGRESS</div>
-        <div id="hunts"></div>
-      </div>
-    </div>
-
-    <div class="stats" id="stats"></div>
-
-    <div class="board">
-      <div class="h2">CONTEST BOARD · LIVE COUNTDOWNS (AEDT)</div>
-      <div class="cards" id="cards"></div>
-    </div>
-
-    <div class="h2" id="sweep-h" style="margin-top:18px">SCOUT'S LATEST SWEEP</div>
-    <div class="panel table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Find</th><th>Platform</th><th>Dates</th><th>Pool</th><th>Code</th><th>Entry</th><th>Pipeline</th>
-          </tr>
-        </thead>
-        <tbody id="sweep"></tbody>
-      </table>
-    </div>
-
-    <div class="rules" id="rules"></div>
-    <footer id="foot">STATUS ONLY · AUTO-REFRESH ~60s · SYDNEY TIME</footer>
+  <div id="alert">
+    <span class="siren"></span><span class="big">POTENTIAL FINDING UNDER REVIEW</span><span class="cnt" id="alert-cnt"></span><span class="siren"></span>
   </div>
-  <script>
-  (function () {
-    var BG = "#03050b", CY = "#22d3ee", AM = "#ffb020", MG = "#ff3d81",
-        LM = "#5cff9d", VI = "#a78bfa", TX = "#d8ecff", DIM = "#7f93ad";
-    var KINDCOL = { running: AM, waiting: CY, queued: VI, flagged: MG, done: LM, ok: LM, skipped: DIM, seen: DIM };
-    var data = { platforms: ["Sherlock","Immunefi","Cantina","Code4rena","CodeHawks","Guardian","HackenProof","X"], blips: [], contests: [], hunts: [], sweep: { rows: [] }, chips: [], stats: [], rules: [], scout: {} };
-    var clockFmt = new Intl.DateTimeFormat("en-AU", {
-      timeZone: "Australia/Sydney", weekday: "short", day: "numeric", month: "short",
-      hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false
-    });
 
-    function pad(n) { return n < 10 ? "0" + n : String(n); }
-    function split(ms) {
-      var s = Math.max(0, Math.floor(ms / 1000));
-      return [pad(Math.floor(s / 86400)), pad(Math.floor((s % 86400) / 3600)), pad(Math.floor((s % 3600) / 60)), pad(s % 60)];
-    }
-    function rgba(hex, a) {
-      var n = parseInt(hex.slice(1), 16);
-      return "rgba(" + ((n >> 16) & 255) + "," + ((n >> 8) & 255) + "," + (n & 255) + "," + a + ")";
-    }
-    function esc(s) {
-      return String(s == null ? "" : s)
-        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-    }
-    function chip(txt, kind, blink) {
-      return '<span class="chip ' + esc(kind || "") + (blink ? " blink" : "") + '">' + esc(txt) + "</span>";
-    }
-    function colOf(kind) { return KINDCOL[kind] || CY; }
+  <div class="panel" id="now">
+    <div class="h2"><span class="dot"></span>NOW RUNNING</div>
+    <div class="ticker"><div class="track" id="ticker"></div></div>
+    <div id="runcards"></div>
+  </div>
 
-    function renderStatic() {
-      var al = data.alert || {};
-      var alEl = document.getElementById("alert");
-      if (al.active && al.count > 0) {
-        alEl.className = "alert on";
-        document.getElementById("alert-cnt").textContent = al.label || (al.count + " under review");
-      } else {
-        alEl.className = "alert";
-        document.getElementById("alert-cnt").textContent = "";
+  <table class="full fixed" style="margin-top:12px;"><tr id="stats"></tr></table>
+
+  <div class="panel" id="pg-hunts">
+    <div class="h2">HUNT PROGRESS <span class="pg" id="pg1"></span></div>
+    <table class="full fixed grid big">
+      <colgroup><col style="width:18%"><col style="width:16%"><col style="width:16%"><col style="width:20%"><col style="width:13%"><col style="width:17%"></colgroup>
+      <thead><tr><th>HUNT</th><th>PLATFORM</th><th>STAGE</th><th>ACTIVITY</th><th>PROGRESS</th><th>STATUS</th></tr></thead>
+      <tbody id="hunts"></tbody>
+    </table>
+  </div>
+
+  <div class="panel" id="pg-contests" style="display:none;">
+    <div class="h2">CONTEST BOARD &middot; COUNTDOWNS (AEDT) <span class="pg" id="pg2"></span></div>
+    <table class="full fixed grid tight">
+      <colgroup><col style="width:18%"><col style="width:15%"><col style="width:28%"><col style="width:17%"><col style="width:22%"></colgroup>
+      <thead><tr><th>CONTEST</th><th>PLATFORM</th><th>PAYS</th><th>TIME LEFT</th><th>STATUS</th></tr></thead>
+      <tbody id="contests"></tbody>
+    </table>
+  </div>
+
+  <div id="foot">&nbsp;</div>
+</div>
+<script type="text/javascript">
+(function () {
+  var DATA = {"updated_at": "2026-11-23T09:48:37.176617+11:00", "updated_label": "Mon 23 Nov 2026, 9:48am AEDT", "timezone": "Australia/Sydney", "scout": {"on_duty": true, "hours": "07:00\u201323:00 AEDT", "last_sweep_at": "2026-11-23T06:30:00+11:00", "last_sweep_label": "Mon 23 Nov 2026 06:30 AEDT", "new_count": 1, "platforms_scanned": 20, "next_to_start": "BitGo Bug Bounty"}, "platforms": ["Sherlock", "Immunefi", "Cantina", "Code4rena", "CodeHawks", "Guardian", "HackenProof", "X"], "blips": [{"name": "Onlend", "plat": 0, "da": 0.34, "dr": 0.5, "tag": "AWAITING ACCEPTANCE", "kind": "waiting"}, {"name": "RAAC Core", "plat": 5, "da": -0.32, "dr": 0.5, "tag": "PASS 3 RUNNING", "kind": "running"}, {"name": "Metric", "plat": 1, "da": -0.28, "dr": 0.62, "tag": "JUDGED \u00b7 MORE TESTING", "kind": "running"}, {"name": "Beanstalk", "plat": 0, "da": -0.2, "dr": 0.72, "tag": "JUDGED \u00b7 MORE TESTING", "kind": "running"}, {"name": "StakedHypeEscrow", "plat": 5, "da": 0.05, "dr": 0.82, "tag": "HUNTING", "kind": "running"}, {"name": "Alchemix v3", "plat": 1, "da": 0.4, "dr": 0.78, "tag": "QUEUED \u00b7 SCOUT DONE", "kind": "queued"}, {"name": "SpecSiege EBSI", "plat": 2, "da": 0.15, "dr": 0.55, "tag": "FLAGGED \u00b7 NEEDS TSK", "kind": "flagged"}, {"name": "Base Everest", "plat": 1, "da": 0.22, "dr": 0.42, "tag": "SKIPPED", "kind": "skipped"}, {"name": "Templar Precept", "plat": 5, "da": 0.3, "dr": 0.68, "tag": "SKIPPED", "kind": "skipped"}], "contests": [{"id": "onlend", "name": "Onlend", "platform": "Sherlock", "chain": "Solidity \u00b7 lending", "pays": "$34.2k\u2013$41.8k pool (listing $50k)", "status": "AWAITING ACCEPTANCE", "kind": "waiting", "end": "2026-12-08T01:00:00+11:00", "end_txt": "Tue 8 Dec, 1:00am AEDT", "open": "2026-11-24T01:00:00+11:00", "open_txt": "Tue 24 Nov, 1:00am AEDT", "standing": false, "url": "https://audit-engine.sherlock.xyz/", "nsloc": null}, {"id": "raac", "name": "RAAC Core", "platform": "Guardian Defender", "chain": "Solidity \u00b7 lending", "pays": "Critical only \u00b7 $100k seasonal split", "status": "PASS 3 RUNNING", "kind": "running", "end": "2026-12-10T02:00:00+11:00", "end_txt": "Thu 10 Dec, 2:00am AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://defender.guardianaudits.com/contests/01a1a379-b7c1-72d9-8075-5318b386f2e4", "nsloc": 6452}, {"id": "metric", "name": "Metric", "platform": "Immunefi", "chain": "Solidity \u00b7 amm", "pays": "C $50k\u2013$500k \u00b7 H $10k\u2013$50k \u00b7 M $2.5k\u2013$10k", "status": "JUDGED \u00b7 MORE TESTING", "kind": "running", "end": null, "end_txt": "", "open": null, "open_txt": "", "standing": true, "url": "https://immunefi.com/bug-bounty/metric/information/", "nsloc": 9000}, {"id": "beanstalk", "name": "Beanstalk", "platform": "Sherlock BB #148", "chain": "Solidity \u00b7 stablecoin", "pays": "C $5k\u2013$50k \u00b7 H $1k\u2013$10k \u00b7 M $500\u2013$2.5k", "status": "JUDGED \u00b7 MORE TESTING", "kind": "running", "end": null, "end_txt": "", "open": null, "open_txt": "", "standing": true, "url": "https://audits.sherlock.xyz/bug-bounties/148", "nsloc": 23800}, {"id": "stakedhype", "name": "StakedHypeEscrow", "platform": "Guardian Defender", "chain": "Solidity \u00b7 lst", "pays": "Critical only \u00b7 $100k seasonal split", "status": "HUNTING", "kind": "running", "end": "2026-12-16T09:59:59+11:00", "end_txt": "Wed 16 Dec, 9:59am AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://defender.guardianaudits.com/contests/01a0fc3b-0a53-72f6-9e8c-a55d073cc8a9", "nsloc": 432}, {"id": "alchemix", "name": "Alchemix v3", "platform": "Immunefi", "chain": "Solidity \u00b7 lending", "pays": "C $20k\u2013$150k \u00b7 H $5k\u2013$20k \u00b7 M up to $3k", "status": "QUEUED \u00b7 SCOUT DONE", "kind": "queued", "end": null, "end_txt": "", "open": null, "open_txt": "", "standing": true, "url": "https://bugbounty.fyi/programs/alchemix", "nsloc": 7109}, {"id": "specsiege", "name": "SpecSiege EBSI", "platform": "SpecSiege", "chain": "Solidity \u00b7 registry", "pays": "\u20ac5k pool (~$5.5k) \u00b7 apply, up to 50 picked", "status": "FLAGGED \u00b7 NEEDS TSK", "kind": "flagged", "end": "2026-12-01T23:59:59+11:00", "end_txt": "Tue 1 Dec AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://specsiege.codespect.net/", "nsloc": null}, {"id": "everest", "name": "Base Everest", "platform": "Immunefi", "chain": "Solidity + Go \u00b7 bridge", "pays": "$250k only if a Critical", "status": "SKIPPED", "kind": "skipped", "end": "2026-12-01T23:00:00+11:00", "end_txt": "Tue 1 Dec, 11:00pm AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://immunefi.com/audit-competition/audit-comp-base-everest/information/", "nsloc": 135000}, {"id": "templar", "name": "Templar Precept", "platform": "Guardian Defender", "chain": "Rust \u00b7 lending", "pays": "Critical only \u00b7 $100k seasonal split", "status": "SKIPPED", "kind": "skipped", "end": "2026-11-26T03:30:00+11:00", "end_txt": "Thu 26 Nov, 3:30am AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://defender.guardianaudits.com/contests/01a163f6-7e22-76cf-af81-4b85feb9000e", "nsloc": null}], "sweep": {"at": "2026-11-23T06:30:00+11:00", "at_label": "Mon 23 Nov 2026 06:30 AEDT", "new_count": 1, "rows": [{"find": "StakedHypeEscrow Bounty Contest (Valantis stHYPE)", "plat": "Guardian Defender", "dates": "16 Nov 10:00 \u2192 16 Dec 09:59", "pool": "Nov\u2013Dec season pot $100k shared with RAAC; contest cap unknown; critical-only", "code": "src/StakedHypeEscrow.sol, ~432 nSLOC, Solidity 0.8.28, HyperEVM; public GitHub @0f24501", "entry": "Open; KYC + Defender account to submit/payout; no fee", "status": "HUNTING", "url": "https://defender.guardianaudits.com/contests/01a0fc3b-0a53-72f6-9e8c-a55d073cc8a9"}, {"find": "SpecSiege EBSI Licence Registry", "plat": "SpecSiege", "dates": "Registration now open", "pool": "\u20ac5k pool (~$5.5k)", "code": "After acceptance", "entry": "Application required", "status": "FLAGGED \u00b7 NEEDS TSK", "url": "https://specsiege.codespect.net"}]}, "hunts": [{"id": "raac", "name": "RAAC Core", "platform": "Guardian Defender", "status": "PASS 3 RUNNING", "kind": "running", "stage": "Proof / mutation", "step": "Pass 3 \u00b7 Gambit mutation running", "pct": 70, "pass_label": "Pass 3", "updated_at": "2026-11-23T08:42:33+11:00", "updated_label": "Mon 23 Nov 2026, 8:42am AEDT", "activity": "pass 3 \u00b7 mutation testing"}, {"id": "metric", "name": "Metric", "platform": "Immunefi", "status": "JUDGED \u00b7 MORE TESTING", "kind": "running", "stage": "Follow-up testing", "step": "Gambit mutation running", "pct": 88, "pass_label": "", "updated_at": "2026-11-23T08:22:47+11:00", "updated_label": "Mon 23 Nov 2026, 8:22am AEDT", "activity": "mutation testing"}, {"id": "beanstalk", "name": "Beanstalk", "platform": "Sherlock", "status": "JUDGED \u00b7 MORE TESTING", "kind": "running", "stage": "Follow-up testing", "step": "Gambit mutation running", "pct": 88, "pass_label": "", "updated_at": "2026-11-23T07:39:08+11:00", "updated_label": "Mon 23 Nov 2026, 7:39am AEDT", "activity": "mutation testing"}, {"id": "alchemix", "name": "Alchemix v3", "platform": "Immunefi", "status": "QUEUED \u00b7 SCOUT DONE", "kind": "queued", "stage": "Proof gate", "step": "Invariant / fuzz campaigns", "pct": 25, "pass_label": "", "updated_at": "2026-11-23T08:46:32+11:00", "updated_label": "Mon 23 Nov 2026, 8:46am AEDT", "activity": "max-depth fuzz"}, {"id": "stakedhype", "name": "StakedHypeEscrow", "platform": "Guardian Defender", "status": "HUNTING", "kind": "running", "stage": "Coverage", "step": "Gambit mutation running", "pct": 88, "pass_label": "", "updated_at": "2026-11-23T09:36:45+11:00", "updated_label": "Mon 23 Nov 2026, 9:36am AEDT", "activity": "mutation testing"}], "stats": [{"label": "PLATFORMS SCANNED", "value": "~20 + X", "kind": "queued"}, {"label": "HUNTS RUNNING", "value": "5", "kind": "running"}, {"label": "QUEUED NEXT", "value": "BitGo Bug Bounty", "kind": "queued"}, {"label": "SURVIVORS TO TSK", "value": "0", "kind": "waiting"}], "chips": [{"txt": "SCOUT ON DUTY", "kind": "ok"}, {"txt": "5 HUNTS RUNNING", "kind": "running"}, {"txt": "AUTO-HUNT ON", "kind": "running"}, {"txt": "STATUS ONLY \u00b7 NO DETAILS", "kind": "waiting"}], "now_running": [{"name": "RAAC Core", "activity": "pass 3 \u00b7 mutation testing"}, {"name": "Metric", "activity": "mutation testing"}, {"name": "Beanstalk", "activity": "mutation testing"}, {"name": "Alchemix v3", "activity": "max-depth fuzz"}, {"name": "StakedHypeEscrow", "activity": "mutation testing"}, {"name": "Scout", "activity": "hourly sweep \u00b7 ~20 platforms + X"}], "alert": {"active": true, "count": 1, "items": [{"tier": "High", "count": 1}], "label": "1 \u00d7 High under review"}, "rules": [{"k": "STATUS ONLY", "v": "No bug details on this board"}, {"k": "READ-ONLY & LOCAL", "v": "No live-network transactions"}, {"k": "TSK SUBMITS", "v": "Nothing goes out without approval, under TSK's name"}]};
+  var DAYS = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  var MONS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var page = 0;
+
+  function el(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s === null || s === undefined ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function pad(n) { return n < 10 ? "0" + n : String(n); }
+  function bound(x, lo, hi) { if (x < lo) { return lo; } if (x > hi) { return hi; } return x; }
+  function kindOf(k) {
+    var ok = { running:1, ok:1, done:1, queued:1, waiting:1, flagged:1, skipped:1, seen:1 };
+    return ok[k] ? k : "waiting";
+  }
+  function chip(txt, kind) { return '<span class="chip k-' + kindOf(kind) + '">' + esc(txt) + "</span>"; }
+
+  function tzOffsetMin() {
+    var u = (DATA && DATA.updated_at) || "";
+    var m = /([+-])(\d\d):(\d\d)$/.exec(u);
+    if (!m) { return 660; }
+    var v = parseInt(m[2], 10) * 60 + parseInt(m[3], 10);
+    return m[1] === "-" ? -v : v;
+  }
+  function sydneyNow() {
+    var d = new Date(new Date().getTime() + tzOffsetMin() * 60000);
+    return DAYS[d.getUTCDay()] + " " + d.getUTCDate() + " " + MONS[d.getUTCMonth()] + " " +
+      pad(d.getUTCHours()) + ":" + pad(d.getUTCMinutes()) + ":" + pad(d.getUTCSeconds()) + " AEDT";
+  }
+  function fit() {
+    var w = window.innerWidth || document.documentElement.clientWidth || 1920;
+    el("root").style.zoom = String(w / 1920);
+  }
+
+  function render() {
+    if (!DATA) { return; }
+    var i, h, html;
+
+    html = "";
+    var chips = DATA.chips || [];
+    for (i = 0; i < chips.length; i++) { html += chip(chips[i].txt, chips[i].kind); }
+    el("chips").innerHTML = html;
+
+    var al = DATA.alert || {};
+    if (al.active && al.count > 0) {
+      el("alert").style.display = "block";
+      el("alert-cnt").innerHTML = esc(al.label || (al.count + " under review"));
+    } else {
+      el("alert").style.display = "none";
+      el("alert-cnt").innerHTML = "";
+    }
+
+    var nr = DATA.now_running || [];
+    el("now").style.display = nr.length ? "block" : "none";
+    var items = "";
+    for (i = 0; i < nr.length; i++) {
+      items += "<span>&#9679; <b>" + esc(nr[i].name) + "</b> &mdash; " + esc(nr[i].activity) + "</span>";
+    }
+    el("ticker").innerHTML = items + items;
+    var per = 6, cards = '<table class="full fixed">';
+    for (i = 0; i < nr.length; i++) {
+      if (i % per === 0) { cards += (i ? "</tr>" : "") + '<tr>'; }
+      var sc = nr[i].name === "Scout" ? " scout" : "";
+      cards += '<td class="runcell"><div class="runcard' + sc + '" style="-webkit-animation-delay:' + (i * 0.3) + 's;animation-delay:' + (i * 0.3) + 's;">' +
+        '<div class="rn">' + esc(nr[i].name) + '</div><div class="ra">' + esc(nr[i].activity) + "</div>" +
+        '<div class="scan" style="-webkit-animation-delay:' + (i * 0.25) + 's;animation-delay:' + (i * 0.25) + 's;"></div></div></td>';
+    }
+    if (nr.length) {
+      for (i = nr.length % per; i > 0 && i < per; i++) { cards += '<td class="runcell"></td>'; }
+      cards += "</tr>";
+    }
+    el("runcards").innerHTML = cards + "</table>";
+
+    html = "";
+    var st = DATA.stats || [];
+    for (i = 0; i < st.length; i++) {
+      html += '<td class="statcell"><div class="stat"><div class="v t-' + kindOf(st[i].kind) + '">' + esc(st[i].value) +
+        '</div><div class="l">' + esc(st[i].label) + "</div></div></td>";
+    }
+    el("stats").innerHTML = html;
+
+    html = "";
+    var hs = DATA.hunts || [];
+    for (i = 0; i < hs.length; i++) {
+      h = hs[i];
+      var p = bound(parseInt(h.pct, 10) || 0, 0, 100);
+      html += "<tr><td class=\"nm t-" + kindOf(h.kind) + "\">" + esc(h.name) + "</td><td>" + esc(h.platform) +
+        "</td><td>" + esc(h.stage) + "</td><td>" + esc(h.activity) + "</td>" +
+        '<td><table class="full"><tr><td style="padding:0;border:0;width:75%;"><div class="bar"><i style="width:' + p + '%;"></i></div></td>' +
+        '<td style="padding:0 0 0 10px;border:0;" class="pct">' + p + "%</td></tr></table></td>" +
+        "<td>" + chip(h.status, h.kind) + "</td></tr>";
+    }
+    el("hunts").innerHTML = html;
+    renderClock();
+  }
+
+  function renderClock() {
+    if (!DATA) { return; }
+    el("clock").innerHTML = esc(sydneyNow());
+    var now = new Date().getTime();
+    var cs = DATA.contests || [], html = "", i;
+    for (i = 0; i < cs.length; i++) {
+      var c = cs[i];
+      var end = c.end ? Date.parse(c.end) : NaN;
+      var open = c.open ? Date.parse(c.open) : NaN;
+      var left = "";
+      if (c.standing) { left = "standing"; }
+      else if (!isNaN(end) && now >= end) { left = "closed"; }
+      else if (!isNaN(open) && now < open) { left = "opens in " + dur(open - now); }
+      else if (!isNaN(end)) { left = dur(end - now); }
+      html += "<tr><td class=\"nm t-" + kindOf(c.kind) + "\">" + esc(c.name) + "</td><td>" + esc(c.platform) +
+        "</td><td class=\"wrap\" style=\"font-size:19px;\">" + esc(c.pays) + '</td><td class="cd t-' + kindOf(c.kind) + '">' + esc(left) +
+        "</td><td>" + chip(c.status, c.kind) + "</td></tr>";
+    }
+    el("contests").innerHTML = html;
+    el("foot").innerHTML = "STATUS ONLY &middot; NO DETAILS &middot; LAST UPDATED " + esc(DATA.updated_label || "") + " &middot; SYDNEY TIME";
+  }
+  function dur(ms) {
+    var s = Math.floor(ms / 1000);
+    if (s < 0) { s = 0; }
+    return Math.floor(s / 86400) + "d " + pad(Math.floor((s % 86400) / 3600)) + ":" + pad(Math.floor((s % 3600) / 60)) + ":" + pad(s % 60);
+  }
+
+  function flip() {
+    page = page ? 0 : 1;
+    el("pg-hunts").style.display = page ? "none" : "block";
+    el("pg-contests").style.display = page ? "block" : "none";
+  }
+
+  function load() {
+    var x;
+    try { x = new XMLHttpRequest(); } catch (e) { return; }
+    x.open("GET", "status.json?t=" + new Date().getTime(), true);
+    x.onreadystatechange = function () {
+      if (x.readyState === 4 && x.status === 200) {
+        try { DATA = JSON.parse(x.responseText); render(); } catch (e2) { }
       }
-      var nr = data.now_running || [];
-      document.getElementById("now").style.display = nr.length ? "" : "none";
-      var items = nr.map(function (r) {
-        return '<span class="item">● <b>' + esc(r.name) + "</b> — " + esc(r.activity) + "</span>";
-      }).join("");
-      document.getElementById("ticker").innerHTML = items + items;
-      document.getElementById("runcards").innerHTML = nr.map(function (r, i) {
-        var sc = r.name === "Scout" ? " scout" : "";
-        return '<div class="runcard' + sc + '" style="animation-delay:' + (i * 0.3) + 's">' +
-          '<div class="eq"><i></i><i></i><i></i><i></i></div>' +
-          '<div class="rn">' + esc(r.name) + '</div><div class="ra">' + esc(r.activity) + "</div>" +
-          '<div class="scan" style="animation-delay:' + (i * 0.25) + 's"></div></div>';
-      }).join("");
-      var chips = (data.chips || []).map(function (c) {
-        return chip(c.txt, c.kind, c.kind === "running" || c.kind === "ok");
-      }).join("");
-      document.getElementById("chips").innerHTML = chips;
+    };
+    x.send(null);
+  }
 
-      var hunts = data.hunts || [];
-      document.getElementById("hunts").innerHTML = hunts.map(function (h) {
-        var surv = (h.survivors == null) ? "—" : String(h.survivors);
-        var prior = (h.survivors_prior != null && h.kind === "running")
-          ? " · prior pass " + h.survivors_prior : "";
-        return '<div class="hunt">' +
-          '<div><div class="nm kind-' + esc(h.kind) + '">' + esc(h.name) + "</div>" +
-          '<div class="meta">' + esc(h.platform) + " · " + esc(h.stage) + " · " + esc(h.step) + "</div></div>" +
-          '<div><div class="pct">' + esc(h.pct) + "%</div>" +
-          '<div class="surv">survivors ' + esc(surv) + esc(prior) + "</div></div>" +
-          '<div class="bar"><i style="width:' + Math.max(0, Math.min(100, h.pct || 0)) + '%"></i></div>' +
-        "</div>";
-      }).join("") || '<div class="meta">No hunts yet.</div>';
-
-      document.getElementById("stats").innerHTML = (data.stats || []).map(function (s) {
-        return '<div class="panel stat"><div class="v kind-' + esc(s.kind || "waiting") + '">' +
-          esc(s.value) + '</div><div class="l">' + esc(s.label) + "</div></div>";
-      }).join("");
-
-      var sw = data.sweep || {};
-      document.getElementById("sweep-h").textContent =
-        "SCOUT'S LATEST SWEEP · " + (sw.at_label || "—") +
-        (sw.new_count ? " · " + sw.new_count + " new" : "");
-      document.getElementById("sweep").innerHTML = (sw.rows || []).map(function (r) {
-        var name = r.url
-          ? '<a href="' + esc(r.url) + '" target="_blank" rel="noreferrer">' + esc(r.find) + "</a>"
-          : esc(r.find);
-        var k = "queued";
-        var st = (r.status || "").toLowerCase();
-        if (st.indexOf("flag") >= 0 || st.indexOf("need") >= 0) k = "flagged";
-        else if (st.indexOf("hunt") >= 0) k = "running";
-        else if (st.indexOf("queue") >= 0) k = "queued";
-        else if (st.indexOf("skip") >= 0) k = "skipped";
-        return "<tr><td>" + name + "</td><td>" + esc(r.plat) + "</td><td>" + esc(r.dates) +
-          "</td><td>" + esc(r.pool) + "</td><td>" + esc(r.code) + "</td><td>" + esc(r.entry) +
-          "</td><td>" + chip(r.status, k, k === "running" || k === "flagged") + "</td></tr>";
-      }).join("");
-
-      document.getElementById("rules").innerHTML = (data.rules || []).map(function (r, i) {
-        var cols = [CY, LM, AM];
-        return '<div class="panel rule" style="border-left-color:' + cols[i % 3] + '"><div class="k" style="color:' +
-          cols[i % 3] + '">' + esc(r.k) + '</div><div class="v">' + esc(r.v) + "</div></div>";
-      }).join("");
-    }
-
-    function renderClock() {
-      var now = Date.now();
-      var updated = data.updated_label || "";
-      document.getElementById("clock").textContent =
-        clockFmt.format(new Date(now)) + " AEDT · updated " + (updated || "—");
-      var onDuty = data.scout && typeof data.scout.on_duty === "boolean"
-        ? data.scout.on_duty
-        : (function () {
-            try {
-              var hr = Number(new Intl.DateTimeFormat("en-AU", { timeZone: "Australia/Sydney", hour: "2-digit", hour12: false }).format(new Date(now))) % 24;
-              return hr >= 7 && hr <= 23;
-            } catch (e) { return true; }
-          })();
-
-      document.getElementById("cards").innerHTML = (data.contests || []).map(function (ct) {
-        var end = ct.end ? Date.parse(ct.end) : NaN;
-        var open = ct.open ? Date.parse(ct.open) : NaN;
-        var closed = !isNaN(end) && now >= end;
-        var before = !isNaN(open) && now < open;
-        var target = before ? open : end;
-        var parts = isNaN(target) ? null : split(target - now);
-        var lab = ct.standing ? "STANDING BOUNTY" : (closed ? "CLOSED" : (before ? "OPENS IN" : "ENDS IN"));
-        var cd = "";
-        if (parts && !closed && !ct.standing) {
-          cd = '<div class="cd">' + ["D","H","M","S"].map(function (u, i) {
-            return '<div><div class="box kind-' + esc(ct.kind) + '" style="color:' + colOf(ct.kind) + ';text-shadow:0 0 10px ' +
-              rgba(colOf(ct.kind), 0.55) + '">' + parts[i] + '</div><div class="u">' + u + "</div></div>";
-          }).join("") + "</div>";
-        }
-        var when = "";
-        if (ct.standing) when = "No close date";
-        else if (before && ct.open_txt) when = "Opens " + ct.open_txt + (ct.end_txt ? " · ends " + ct.end_txt : "");
-        else if (ct.end_txt) when = "Ends " + ct.end_txt;
-        var link = ct.url ? '<a href="' + esc(ct.url) + '" target="_blank" rel="noreferrer">open ↗</a>' : "";
-        return '<div class="panel card ' + esc(ct.kind) + '" style="border-color:' + rgba(colOf(ct.kind), 0.45) + '">' +
-          '<div class="top"><div><div class="nm kind-' + esc(ct.kind) + '" style="color:' + colOf(ct.kind) + '">' +
-          esc(ct.name) + '</div><div class="plat">' + esc(ct.platform) + (ct.chain ? " · " + esc(ct.chain) : "") +
-          "</div></div></div>" +
-          '<div class="pays">' + esc(ct.pays) + "</div>" +
-          '<div class="cd-lab">' + lab + "</div>" + cd +
-          '<div class="end">' + esc(when) + "</div>" +
-          '<div class="row">' + chip(ct.status, ct.kind, ct.kind === "running" || ct.kind === "waiting" || ct.kind === "flagged") + link + "</div>" +
-        "</div>";
-      }).join("");
-
-      document.getElementById("foot").textContent =
-        "STATUS ONLY · AUTO-REFRESH ~60s · LAST DATA " + (data.updated_label || "—") +
-        " · SYDNEY TIME (AEDT/AEST)";
-    }
-
-    /* ----- radar ----- */
-    var cv = document.getElementById("radar");
-    var ctx = cv.getContext("2d");
-    var t0 = performance.now();
-    function platPos(cx, cy, R, k, rf, da) {
-      var a = -Math.PI / 2 + (k * Math.PI) / 4 + (da || 0);
-      return { x: cx + Math.cos(a) * R * rf, y: cy + Math.sin(a) * R * rf };
-    }
-    function draw(ta) {
-      var wrap = cv.parentElement;
-      var W = Math.max(300, wrap.clientWidth);
-      var H = Math.round(Math.max(280, Math.min(W * 0.72, window.innerHeight * 0.48)));
-      var dpr = Math.min(2, window.devicePixelRatio || 1);
-      if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) {
-        cv.width = Math.round(W * dpr);
-        cv.height = Math.round(H * dpr);
-        cv.style.height = H + "px";
-      }
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.fillStyle = BG;
-      ctx.fillRect(0, 0, W, H);
-      var cx = W * 0.5, cy = H * 0.46;
-      var R = Math.min(W * 0.36, H * 0.36);
-      var sw = (ta * 1.35) % (Math.PI * 2);
-      var rg = ctx.createRadialGradient(cx, cy, 0, cx, cy, R);
-      rg.addColorStop(0, "rgba(34,211,238,0.10)");
-      rg.addColorStop(1, "rgba(34,211,238,0.02)");
-      ctx.fillStyle = rg;
-      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
-      ctx.strokeStyle = "rgba(34,211,238,0.28)"; ctx.lineWidth = 1;
-      [1, 0.66, 0.33].forEach(function (k) { ctx.beginPath(); ctx.arc(cx, cy, R * k, 0, Math.PI * 2); ctx.stroke(); });
-      ctx.strokeStyle = "rgba(34,211,238,0.12)";
-      ctx.beginPath();
-      for (var k = 0; k < 4; k++) {
-        var a = (k * Math.PI) / 4;
-        ctx.moveTo(cx - Math.cos(a) * R, cy - Math.sin(a) * R);
-        ctx.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R);
-      }
-      ctx.stroke();
-      ctx.strokeStyle = "rgba(34,211,238,0.35)";
-      ctx.beginPath();
-      for (var t = 0; t < 72; t++) {
-        var a2 = (t * Math.PI) / 36;
-        var l = t % 6 === 0 ? 8 : 4;
-        ctx.moveTo(cx + Math.cos(a2) * R, cy + Math.sin(a2) * R);
-        ctx.lineTo(cx + Math.cos(a2) * (R + l), cy + Math.sin(a2) * (R + l));
-      }
-      ctx.stroke();
-      for (var j = 0; j < 26; j++) {
-        ctx.fillStyle = "rgba(34,211,238," + (0.28 * (1 - j / 26)) + ")";
-        ctx.beginPath(); ctx.moveTo(cx, cy);
-        ctx.arc(cx, cy, R, sw - (j + 1) * 0.045, sw - j * 0.045);
-        ctx.closePath(); ctx.fill();
-      }
-      ctx.strokeStyle = "rgba(170,250,255,0.95)"; ctx.lineWidth = 2;
-      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(sw) * R, cy + Math.sin(sw) * R); ctx.stroke();
-      ctx.lineWidth = 1;
-
-      function glowAt(p) {
-        var ang = Math.atan2(p.y - cy, p.x - cx);
-        var d = (sw - ang) % (Math.PI * 2);
-        if (d < 0) d += Math.PI * 2;
-        return Math.exp(-d * 1.4);
-      }
-      var plats = data.platforms || [];
-      var s = W / 900;
-      plats.forEach(function (name, i) {
-        var p = platPos(cx, cy, R, i, 0.84, 0);
-        var g = glowAt(p);
-        ctx.fillStyle = rgba(VI, 0.35 + 0.65 * g);
-        ctx.shadowColor = VI; ctx.shadowBlur = 14 * g;
-        ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(3.5, 6 * s) + 2 * g, 0, Math.PI * 2); ctx.fill();
-        ctx.shadowBlur = 0;
-        ctx.strokeStyle = rgba(VI, 0.5);
-        ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(6, 10 * s) + 3 * g, 0, Math.PI * 2); ctx.stroke();
-        ctx.font = Math.max(11, Math.round(13 * s)) + "px IBM Plex Mono, monospace";
-        ctx.textAlign = "center"; ctx.fillStyle = "rgba(216,236,255," + (0.45 + 0.55 * g) + ")";
-        ctx.fillText(String(name).toUpperCase(), p.x, p.y + Math.max(14, 20 * s));
-      });
-      (data.blips || []).forEach(function (b, bi) {
-        var p = platPos(cx, cy, R, b.plat, b.dr || 0.6, b.da || 0);
-        var g = glowAt(p);
-        var col = colOf(b.kind);
-        var pulse = b.kind === "running" || b.kind === "waiting";
-        ctx.fillStyle = rgba(col, 0.55 + 0.45 * g);
-        ctx.shadowColor = col; ctx.shadowBlur = pulse ? 16 : 8 * g;
-        ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(3, 4.5 * s) + 2 * g, 0, Math.PI * 2); ctx.fill();
-        ctx.shadowBlur = 0;
-        if (pulse) {
-          var ph = (ta * 0.9 + bi * 0.4) % 1;
-          ctx.strokeStyle = rgba(col, 0.7 * (1 - ph));
-          ctx.beginPath(); ctx.arc(p.x, p.y, 4 + ph * 22 * Math.max(0.7, s), 0, Math.PI * 2); ctx.stroke();
-        }
-        var left = p.x < cx;
-        ctx.textAlign = left ? "right" : "left";
-        var ox = left ? -9 : 9;
-        ctx.font = Math.max(12, Math.round(14 * s)) + "px IBM Plex Mono, monospace";
-        ctx.fillStyle = "rgba(230,244,255," + (0.6 + 0.4 * g) + ")";
-        ctx.fillText(b.name, p.x + ox, p.y - 6);
-        ctx.font = Math.max(10, Math.round(11 * s)) + "px IBM Plex Mono, monospace";
-        ctx.fillStyle = rgba(col, 0.65 + 0.35 * g);
-        ctx.fillText(b.tag, p.x + ox, p.y + 8);
-      });
-      ctx.save(); ctx.translate(cx, cy); ctx.rotate(ta * 0.8);
-      var hs = Math.max(8, 13 * s);
-      ctx.strokeStyle = CY; ctx.lineWidth = 1.5; ctx.beginPath();
-      for (var h = 0; h < 6; h++) {
-        var ah = (h * Math.PI) / 3;
-        if (h === 0) ctx.moveTo(Math.cos(ah) * hs, Math.sin(ah) * hs);
-        else ctx.lineTo(Math.cos(ah) * hs, Math.sin(ah) * hs);
-      }
-      ctx.closePath(); ctx.stroke(); ctx.restore();
-      ctx.fillStyle = "#bdf6ff"; ctx.shadowColor = CY; ctx.shadowBlur = 12;
-      ctx.beginPath(); ctx.arc(cx, cy, Math.max(2.5, 4 * s), 0, Math.PI * 2); ctx.fill();
-      ctx.shadowBlur = 0;
-      ctx.textAlign = "center";
-      ctx.font = Math.max(13, Math.round(16 * s)) + "px IBM Plex Mono, monospace";
-      ctx.fillStyle = TX;
-      ctx.fillText("SCOUT", cx, cy + R + Math.max(20, 28 * s));
-      ctx.font = Math.max(10, Math.round(12 * s)) + "px IBM Plex Mono, monospace";
-      ctx.fillStyle = DIM;
-      var hours = (data.scout && data.scout.hours) || "07:00–23:00 AEDT";
-      ctx.fillText("HOURLY SWEEP · " + hours, cx, cy + R + Math.max(34, 46 * s));
-    }
-    function frame(now) {
-      draw((now - t0) / 1000);
-      requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-    setInterval(renderClock, 250);
-
-    function apply(json) {
-      data = json;
-      renderStatic();
-      renderClock();
-    }
-    function load() {
-      fetch("status.json?t=" + Date.now(), { cache: "no-store" })
-        .then(function (r) { if (!r.ok) throw new Error("status " + r.status); return r.json(); })
-        .then(apply)
-        .catch(function () { /* keep last good frame */ });
-    }
-    load();
-    setInterval(load, 60000);
-  })();
-  </script>
+  el("pg1").innerHTML = "1 / 2";
+  el("pg2").innerHTML = "2 / 2";
+  fit();
+  window.onresize = fit;
+  render();
+  setInterval(renderClock, 1000);
+  setInterval(flip, 20000);
+  setInterval(load, 60000);
+})();
+</script>
 </body>
 </html>

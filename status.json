@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T08:15:40.576784+11:00",
-  "updated_label": "Mon 23 Nov 2026, 8:15am AEDT",
+  "updated_at": "2026-11-23T08:20:01.373244+11:00",
+  "updated_label": "Mon 23 Nov 2026, 8:20am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T08:13:24+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:13am AEDT"
+      "updated_at": "2026-11-23T08:19:44+11:00",
+      "updated_label": "Mon 23 Nov 2026, 8:19am AEDT"
     },
     {
       "id": "metric",
@@ -295,8 +295,8 @@
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T08:14:36+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:14am AEDT"
+      "updated_at": "2026-11-23T08:19:16+11:00",
+      "updated_label": "Mon 23 Nov 2026, 8:19am AEDT"
     },
     {
       "id": "beanstalk",
@@ -323,8 +323,8 @@
       "pct": 25,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T08:09:28+11:00",
-      "updated_label": "Mon 23 Nov 2026, 8:09am AEDT"
+      "updated_at": "2026-11-23T08:18:48+11:00",
+      "updated_label": "Mon 23 Nov 2026, 8:18am AEDT"
     },
     {
       "id": "stakedhype",

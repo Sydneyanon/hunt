@@ -14,7 +14,7 @@ table { border-collapse:collapse; border-spacing:0; }
 .fixed { table-layout:fixed; }
 .title { white-space:nowrap; color:#22d3ee; font-size:40px; font-weight:bold; letter-spacing:6px; text-shadow:0 0 14px #0e7490; }
 .sub { color:#9fb3cc; font-size:22px; margin-top:6px; }
-.chip { display:inline-block; margin:0 0 8px 10px; padding:6px 16px; border:2px solid #22d3ee; color:#22d3ee; background-color:#06202a; border-radius:30px; font-size:20px; letter-spacing:2px; white-space:nowrap; }
+.chip { display:inline-block; margin:0 10px 8px 0; padding:6px 16px; border:2px solid #22d3ee; color:#22d3ee; background-color:#06202a; border-radius:30px; font-size:20px; letter-spacing:2px; white-space:nowrap; }
 .k-running { color:#ffb020; border-color:#ffb020; background-color:#2a1e05; }
 .k-ok, .k-done { color:#5cff9d; border-color:#5cff9d; background-color:#062a16; }
 .k-queued { color:#a78bfa; border-color:#a78bfa; background-color:#1a1430; }
@@ -31,8 +31,8 @@ table { border-collapse:collapse; border-spacing:0; }
 /* alert */
 #alert { display:none; margin-top:12px; padding:12px 20px; border:3px solid #ff3d81; border-radius:14px; background-color:#2a0614; text-align:center;
   -webkit-animation:pulse 1.6s ease-in-out infinite; animation:pulse 1.6s ease-in-out infinite; }
-#alert .big { color:#ff3d81; font-size:40px; font-weight:bold; letter-spacing:6px; }
-#alert .cnt { color:#ffffff; font-size:34px; letter-spacing:3px; margin-left:24px; }
+#alert .big { color:#ff3d81; font-size:34px; font-weight:bold; letter-spacing:6px; }
+#alert .cnt { color:#ffffff; font-size:30px; letter-spacing:3px; margin-left:24px; }
 #alert .siren { display:inline-block; width:26px; height:26px; border-radius:13px; background-color:#ff3d81; margin:0 22px; vertical-align:middle;
   -webkit-animation:blink 0.8s infinite; animation:blink 0.8s infinite; }
 
@@ -47,8 +47,8 @@ table { border-collapse:collapse; border-spacing:0; }
 .runcard { position:relative; overflow:hidden; height:84px; border:2px solid #ffb020; border-radius:12px; background-color:#1a1406; padding:12px 14px;
   -webkit-animation:glow 2.4s ease-in-out infinite; animation:glow 2.4s ease-in-out infinite; }
 .runcard.scout { border-color:#22d3ee; background-color:#061a22; }
-.runcard .rn { font-size:25px; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.runcard .ra { font-size:19px; color:#ffb020; margin-top:6px; }
+.runcard .rn { font-size:22px; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.runcard .ra { font-size:17px; color:#ffb020; margin-top:6px; }
 .runcard.scout .ra { color:#22d3ee; }
 .runcard .scan { position:absolute; left:0; bottom:0; width:40%; height:5px; background-color:#ffb020;
   -webkit-animation:scan 2s linear infinite; animation:scan 2s linear infinite; }
@@ -91,23 +91,28 @@ table { border-collapse:collapse; border-spacing:0; }
 </head>
 <body style="background-color:#03050b;color:#d8ecff;">
 <div id="root">
-  <table class="full"><tr>
-    <td style="vertical-align:top;">
+  <table class="full fixed"><tr>
+    <td style="vertical-align:top;padding-right:16px;">
       <div class="title">BOUNTY HUNT // CONTROL ROOM</div>
       <div class="sub" id="clock">&nbsp;</div>
+      <div id="chips" style="margin-top:10px;"></div>
+
+      <div id="alert">
+        <span class="siren"></span><span class="big">POTENTIAL FINDING UNDER REVIEW</span><span class="cnt" id="alert-cnt"></span><span class="siren"></span>
+      </div>
+
+      <div class="panel" id="now">
+        <div class="h2"><span class="dot"></span>NOW RUNNING</div>
+        <div class="ticker"><div class="track" id="ticker"></div></div>
+        <div id="runcards"></div>
+      </div>
     </td>
-    <td style="vertical-align:top;text-align:right;width:860px;" id="chips"></td>
+    <td style="vertical-align:top;width:470px;">
+      <div class="panel" style="margin-top:0;padding:0;overflow:hidden;background-color:#03050b;">
+        <canvas id="radar" width="466" height="420" style="display:block;width:466px;height:420px;"></canvas>
+      </div>
+    </td>
   </tr></table>
-
-  <div id="alert">
-    <span class="siren"></span><span class="big">POTENTIAL FINDING UNDER REVIEW</span><span class="cnt" id="alert-cnt"></span><span class="siren"></span>
-  </div>
-
-  <div class="panel" id="now">
-    <div class="h2"><span class="dot"></span>NOW RUNNING</div>
-    <div class="ticker"><div class="track" id="ticker"></div></div>
-    <div id="runcards"></div>
-  </div>
 
   <table class="full fixed" style="margin-top:12px;"><tr id="stats"></tr></table>
 
@@ -133,7 +138,7 @@ table { border-collapse:collapse; border-spacing:0; }
 </div>
 <script type="text/javascript">
 (function () {
-  var DATA = {"updated_at": "2026-11-23T10:00:35.595457+11:00", "updated_label": "Mon 23 Nov 2026, 10:00am AEDT", "timezone": "Australia/Sydney", "scout": {"on_duty": true, "hours": "07:00\u201323:00 AEDT", "last_sweep_at": "2026-11-23T06:30:00+11:00", "last_sweep_label": "Mon 23 Nov 2026 06:30 AEDT", "new_count": 1, "platforms_scanned": 20, "next_to_start": "BitGo Bug Bounty"}, "platforms": ["Sherlock", "Immunefi", "Cantina", "Code4rena", "CodeHawks", "Guardian", "HackenProof", "X"], "blips": [{"name": "Onlend", "plat": 0, "da": 0.34, "dr": 0.5, "tag": "AWAITING ACCEPTANCE", "kind": "waiting"}, {"name": "RAAC Core", "plat": 5, "da": -0.32, "dr": 0.5, "tag": "PASS 3 RUNNING", "kind": "running"}, {"name": "Metric", "plat": 1, "da": -0.28, "dr": 0.62, "tag": "JUDGED \u00b7 MORE TESTING", "kind": "running"}, {"name": "Beanstalk", "plat": 0, "da": -0.2, "dr": 0.72, "tag": "JUDGED \u00b7 MORE TESTING", "kind": "running"}, {"name": "StakedHypeEscrow", "plat": 5, "da": 0.05, "dr": 0.82, "tag": "HUNTING", "kind": "running"}, {"name": "Alchemix v3", "plat": 1, "da": 0.4, "dr": 0.78, "tag": "QUEUED \u00b7 SCOUT DONE", "kind": "queued"}, {"name": "SpecSiege EBSI", "plat": 2, "da": 0.15, "dr": 0.55, "tag": "FLAGGED \u00b7 NEEDS TSK", "kind": "flagged"}, {"name": "Base Everest", "plat": 1, "da": 0.22, "dr": 0.42, "tag": "SKIPPED", "kind": "skipped"}, {"name": "Templar Precept", "plat": 5, "da": 0.3, "dr": 0.68, "tag": "SKIPPED", "kind": "skipped"}], "contests": [{"id": "onlend", "name": "Onlend", "platform": "Sherlock", "chain": "Solidity \u00b7 lending", "pays": "$34.2k\u2013$41.8k pool (listing $50k)", "status": "AWAITING ACCEPTANCE", "kind": "waiting", "end": "2026-12-08T01:00:00+11:00", "end_txt": "Tue 8 Dec, 1:00am AEDT", "open": "2026-11-24T01:00:00+11:00", "open_txt": "Tue 24 Nov, 1:00am AEDT", "standing": false, "url": "https://audit-engine.sherlock.xyz/", "nsloc": null}, {"id": "raac", "name": "RAAC Core", "platform": "Guardian Defender", "chain": "Solidity \u00b7 lending", "pays": "Critical only \u00b7 $100k seasonal split", "status": "PASS 3 RUNNING", "kind": "running", "end": "2026-12-10T02:00:00+11:00", "end_txt": "Thu 10 Dec, 2:00am AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://defender.guardianaudits.com/contests/01a1a379-b7c1-72d9-8075-5318b386f2e4", "nsloc": 6452}, {"id": "metric", "name": "Metric", "platform": "Immunefi", "chain": "Solidity \u00b7 amm", "pays": "C $50k\u2013$500k \u00b7 H $10k\u2013$50k \u00b7 M $2.5k\u2013$10k", "status": "JUDGED \u00b7 MORE TESTING", "kind": "running", "end": null, "end_txt": "", "open": null, "open_txt": "", "standing": true, "url": "https://immunefi.com/bug-bounty/metric/information/", "nsloc": 9000}, {"id": "beanstalk", "name": "Beanstalk", "platform": "Sherlock BB #148", "chain": "Solidity \u00b7 stablecoin", "pays": "C $5k\u2013$50k \u00b7 H $1k\u2013$10k \u00b7 M $500\u2013$2.5k", "status": "JUDGED \u00b7 MORE TESTING", "kind": "running", "end": null, "end_txt": "", "open": null, "open_txt": "", "standing": true, "url": "https://audits.sherlock.xyz/bug-bounties/148", "nsloc": 23800}, {"id": "stakedhype", "name": "StakedHypeEscrow", "platform": "Guardian Defender", "chain": "Solidity \u00b7 lst", "pays": "Critical only \u00b7 $100k seasonal split", "status": "HUNTING", "kind": "running", "end": "2026-12-16T09:59:59+11:00", "end_txt": "Wed 16 Dec, 9:59am AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://defender.guardianaudits.com/contests/01a0fc3b-0a53-72f6-9e8c-a55d073cc8a9", "nsloc": 432}, {"id": "alchemix", "name": "Alchemix v3", "platform": "Immunefi", "chain": "Solidity \u00b7 lending", "pays": "C $20k\u2013$150k \u00b7 H $5k\u2013$20k \u00b7 M up to $3k", "status": "QUEUED \u00b7 SCOUT DONE", "kind": "queued", "end": null, "end_txt": "", "open": null, "open_txt": "", "standing": true, "url": "https://bugbounty.fyi/programs/alchemix", "nsloc": 7109}, {"id": "specsiege", "name": "SpecSiege EBSI", "platform": "SpecSiege", "chain": "Solidity \u00b7 registry", "pays": "\u20ac5k pool (~$5.5k) \u00b7 apply, up to 50 picked", "status": "FLAGGED \u00b7 NEEDS TSK", "kind": "flagged", "end": "2026-12-01T23:59:59+11:00", "end_txt": "Tue 1 Dec AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://specsiege.codespect.net/", "nsloc": null}, {"id": "everest", "name": "Base Everest", "platform": "Immunefi", "chain": "Solidity + Go \u00b7 bridge", "pays": "$250k only if a Critical", "status": "SKIPPED", "kind": "skipped", "end": "2026-12-01T23:00:00+11:00", "end_txt": "Tue 1 Dec, 11:00pm AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://immunefi.com/audit-competition/audit-comp-base-everest/information/", "nsloc": 135000}, {"id": "templar", "name": "Templar Precept", "platform": "Guardian Defender", "chain": "Rust \u00b7 lending", "pays": "Critical only \u00b7 $100k seasonal split", "status": "SKIPPED", "kind": "skipped", "end": "2026-11-26T03:30:00+11:00", "end_txt": "Thu 26 Nov, 3:30am AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://defender.guardianaudits.com/contests/01a163f6-7e22-76cf-af81-4b85feb9000e", "nsloc": null}], "sweep": {"at": "2026-11-23T06:30:00+11:00", "at_label": "Mon 23 Nov 2026 06:30 AEDT", "new_count": 1, "rows": [{"find": "StakedHypeEscrow Bounty Contest (Valantis stHYPE)", "plat": "Guardian Defender", "dates": "16 Nov 10:00 \u2192 16 Dec 09:59", "pool": "Nov\u2013Dec season pot $100k shared with RAAC; contest cap unknown; critical-only", "code": "src/StakedHypeEscrow.sol, ~432 nSLOC, Solidity 0.8.28, HyperEVM; public GitHub @0f24501", "entry": "Open; KYC + Defender account to submit/payout; no fee", "status": "HUNTING", "url": "https://defender.guardianaudits.com/contests/01a0fc3b-0a53-72f6-9e8c-a55d073cc8a9"}, {"find": "SpecSiege EBSI Licence Registry", "plat": "SpecSiege", "dates": "Registration now open", "pool": "\u20ac5k pool (~$5.5k)", "code": "After acceptance", "entry": "Application required", "status": "FLAGGED \u00b7 NEEDS TSK", "url": "https://specsiege.codespect.net"}]}, "hunts": [{"id": "raac", "name": "RAAC Core", "platform": "Guardian Defender", "status": "PASS 3 RUNNING", "kind": "running", "stage": "Proof / mutation", "step": "Pass 3 \u00b7 Gambit mutation running", "pct": 70, "pass_label": "Pass 3", "updated_at": "2026-11-23T08:42:33+11:00", "updated_label": "Mon 23 Nov 2026, 8:42am AEDT", "activity": "pass 3 \u00b7 mutation testing"}, {"id": "metric", "name": "Metric", "platform": "Immunefi", "status": "JUDGED \u00b7 MORE TESTING", "kind": "running", "stage": "Follow-up testing", "step": "Gambit mutation running", "pct": 88, "pass_label": "", "updated_at": "2026-11-23T08:22:47+11:00", "updated_label": "Mon 23 Nov 2026, 8:22am AEDT", "activity": "mutation testing"}, {"id": "beanstalk", "name": "Beanstalk", "platform": "Sherlock", "status": "JUDGED \u00b7 MORE TESTING", "kind": "running", "stage": "Follow-up testing", "step": "Gambit mutation running", "pct": 88, "pass_label": "", "updated_at": "2026-11-23T07:39:08+11:00", "updated_label": "Mon 23 Nov 2026, 7:39am AEDT", "activity": "mutation testing"}, {"id": "alchemix", "name": "Alchemix v3", "platform": "Immunefi", "status": "QUEUED \u00b7 SCOUT DONE", "kind": "queued", "stage": "Proof gate", "step": "Invariant / fuzz campaigns", "pct": 25, "pass_label": "", "updated_at": "2026-11-23T08:46:32+11:00", "updated_label": "Mon 23 Nov 2026, 8:46am AEDT", "activity": "max-depth fuzz"}, {"id": "stakedhype", "name": "StakedHypeEscrow", "platform": "Guardian Defender", "status": "HUNTING", "kind": "running", "stage": "Coverage", "step": "Gambit mutation running", "pct": 88, "pass_label": "", "updated_at": "2026-11-23T09:36:45+11:00", "updated_label": "Mon 23 Nov 2026, 9:36am AEDT", "activity": "mutation testing"}], "stats": [{"label": "PLATFORMS SCANNED", "value": "~20 + X", "kind": "queued"}, {"label": "HUNTS RUNNING", "value": "4", "kind": "running"}, {"label": "QUEUED NEXT", "value": "BitGo Bug Bounty", "kind": "queued"}, {"label": "SURVIVORS TO TSK", "value": "0", "kind": "waiting"}], "chips": [{"txt": "SCOUT ON DUTY", "kind": "ok"}, {"txt": "4 HUNTS RUNNING", "kind": "running"}, {"txt": "AUTO-HUNT ON", "kind": "running"}, {"txt": "STATUS ONLY \u00b7 NO DETAILS", "kind": "waiting"}], "now_running": [{"name": "RAAC Core", "activity": "pass 3 \u00b7 mutation testing"}, {"name": "Metric", "activity": "mutation testing"}, {"name": "Beanstalk", "activity": "mutation testing"}, {"name": "StakedHypeEscrow", "activity": "mutation testing"}, {"name": "Scout", "activity": "hourly sweep \u00b7 ~20 platforms + X"}], "alert": {"active": true, "count": 1, "items": [{"tier": "High", "count": 1}], "label": "1 \u00d7 High under review"}, "rules": [{"k": "STATUS ONLY", "v": "No bug details on this board"}, {"k": "READ-ONLY & LOCAL", "v": "No live-network transactions"}, {"k": "TSK SUBMITS", "v": "Nothing goes out without approval, under TSK's name"}]};
+  var DATA = {"updated_at": "2026-11-23T10:05:01.235071+11:00", "updated_label": "Mon 23 Nov 2026, 10:05am AEDT", "timezone": "Australia/Sydney", "scout": {"on_duty": true, "hours": "07:00\u201323:00 AEDT", "last_sweep_at": "2026-11-23T06:30:00+11:00", "last_sweep_label": "Mon 23 Nov 2026 06:30 AEDT", "new_count": 1, "platforms_scanned": 20, "next_to_start": "BitGo Bug Bounty"}, "platforms": ["Sherlock", "Immunefi", "Cantina", "Code4rena", "CodeHawks", "Guardian", "HackenProof", "X"], "blips": [{"name": "Onlend", "plat": 0, "da": 0.34, "dr": 0.5, "tag": "AWAITING ACCEPTANCE", "kind": "waiting"}, {"name": "RAAC Core", "plat": 5, "da": -0.32, "dr": 0.5, "tag": "PASS 3 RUNNING", "kind": "running"}, {"name": "Metric", "plat": 1, "da": -0.28, "dr": 0.62, "tag": "JUDGED \u00b7 MORE TESTING", "kind": "running"}, {"name": "Beanstalk", "plat": 0, "da": -0.2, "dr": 0.72, "tag": "JUDGED \u00b7 MORE TESTING", "kind": "running"}, {"name": "StakedHypeEscrow", "plat": 5, "da": 0.05, "dr": 0.82, "tag": "HUNTING", "kind": "running"}, {"name": "Alchemix v3", "plat": 1, "da": 0.4, "dr": 0.78, "tag": "QUEUED \u00b7 SCOUT DONE", "kind": "queued"}, {"name": "SpecSiege EBSI", "plat": 2, "da": 0.15, "dr": 0.55, "tag": "FLAGGED \u00b7 NEEDS TSK", "kind": "flagged"}, {"name": "Base Everest", "plat": 1, "da": 0.22, "dr": 0.42, "tag": "SKIPPED", "kind": "skipped"}, {"name": "Templar Precept", "plat": 5, "da": 0.3, "dr": 0.68, "tag": "SKIPPED", "kind": "skipped"}], "contests": [{"id": "onlend", "name": "Onlend", "platform": "Sherlock", "chain": "Solidity \u00b7 lending", "pays": "$34.2k\u2013$41.8k pool (listing $50k)", "status": "AWAITING ACCEPTANCE", "kind": "waiting", "end": "2026-12-08T01:00:00+11:00", "end_txt": "Tue 8 Dec, 1:00am AEDT", "open": "2026-11-24T01:00:00+11:00", "open_txt": "Tue 24 Nov, 1:00am AEDT", "standing": false, "url": "https://audit-engine.sherlock.xyz/", "nsloc": null}, {"id": "raac", "name": "RAAC Core", "platform": "Guardian Defender", "chain": "Solidity \u00b7 lending", "pays": "Critical only \u00b7 $100k seasonal split", "status": "PASS 3 RUNNING", "kind": "running", "end": "2026-12-10T02:00:00+11:00", "end_txt": "Thu 10 Dec, 2:00am AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://defender.guardianaudits.com/contests/01a1a379-b7c1-72d9-8075-5318b386f2e4", "nsloc": 6452}, {"id": "metric", "name": "Metric", "platform": "Immunefi", "chain": "Solidity \u00b7 amm", "pays": "C $50k\u2013$500k \u00b7 H $10k\u2013$50k \u00b7 M $2.5k\u2013$10k", "status": "JUDGED \u00b7 MORE TESTING", "kind": "running", "end": null, "end_txt": "", "open": null, "open_txt": "", "standing": true, "url": "https://immunefi.com/bug-bounty/metric/information/", "nsloc": 9000}, {"id": "beanstalk", "name": "Beanstalk", "platform": "Sherlock BB #148", "chain": "Solidity \u00b7 stablecoin", "pays": "C $5k\u2013$50k \u00b7 H $1k\u2013$10k \u00b7 M $500\u2013$2.5k", "status": "JUDGED \u00b7 MORE TESTING", "kind": "running", "end": null, "end_txt": "", "open": null, "open_txt": "", "standing": true, "url": "https://audits.sherlock.xyz/bug-bounties/148", "nsloc": 23800}, {"id": "stakedhype", "name": "StakedHypeEscrow", "platform": "Guardian Defender", "chain": "Solidity \u00b7 lst", "pays": "Critical only \u00b7 $100k seasonal split", "status": "HUNTING", "kind": "running", "end": "2026-12-16T09:59:59+11:00", "end_txt": "Wed 16 Dec, 9:59am AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://defender.guardianaudits.com/contests/01a0fc3b-0a53-72f6-9e8c-a55d073cc8a9", "nsloc": 432}, {"id": "alchemix", "name": "Alchemix v3", "platform": "Immunefi", "chain": "Solidity \u00b7 lending", "pays": "C $20k\u2013$150k \u00b7 H $5k\u2013$20k \u00b7 M up to $3k", "status": "QUEUED \u00b7 SCOUT DONE", "kind": "queued", "end": null, "end_txt": "", "open": null, "open_txt": "", "standing": true, "url": "https://bugbounty.fyi/programs/alchemix", "nsloc": 7109}, {"id": "specsiege", "name": "SpecSiege EBSI", "platform": "SpecSiege", "chain": "Solidity \u00b7 registry", "pays": "\u20ac5k pool (~$5.5k) \u00b7 apply, up to 50 picked", "status": "FLAGGED \u00b7 NEEDS TSK", "kind": "flagged", "end": "2026-12-01T23:59:59+11:00", "end_txt": "Tue 1 Dec AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://specsiege.codespect.net/", "nsloc": null}, {"id": "everest", "name": "Base Everest", "platform": "Immunefi", "chain": "Solidity + Go \u00b7 bridge", "pays": "$250k only if a Critical", "status": "SKIPPED", "kind": "skipped", "end": "2026-12-01T23:00:00+11:00", "end_txt": "Tue 1 Dec, 11:00pm AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://immunefi.com/audit-competition/audit-comp-base-everest/information/", "nsloc": 135000}, {"id": "templar", "name": "Templar Precept", "platform": "Guardian Defender", "chain": "Rust \u00b7 lending", "pays": "Critical only \u00b7 $100k seasonal split", "status": "SKIPPED", "kind": "skipped", "end": "2026-11-26T03:30:00+11:00", "end_txt": "Thu 26 Nov, 3:30am AEDT", "open": null, "open_txt": "", "standing": false, "url": "https://defender.guardianaudits.com/contests/01a163f6-7e22-76cf-af81-4b85feb9000e", "nsloc": null}], "sweep": {"at": "2026-11-23T06:30:00+11:00", "at_label": "Mon 23 Nov 2026 06:30 AEDT", "new_count": 1, "rows": [{"find": "StakedHypeEscrow Bounty Contest (Valantis stHYPE)", "plat": "Guardian Defender", "dates": "16 Nov 10:00 \u2192 16 Dec 09:59", "pool": "Nov\u2013Dec season pot $100k shared with RAAC; contest cap unknown; critical-only", "code": "src/StakedHypeEscrow.sol, ~432 nSLOC, Solidity 0.8.28, HyperEVM; public GitHub @0f24501", "entry": "Open; KYC + Defender account to submit/payout; no fee", "status": "HUNTING", "url": "https://defender.guardianaudits.com/contests/01a0fc3b-0a53-72f6-9e8c-a55d073cc8a9"}, {"find": "SpecSiege EBSI Licence Registry", "plat": "SpecSiege", "dates": "Registration now open", "pool": "\u20ac5k pool (~$5.5k)", "code": "After acceptance", "entry": "Application required", "status": "FLAGGED \u00b7 NEEDS TSK", "url": "https://specsiege.codespect.net"}]}, "hunts": [{"id": "raac", "name": "RAAC Core", "platform": "Guardian Defender", "status": "PASS 3 RUNNING", "kind": "running", "stage": "Proof / mutation", "step": "Pass 3 \u00b7 Gambit mutation running", "pct": 70, "pass_label": "Pass 3", "updated_at": "2026-11-23T08:42:33+11:00", "updated_label": "Mon 23 Nov 2026, 8:42am AEDT", "activity": "pass 3 \u00b7 mutation testing"}, {"id": "metric", "name": "Metric", "platform": "Immunefi", "status": "JUDGED \u00b7 MORE TESTING", "kind": "running", "stage": "Follow-up testing", "step": "Gambit mutation running", "pct": 88, "pass_label": "", "updated_at": "2026-11-23T08:22:47+11:00", "updated_label": "Mon 23 Nov 2026, 8:22am AEDT", "activity": "mutation testing"}, {"id": "beanstalk", "name": "Beanstalk", "platform": "Sherlock", "status": "JUDGED \u00b7 MORE TESTING", "kind": "running", "stage": "Follow-up testing", "step": "Gambit mutation running", "pct": 88, "pass_label": "", "updated_at": "2026-11-23T07:39:08+11:00", "updated_label": "Mon 23 Nov 2026, 7:39am AEDT", "activity": "mutation testing"}, {"id": "alchemix", "name": "Alchemix v3", "platform": "Immunefi", "status": "QUEUED \u00b7 SCOUT DONE", "kind": "queued", "stage": "Proof gate", "step": "Invariant / fuzz campaigns", "pct": 25, "pass_label": "", "updated_at": "2026-11-23T08:46:32+11:00", "updated_label": "Mon 23 Nov 2026, 8:46am AEDT", "activity": "max-depth fuzz"}, {"id": "stakedhype", "name": "StakedHypeEscrow", "platform": "Guardian Defender", "status": "HUNTING", "kind": "running", "stage": "Coverage", "step": "Gambit mutation running", "pct": 88, "pass_label": "", "updated_at": "2026-11-23T09:36:45+11:00", "updated_label": "Mon 23 Nov 2026, 9:36am AEDT", "activity": "mutation testing"}], "stats": [{"label": "PLATFORMS SCANNED", "value": "~20 + X", "kind": "queued"}, {"label": "HUNTS RUNNING", "value": "4", "kind": "running"}, {"label": "QUEUED NEXT", "value": "BitGo Bug Bounty", "kind": "queued"}, {"label": "SURVIVORS TO TSK", "value": "0", "kind": "waiting"}], "chips": [{"txt": "SCOUT ON DUTY", "kind": "ok"}, {"txt": "4 HUNTS RUNNING", "kind": "running"}, {"txt": "AUTO-HUNT ON", "kind": "running"}, {"txt": "STATUS ONLY \u00b7 NO DETAILS", "kind": "waiting"}], "now_running": [{"name": "RAAC Core", "activity": "pass 3 \u00b7 mutation testing"}, {"name": "Metric", "activity": "mutation testing"}, {"name": "Beanstalk", "activity": "mutation testing"}, {"name": "StakedHypeEscrow", "activity": "mutation testing"}, {"name": "Scout", "activity": "hourly sweep \u00b7 ~20 platforms + X"}], "alert": {"active": true, "count": 1, "items": [{"tier": "High", "count": 1}], "label": "1 \u00d7 High under review"}, "rules": [{"k": "STATUS ONLY", "v": "No bug details on this board"}, {"k": "READ-ONLY & LOCAL", "v": "No live-network transactions"}, {"k": "TSK SUBMITS", "v": "Nothing goes out without approval, under TSK's name"}]};
   var DAYS = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   var MONS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   var page = 0;
@@ -275,6 +280,126 @@ table { border-collapse:collapse; border-spacing:0; }
     x.send(null);
   }
 
+
+  /* ----- radar (canvas 2D, ES5, setInterval) ----- */
+  var BG = "#03050b", CY = "#22d3ee", AM = "#ffb020", MG = "#ff3d81", LM = "#5cff9d", VI = "#a78bfa", TX = "#d8ecff", DIM = "#9fb3cc";
+  var KCOL = { running: AM, waiting: CY, queued: VI, flagged: MG, done: LM, ok: LM, skipped: DIM, seen: DIM };
+  var DEFAULT_PLATS = ["Sherlock","Immunefi","Cantina","Code4rena","CodeHawks","Guardian","HackenProof","X"];
+  var cv = el("radar");
+  var ctx = null;
+  try { ctx = cv && cv.getContext ? cv.getContext("2d") : null; } catch (e3) { ctx = null; }
+  var t0 = new Date().getTime();
+  function rgbaHex(hex, a) {
+    var n = parseInt(hex.slice(1), 16);
+    return "rgba(" + ((n >> 16) & 255) + "," + ((n >> 8) & 255) + "," + (n & 255) + "," + a + ")";
+  }
+  function platPos(cx, cy, R, k, rf, da) {
+    var a = -Math.PI / 2 + (k * Math.PI) / 4 + (da || 0);
+    return { x: cx + Math.cos(a) * R * rf, y: cy + Math.sin(a) * R * rf };
+  }
+  function drawRadar() {
+    if (!ctx) { return; }
+    var ta = (new Date().getTime() - t0) / 1000;
+    var W = 466, H = 420, cx = 233, cy = 196, R = 158;
+    var TWO = Math.PI * 2;
+    var sw = (ta * 1.35) % TWO;
+    var i, k, a, p, g;
+    ctx.fillStyle = BG;
+    ctx.fillRect(0, 0, W, H);
+    var rg = ctx.createRadialGradient(cx, cy, 0, cx, cy, R);
+    rg.addColorStop(0, "rgba(34,211,238,0.12)");
+    rg.addColorStop(1, "rgba(34,211,238,0.02)");
+    ctx.fillStyle = rg;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, TWO); ctx.fill();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "rgba(34,211,238,0.30)";
+    for (k = 1; k <= 3; k++) { ctx.beginPath(); ctx.arc(cx, cy, R * k / 3, 0, TWO); ctx.stroke(); }
+    ctx.strokeStyle = "rgba(34,211,238,0.13)";
+    ctx.beginPath();
+    for (k = 0; k < 4; k++) {
+      a = (k * Math.PI) / 4;
+      ctx.moveTo(cx - Math.cos(a) * R, cy - Math.sin(a) * R);
+      ctx.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R);
+    }
+    ctx.stroke();
+    ctx.strokeStyle = "rgba(34,211,238,0.40)";
+    ctx.beginPath();
+    for (k = 0; k < 72; k++) {
+      a = (k * Math.PI) / 36;
+      var l = (k % 6 === 0) ? 8 : 4;
+      ctx.moveTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R);
+      ctx.lineTo(cx + Math.cos(a) * (R + l), cy + Math.sin(a) * (R + l));
+    }
+    ctx.stroke();
+    for (k = 0; k < 24; k++) {
+      ctx.fillStyle = "rgba(34,211,238," + (0.30 * (1 - k / 24)) + ")";
+      ctx.beginPath(); ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, R, sw - (k + 1) * 0.05, sw - k * 0.05, false);
+      ctx.closePath(); ctx.fill();
+    }
+    ctx.strokeStyle = "rgba(170,250,255,0.95)"; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(sw) * R, cy + Math.sin(sw) * R); ctx.stroke();
+    ctx.lineWidth = 1;
+
+    function glowAt(pt) {
+      var ang = Math.atan2(pt.y - cy, pt.x - cx);
+      var d = (sw - ang) % TWO;
+      if (d < 0) { d += TWO; }
+      return Math.exp(-d * 1.4);
+    }
+    var plats = (DATA && DATA.platforms && DATA.platforms.length) ? DATA.platforms : DEFAULT_PLATS;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    for (i = 0; i < plats.length && i < 8; i++) {
+      p = platPos(cx, cy, R, i, 0.86, 0);
+      g = glowAt(p);
+      ctx.fillStyle = rgbaHex(VI, 0.35 + 0.65 * g);
+      ctx.beginPath(); ctx.arc(p.x, p.y, 5 + 2 * g, 0, TWO); ctx.fill();
+      ctx.strokeStyle = rgbaHex(VI, 0.5);
+      ctx.beginPath(); ctx.arc(p.x, p.y, 9 + 3 * g, 0, TWO); ctx.stroke();
+      ctx.font = "12px monospace";
+      ctx.fillStyle = "rgba(216,236,255," + (0.5 + 0.5 * g) + ")";
+      ctx.fillText(String(plats[i]).toUpperCase(), p.x, p.y + 18);
+    }
+    var blips = (DATA && DATA.blips) || [];
+    for (i = 0; i < blips.length; i++) {
+      var b = blips[i];
+      p = platPos(cx, cy, R, b.plat || 0, b.dr || 0.6, b.da || 0);
+      g = glowAt(p);
+      var col = KCOL[b.kind] || CY;
+      var pulse = b.kind === "running" || b.kind === "waiting" || b.kind === "flagged";
+      ctx.fillStyle = rgbaHex(col, 0.55 + 0.45 * g);
+      ctx.beginPath(); ctx.arc(p.x, p.y, 4 + 2 * g, 0, TWO); ctx.fill();
+      if (pulse) {
+        var ph = (ta * 0.9 + i * 0.37) % 1;
+        ctx.strokeStyle = rgbaHex(col, 0.75 * (1 - ph));
+        ctx.beginPath(); ctx.arc(p.x, p.y, 5 + ph * 18, 0, TWO); ctx.stroke();
+      }
+      ctx.textAlign = p.x < cx ? "right" : "left";
+      ctx.font = "13px monospace";
+      ctx.fillStyle = "rgba(230,244,255," + (0.55 + 0.45 * g) + ")";
+      ctx.fillText(String(b.name || ""), p.x + (p.x < cx ? -9 : 9), p.y);
+    }
+    ctx.save(); ctx.translate(cx, cy); ctx.rotate(ta * 0.8);
+    ctx.strokeStyle = CY; ctx.lineWidth = 1.5; ctx.beginPath();
+    for (k = 0; k < 6; k++) {
+      a = (k * Math.PI) / 3;
+      if (k === 0) { ctx.moveTo(Math.cos(a) * 12, Math.sin(a) * 12); } else { ctx.lineTo(Math.cos(a) * 12, Math.sin(a) * 12); }
+    }
+    ctx.closePath(); ctx.stroke(); ctx.restore();
+    ctx.fillStyle = "#bdf6ff";
+    ctx.beginPath(); ctx.arc(cx, cy, 4, 0, TWO); ctx.fill();
+    ctx.lineWidth = 1;
+    ctx.textAlign = "center";
+    ctx.font = "bold 16px monospace";
+    ctx.fillStyle = TX;
+    ctx.fillText("SCOUT", cx, H - 34);
+    ctx.font = "13px monospace";
+    ctx.fillStyle = DIM;
+    var hrs = (DATA && DATA.scout && DATA.scout.hours) || "07:00-23:00 AEDT";
+    ctx.fillText("HOURLY SWEEP \u00b7 " + hrs, cx, H - 14);
+  }
+
   el("pg1").innerHTML = "1 / 2";
   el("pg2").innerHTML = "2 / 2";
   fit();
@@ -283,6 +408,8 @@ table { border-collapse:collapse; border-spacing:0; }
   setInterval(renderClock, 1000);
   setInterval(flip, 20000);
   setInterval(load, 60000);
+  drawRadar();
+  setInterval(drawRadar, 40);
 })();
 </script>
 </body>

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T07:25:08.623007+11:00",
-  "updated_label": "Mon 23 Nov 2026, 7:25am AEDT",
+  "updated_at": "2026-11-23T07:30:01.639254+11:00",
+  "updated_label": "Mon 23 Nov 2026, 7:30am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -277,12 +277,12 @@
       "kind": "running",
       "stage": "Proof / mutation",
       "step": "Pass 3 · Gambit mutation running",
-      "pct": 70,
+      "pct": 82,
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T07:25:03+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:25am AEDT"
+      "updated_at": "2026-11-23T07:28:52+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:28am AEDT"
     },
     {
       "id": "metric",
@@ -291,12 +291,12 @@
       "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
       "kind": "running",
       "stage": "Follow-up testing",
-      "step": "Gambit mutation running",
+      "step": "Proof gate",
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:25:00+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:25am AEDT"
+      "updated_at": "2026-11-23T07:29:26+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:29am AEDT"
     },
     {
       "id": "beanstalk",
@@ -309,8 +309,8 @@
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:25:00+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:25am AEDT"
+      "updated_at": "2026-11-23T07:29:51+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:29am AEDT"
     },
     {
       "id": "alchemix",
@@ -332,13 +332,13 @@
       "platform": "Guardian Defender",
       "status": "HUNTING",
       "kind": "running",
-      "stage": "Proof gate",
-      "step": "Medusa",
-      "pct": 82,
+      "stage": "Mutation testing",
+      "step": "Gambit mutation running",
+      "pct": 70,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:21:21+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:21am AEDT"
+      "updated_at": "2026-11-23T07:28:59+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:28am AEDT"
     }
   ],
   "stats": [

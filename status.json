@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T10:28:17.676424+11:00",
-  "updated_label": "Mon 23 Nov 2026, 10:28am AEDT",
+  "updated_at": "2026-11-23T10:30:01.665566+11:00",
+  "updated_label": "Mon 23 Nov 2026, 10:30am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -559,11 +559,11 @@
       "step": "Slither",
       "pct": 42,
       "pass_label": "",
-      "updated_at": "2026-11-23T10:27:33.871669+11:00",
-      "updated_label": "Mon 23 Nov 2026, 10:27am AEDT",
+      "updated_at": "2026-11-23T10:30:01.644818+11:00",
+      "updated_label": "Mon 23 Nov 2026, 10:30am AEDT",
       "now": {
-        "what": "Idle · last stage finished 10:17am (static scan) · next: G0 quick-win",
-        "since": "",
+        "what": "Invariant fuzzing (Foundry)",
+        "since": "2026-11-23T10:28:39.010000+11:00",
         "detail": ""
       },
       "gates": [
@@ -675,8 +675,8 @@
       {
         "name": "BitGo",
         "kind": "running",
-        "what": "Idle · last stage finished 10:17am (static scan) · next: G0 quick-win",
-        "since": "",
+        "what": "Invariant fuzzing (Foundry)",
+        "since": "2026-11-23T10:28:39.010000+11:00",
         "detail": ""
       },
       {
@@ -739,10 +739,10 @@
       }
     ],
     "box": {
-      "load": 2.3,
-      "load5": 2.2,
+      "load": 3.5,
+      "load5": 2.6,
       "cores": 8,
-      "heavy_jobs": 2,
+      "heavy_jobs": 3,
       "heavy_cap": 2
     }
   },

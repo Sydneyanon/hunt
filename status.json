@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T07:10:01.748462+11:00",
-  "updated_label": "Mon 23 Nov 2026, 7:10am AEDT",
+  "updated_at": "2026-11-23T07:15:05.037262+11:00",
+  "updated_label": "Mon 23 Nov 2026, 7:15am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T07:09:54+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:09am AEDT"
+      "updated_at": "2026-11-23T07:12:42+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:12am AEDT"
     },
     {
       "id": "metric",
@@ -291,12 +291,12 @@
       "status": "JUDGED · 0 SURVIVORS · MORE TESTING",
       "kind": "running",
       "stage": "Follow-up testing",
-      "step": "Halmos",
+      "step": "Coverage",
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:07:36+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:07am AEDT"
+      "updated_at": "2026-11-23T07:12:59+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:12am AEDT"
     },
     {
       "id": "beanstalk",
@@ -309,8 +309,8 @@
       "pct": 88,
       "survivors": 0,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:07:47+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:07am AEDT"
+      "updated_at": "2026-11-23T07:10:28+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:10am AEDT"
     },
     {
       "id": "alchemix",

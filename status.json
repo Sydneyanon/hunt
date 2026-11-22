@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T07:40:19.855730+11:00",
-  "updated_label": "Mon 23 Nov 2026, 7:40am AEDT",
+  "updated_at": "2026-11-23T07:45:43.038612+11:00",
+  "updated_label": "Mon 23 Nov 2026, 7:45am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -9,7 +9,7 @@
     "last_sweep_label": "Mon 23 Nov 2026 06:30 AEDT",
     "new_count": 1,
     "platforms_scanned": 20,
-    "next_to_start": "Aero (MetaDEX)"
+    "next_to_start": "BitGo Bug Bounty"
   },
   "platforms": [
     "Sherlock",
@@ -109,7 +109,7 @@
       "open": "2026-11-24T01:00:00+11:00",
       "open_txt": "Tue 24 Nov, 1:00am AEDT",
       "standing": false,
-      "url": "https://audit-engine.sherlock.xyz/engagements",
+      "url": "https://audit-engine.sherlock.xyz/",
       "nsloc": null
     },
     {
@@ -281,8 +281,8 @@
       "survivors": null,
       "survivors_prior": 0,
       "pass_label": "Pass 3",
-      "updated_at": "2026-11-23T07:38:53+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:38am AEDT"
+      "updated_at": "2026-11-23T07:43:34+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:43am AEDT"
     },
     {
       "id": "metric",
@@ -323,8 +323,8 @@
       "pct": 20,
       "survivors": null,
       "pass_label": "",
-      "updated_at": "2026-11-23T07:36:32+11:00",
-      "updated_label": "Mon 23 Nov 2026, 7:36am AEDT"
+      "updated_at": "2026-11-23T07:43:55+11:00",
+      "updated_label": "Mon 23 Nov 2026, 7:43am AEDT"
     },
     {
       "id": "stakedhype",
@@ -354,7 +354,7 @@
     },
     {
       "label": "QUEUED NEXT",
-      "value": "Aero (MetaDEX)",
+      "value": "BitGo Bug Bounty",
       "kind": "queued"
     },
     {

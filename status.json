@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T10:10:01.816637+11:00",
+  "updated_at": "2026-11-23T10:10:40.994395+11:00",
   "updated_label": "Mon 23 Nov 2026, 10:10am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
@@ -418,8 +418,8 @@
       "bugbounty.fyi",
       "X"
     ],
-    "last_sweep_at": "2026-11-23T10:04:00+11:00",
-    "last_sweep_label": "Mon 23 Nov, 10:04am AEDT",
+    "last_sweep_at": "2026-11-23T10:10:00+11:00",
+    "last_sweep_label": "Mon 23 Nov, 10:10am AEDT",
     "window": [
       7,
       23

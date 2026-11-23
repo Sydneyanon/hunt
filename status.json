@@ -1,7 +1,7 @@
 {
   "build": "d5464b412e",
-  "updated_at": "2026-11-23T11:12:10.839508+11:00",
-  "updated_label": "Mon 23 Nov 2026, 11:12am AEDT",
+  "updated_at": "2026-11-23T11:17:16.416853+11:00",
+  "updated_label": "Mon 23 Nov 2026, 11:17am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -568,11 +568,11 @@
       "step": "Invariant / fuzz campaigns",
       "pct": 82,
       "pass_label": "",
-      "updated_at": "2026-11-23T11:11:29.869134+11:00",
-      "updated_label": "Mon 23 Nov 2026, 11:11am AEDT",
+      "updated_at": "2026-11-23T11:14:34.103578+11:00",
+      "updated_label": "Mon 23 Nov 2026, 11:14am AEDT",
       "now": {
-        "what": "Invariant fuzzing (Foundry)",
-        "since": "2026-11-23T11:11:29.500000+11:00",
+        "what": "Local fork test (Anvil)",
+        "since": "2026-11-23T10:31:13.680000+11:00",
         "detail": ""
       },
       "gates": [
@@ -684,8 +684,8 @@
       {
         "name": "BitGo",
         "kind": "running",
-        "what": "Invariant fuzzing (Foundry)",
-        "since": "2026-11-23T11:11:29.500000+11:00",
+        "what": "Local fork test (Anvil)",
+        "since": "2026-11-23T10:31:13.680000+11:00",
         "detail": ""
       },
       {
@@ -748,10 +748,10 @@
       }
     ],
     "box": {
-      "load": 1.7,
-      "load5": 1.8,
+      "load": 2.0,
+      "load5": 2.0,
       "cores": 8,
-      "heavy_jobs": 1,
+      "heavy_jobs": 0,
       "heavy_cap": 2
     }
   },

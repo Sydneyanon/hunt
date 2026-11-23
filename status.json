@@ -1,10 +1,10 @@
 {
   "build": "d5464b412e",
-  "updated_at": "2026-11-24T04:37:56.934087+11:00",
-  "updated_label": "Tue 24 Nov 2026, 4:37am AEDT",
+  "updated_at": "2026-11-24T09:15:58.872687+11:00",
+  "updated_label": "Tue 24 Nov 2026, 9:15am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
-    "on_duty": false,
+    "on_duty": true,
     "hours": "07:00–23:00 AEDT",
     "last_sweep_at": "2026-11-23T06:30:00+11:00",
     "last_sweep_label": "Mon 23 Nov 2026 06:30 AEDT",
@@ -568,11 +568,11 @@
       "step": "Gambit mutation running",
       "pct": 70,
       "pass_label": "",
-      "updated_at": "2026-11-23T11:33:12.162739+11:00",
-      "updated_label": "Mon 23 Nov 2026, 11:33am AEDT",
+      "updated_at": "2026-11-24T04:51:31.596424+11:00",
+      "updated_label": "Tue 24 Nov 2026, 4:51am AEDT",
       "now": {
         "what": "Local fork test (Anvil)",
-        "since": "2026-11-24T03:25:33.680000+11:00",
+        "since": "2026-11-24T07:58:29.680000+11:00",
         "detail": ""
       },
       "gates": [
@@ -639,8 +639,8 @@
   ],
   "chips": [
     {
-      "txt": "SCOUT OVERNIGHT PAUSE · RESUMES 07:00",
-      "kind": "queued"
+      "txt": "SCOUT ON DUTY",
+      "kind": "ok"
     },
     {
       "txt": "1 HUNT RUNNING",
@@ -662,7 +662,7 @@
     },
     {
       "name": "Scout",
-      "activity": "overnight pause · resumes 07:00"
+      "activity": "hourly sweep · ~20 platforms + X"
     }
   ],
   "live": {
@@ -685,13 +685,13 @@
         "name": "BitGo",
         "kind": "running",
         "what": "Local fork test (Anvil)",
-        "since": "2026-11-24T03:25:33.680000+11:00",
+        "since": "2026-11-24T07:58:29.680000+11:00",
         "detail": ""
       },
       {
         "name": "Scout",
         "kind": "scout",
-        "what": "Overnight pause",
+        "what": "Waiting for next sweep",
         "since": "",
         "detail": "",
         "next_at": ""
@@ -748,8 +748,8 @@
       }
     ],
     "box": {
-      "load": 2.0,
-      "load5": 3.0,
+      "load": 4.0,
+      "load5": 3.5,
       "cores": 8,
       "heavy_jobs": 0,
       "heavy_cap": 2

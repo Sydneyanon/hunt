@@ -1,7 +1,7 @@
 {
   "build": "d5464b412e",
-  "updated_at": "2026-11-23T11:22:22.337000+11:00",
-  "updated_label": "Mon 23 Nov 2026, 11:22am AEDT",
+  "updated_at": "2026-11-23T11:27:28.202452+11:00",
+  "updated_label": "Mon 23 Nov 2026, 11:27am AEDT",
   "timezone": "Australia/Sydney",
   "scout": {
     "on_duty": true,
@@ -347,8 +347,8 @@
       "updated_at": "2026-11-23T08:22:47+11:00",
       "updated_label": "Mon 23 Nov 2026, 8:22am AEDT",
       "now": {
-        "what": "Compiling (Foundry)",
-        "since": "2026-11-23T11:21:20.930000+11:00",
+        "what": "Running tests (Foundry)",
+        "since": "2026-11-23T11:27:17.650000+11:00",
         "detail": ""
       },
       "gates": [
@@ -568,8 +568,8 @@
       "step": "Coverage",
       "pct": 88,
       "pass_label": "",
-      "updated_at": "2026-11-23T11:21:21.298531+11:00",
-      "updated_label": "Mon 23 Nov 2026, 11:21am AEDT",
+      "updated_at": "2026-11-23T11:26:35.488222+11:00",
+      "updated_label": "Mon 23 Nov 2026, 11:26am AEDT",
       "now": {
         "what": "Local fork test (Anvil)",
         "since": "2026-11-23T10:31:13.680000+11:00",
@@ -674,8 +674,8 @@
       {
         "name": "Metric",
         "kind": "running",
-        "what": "Compiling (Foundry)",
-        "since": "2026-11-23T11:21:20.930000+11:00",
+        "what": "Running tests (Foundry)",
+        "since": "2026-11-23T11:27:17.650000+11:00",
         "detail": ""
       },
       {
@@ -752,10 +752,10 @@
       }
     ],
     "box": {
-      "load": 3.9,
-      "load5": 2.8,
+      "load": 3.7,
+      "load5": 3.6,
       "cores": 8,
-      "heavy_jobs": 0,
+      "heavy_jobs": 1,
       "heavy_cap": 2
     }
   },
